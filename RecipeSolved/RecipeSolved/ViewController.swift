@@ -13,16 +13,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var greetingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         getWeather()
+        getGreeting()
+    }
+    
+    func getGreeting()  {
+//        self.greetingLabel.text = "Morning"
+//        self.greetingLabel.text = "Afternoon"
+        
     }
     
     func getWeather() {
         let session = URLSession.shared
-        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au?&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
+        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Sydney,au?&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
         
         // API KEY: 368e3231ebc2330d34a01ab4e56add0e
         // Also hosts the location of data being retrieved

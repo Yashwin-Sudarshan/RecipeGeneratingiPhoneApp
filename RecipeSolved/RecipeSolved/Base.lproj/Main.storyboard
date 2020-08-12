@@ -97,6 +97,7 @@
                     </view>
                     <connections>
                         <outlet property="currentTempLabel" destination="Oa1-Ed-zwl" id="TEj-mW-YQD"/>
+                        <outlet property="greetingLabel" destination="iSm-lS-HFr" id="azp-qz-yiZ"/>
                         <outlet property="maxTempLabel" destination="kvu-bX-zal" id="XNS-4Y-rAq"/>
                         <outlet property="minTempLabel" destination="09t-M5-4c0" id="TIy-2u-0PQ"/>
                         <outlet property="searchDisplayController" destination="ShJ-6I-pCm" id="A1b-JP-dlk"/>
