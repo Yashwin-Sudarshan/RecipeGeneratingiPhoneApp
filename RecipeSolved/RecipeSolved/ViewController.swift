@@ -23,10 +23,15 @@ class ViewController: UIViewController {
     }
     
     func getGreeting()  {
-//        self.greetingLabel.text = "Morning"
-//        self.greetingLabel.text = "Afternoon"
+        let hour = Calendar.current.component(.hour, from: Date())
         
+        switch hour {
+        case 0..<12 : self.greetingLabel.text = "Morning"       // Show morning if time is AM
+        case 12..<24 : self.greetingLabel.text = "Afternoon"    // Show afternoon if time is PM
+        default: self.greetingLabel.text = "Day"                // Default to Day if time of day cannot be found
+        }
     }
+    
     
     func getWeather() {
         let session = URLSession.shared
@@ -52,12 +57,12 @@ class ViewController: UIViewController {
                             }
                             if let temperature = mainDictionary.value(forKey: "temp_max") {
                                 DispatchQueue.main.async {
-                                    self.maxTempLabel.text = "\(temperature)ºc"     // Updates the maxTempLabel
+                                    self.maxTempLabel.text = "\(temperature)ºc"         // Updates the maxTempLabel
                                 }
                             }
                             if let temperature = mainDictionary.value(forKey: "temp_min") {
                                 DispatchQueue.main.async {
-                                    self.minTempLabel.text = "\(temperature)ºc"     // Updates the minTempLabel
+                                    self.minTempLabel.text = "\(temperature)ºc"         // Updates the minTempLabel
                                 }
                             }
                         } else {
