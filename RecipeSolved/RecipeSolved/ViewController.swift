@@ -34,8 +34,10 @@ class ViewController: UIViewController {
     
     
     func getWeather() {
+        let city = "East%20Melbourne"
+        let countryCode = "au"
         let session = URLSession.shared
-        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Sydney,au?&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
+        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city),\(countryCode)?&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
         
         // API KEY: 368e3231ebc2330d34a01ab4e56add0e
         // Also hosts the location of data being retrieved
