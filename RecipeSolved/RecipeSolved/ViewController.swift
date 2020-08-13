@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     
     func getGreeting()  {
         let hour = Calendar.current.component(.hour, from: Date())
-        
+
         switch hour {
         case 0..<12 : self.greetingLabel.text = "Morning"       // Show morning if time is AM
-        case 12..<24 : self.greetingLabel.text = "Afternoon"    // Show afternoon if time is PM
+        case 12..<24 : self.greetingLabel.text = "Evening"    // Show afternoon if time is PM
         default: self.greetingLabel.text = "Day"                // Default to Day if time of day cannot be found
         }
     }
