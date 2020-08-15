@@ -14,6 +14,7 @@
 		0FD39FBE24D2C8EB001CEA9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD39FBC24D2C8EB001CEA9A /* LaunchScreen.storyboard */; };
 		0FD39FC924D2C8EB001CEA9A /* RecipeSolvedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39FC824D2C8EB001CEA9A /* RecipeSolvedTests.swift */; };
 		0FD39FD424D2C8EB001CEA9A /* RecipeSolvedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39FD324D2C8EB001CEA9A /* RecipeSolvedUITests.swift */; };
+		CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5CA76524E80217000F2362 /* Pantry.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0FD39FCF24D2C8EB001CEA9A /* RecipeSolvedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeSolvedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD39FD324D2C8EB001CEA9A /* RecipeSolvedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSolvedUITests.swift; sourceTree = "<group>"; };
 		0FD39FD524D2C8EB001CEA9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA5CA76524E80217000F2362 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				0FD39FBA24D2C8EB001CEA9A /* Assets.xcassets */,
 				0FD39FBC24D2C8EB001CEA9A /* LaunchScreen.storyboard */,
 				0FD39FBF24D2C8EB001CEA9A /* Info.plist */,
+				CA5CA76524E80217000F2362 /* Pantry.storyboard */,
 			);
 			path = RecipeSolved;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				0FD39FBE24D2C8EB001CEA9A /* LaunchScreen.storyboard in Resources */,
 				0FD39FBB24D2C8EB001CEA9A /* Assets.xcassets in Resources */,
+				CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */,
 				0FD39FB924D2C8E9001CEA9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
