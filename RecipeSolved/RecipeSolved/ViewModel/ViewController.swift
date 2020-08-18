@@ -27,8 +27,9 @@ class ViewController: UIViewController {
 
         switch hour {
         case 0..<12 : self.greetingLabel.text = "Morning"       // Show morning if time is AM
-        case 12..<24 : self.greetingLabel.text = "Evening"    // Show afternoon if time is PM
-        default: self.greetingLabel.text = "Day"                // Default to Day if time of day cannot be found
+        case 0..<18 : self.greetingLabel.text = "Afternoon"    // Show afternoon if time is between 12pm-6pm
+        case 12..<24 : self.greetingLabel.text = "Evening"    // Show evening if time is between 6pm-12am
+        default: self.greetingLabel.text = "Day"             // Default to Day if time of day cannot be found
         }
     }
     
@@ -52,19 +53,22 @@ class ViewController: UIViewController {
                     print("All the weather data:\n\(dataString!)")     // Prints all data for location to console to ensure data was retrieved correctly
                     if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary {
                         if let mainDictionary = jsonObj!.value(forKey: "main") as? NSDictionary {
-                            if let temperature = mainDictionary.value(forKey: "temp") {
+                            if let temperature = mainDictionary.value(forKey: "temp") as? Double {
+                                let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.currentTempLabel.text = "\(temperature)ºc"     // Updates the currentTempLabel
+                                    self.currentTempLabel.text = "\(temp)ºC"     // Updates the currentTempLabel
                                 }
                             }
-                            if let temperature = mainDictionary.value(forKey: "temp_max") {
+                            if let temperature = mainDictionary.value(forKey: "temp_max") as? Double {
+                                let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.maxTempLabel.text = "\(temperature)ºc"         // Updates the maxTempLabel
+                                    self.maxTempLabel.text = "\(temp)ºC"         // Updates the maxTempLabel
                                 }
                             }
-                            if let temperature = mainDictionary.value(forKey: "temp_min") {
+                            if let temperature = mainDictionary.value(forKey: "temp_min") as? Double {
+                                let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.minTempLabel.text = "\(temperature)ºc"         // Updates the minTempLabel
+                                    self.minTempLabel.text = "\(temp)ºC"         // Updates the minTempLabel
                                 }
                             }
                         } else {

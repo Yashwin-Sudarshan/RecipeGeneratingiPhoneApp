@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ncc-AF-bsf">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ncc-AF-bsf">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,7 +60,7 @@
             <objects>
                 <viewController id="Tls-gm-l2W" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TJk-3P-mfY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcF-xT-EmR">
@@ -102,7 +100,7 @@
             <objects>
                 <viewController id="5re-MU-GUx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hpp-3x-CFJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Table Grid" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-he-Y4e">
@@ -145,7 +143,7 @@
             <objects>
                 <viewController id="uYT-yG-mwf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hDI-Ef-ZOn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PantrySearchingWoutSearchBar" translatesAutoresizingMaskIntoConstraints="NO" id="z5n-FN-OGh">
@@ -173,6 +171,9 @@
             <point key="canvasLocation" x="4286" y="540"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SZX-xq-tG8"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Content Entry" width="282" height="538"/>
         <image name="PantryContents" width="354" height="142"/>
@@ -184,7 +185,4 @@
         <image name="menuTab" width="24" height="24"/>
         <image name="pantrySearchBar" width="574" height="68"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="imK-d6-tc4"/>
-    </inferredMetricsTieBreakers>
 </document>
