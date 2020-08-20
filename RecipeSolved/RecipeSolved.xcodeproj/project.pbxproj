@@ -14,7 +14,11 @@
 		0FD39FBE24D2C8EB001CEA9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD39FBC24D2C8EB001CEA9A /* LaunchScreen.storyboard */; };
 		0FD39FC924D2C8EB001CEA9A /* RecipeSolvedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39FC824D2C8EB001CEA9A /* RecipeSolvedTests.swift */; };
 		0FD39FD424D2C8EB001CEA9A /* RecipeSolvedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39FD324D2C8EB001CEA9A /* RecipeSolvedUITests.swift */; };
+		CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38127E24ED78A800A62F7F /* IngredientCell.swift */; };
+		CA4263B624ED552B004E352D /* PantryUpdateIngredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */; };
 		CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5CA76524E80217000F2362 /* Pantry.storyboard */; };
+		CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */; };
+		CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +52,11 @@
 		0FD39FCF24D2C8EB001CEA9A /* RecipeSolvedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeSolvedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD39FD324D2C8EB001CEA9A /* RecipeSolvedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSolvedUITests.swift; sourceTree = "<group>"; };
 		0FD39FD524D2C8EB001CEA9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA38127E24ED78A800A62F7F /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUpdateIngredViewController.swift; sourceTree = "<group>"; };
 		CA5CA76524E80217000F2362 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
+		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
+		CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +107,12 @@
 		0FD39FB224D2C8E9001CEA9A /* RecipeSolved */ = {
 			isa = PBXGroup;
 			children = (
+				CA2DFFC924EE0F15009791F3 /* ViewModel */,
+				CA2DFFC824EE0F0A009791F3 /* View */,
+				CA2DFFC724EE0F00009791F3 /* Model */,
 				0FD39FB324D2C8E9001CEA9A /* AppDelegate.swift */,
-				0FD39FB524D2C8E9001CEA9A /* ViewController.swift */,
-				0FD39FB724D2C8E9001CEA9A /* Main.storyboard */,
 				0FD39FBA24D2C8EB001CEA9A /* Assets.xcassets */,
-				0FD39FBC24D2C8EB001CEA9A /* LaunchScreen.storyboard */,
 				0FD39FBF24D2C8EB001CEA9A /* Info.plist */,
-				CA5CA76524E80217000F2362 /* Pantry.storyboard */,
 			);
 			path = RecipeSolved;
 			sourceTree = "<group>";
@@ -126,6 +133,35 @@
 				0FD39FD524D2C8EB001CEA9A /* Info.plist */,
 			);
 			path = RecipeSolvedUITests;
+			sourceTree = "<group>";
+		};
+		CA2DFFC724EE0F00009791F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA38127E24ED78A800A62F7F /* IngredientCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA2DFFC824EE0F0A009791F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FD39FBC24D2C8EB001CEA9A /* LaunchScreen.storyboard */,
+				CA5CA76524E80217000F2362 /* Pantry.storyboard */,
+				0FD39FB724D2C8E9001CEA9A /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA2DFFC924EE0F15009791F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */,
+				CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */,
+				CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */,
+				0FD39FB524D2C8E9001CEA9A /* ViewController.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +232,7 @@
 				TargetAttributes = {
 					0FD39FAF24D2C8E9001CEA9A = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					0FD39FC324D2C8EB001CEA9A = {
 						CreatedOnToolsVersion = 10.3;
@@ -260,8 +297,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */,
 				0FD39FB624D2C8E9001CEA9A /* ViewController.swift in Sources */,
+				CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */,
+				CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */,
 				0FD39FB424D2C8E9001CEA9A /* AppDelegate.swift in Sources */,
+				CA4263B624ED552B004E352D /* PantryUpdateIngredViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EWSCQHV5Q9;
+				DEVELOPMENT_TEAM = YJG3SC5FX7;
 				INFOPLIST_FILE = RecipeSolved/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,7 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EWSCQHV5Q9;
+				DEVELOPMENT_TEAM = YJG3SC5FX7;
 				INFOPLIST_FILE = RecipeSolved/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
