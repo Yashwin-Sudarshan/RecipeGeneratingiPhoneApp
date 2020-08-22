@@ -55,19 +55,19 @@ class ViewController: UIViewController {
                             if let temperature = mainDictionary.value(forKey: "temp") as? Double {
                                 let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.currentTempLabel.text = "\(temp)ºc"     // Updates the currentTempLabel
+                                    self.currentTempLabel.text = "\(temp)ºC"     // Updates the currentTempLabel
                                 }
                             }
                             if let temperature = mainDictionary.value(forKey: "temp_max") as? Double {
                                 let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.maxTempLabel.text = "\(temp)ºc"         // Updates the maxTempLabel
+                                    self.maxTempLabel.text = "\(temp)ºC"         // Updates the maxTempLabel
                                 }
                             }
                             if let temperature = mainDictionary.value(forKey: "temp_min") as? Double {
                                 let temp = Int(temperature)
                                 DispatchQueue.main.async {
-                                    self.minTempLabel.text = "\(temp)ºc"         // Updates the minTempLabel
+                                    self.minTempLabel.text = "\(temp)ºC"         // Updates the minTempLabel
                                 }
                             }
                         } else {
