@@ -16,24 +16,31 @@ class PantryIngredientaddingViewController: UIViewController{
     @IBOutlet weak var expiryField: UITextField!
     @IBOutlet weak var totalField: UITextField!
     
-    var ingredInput:[String] = []
+//    let model = YourModelObject.sharedInstance
+//    var plistNumber = model.currentTableNumber
+    
+    
+    
+    static var ingredInput:[String] = []
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         ingredientField.delegate = self
-        currentField.delegate = self
+//        currentField.delegate = self
         addingField.delegate = self
         expiryField.delegate = self
-        totalField.delegate = self
+//        totalField.delegate = self
+        
     }
-    
     
     @IBAction func confirmEntryTap(_ sender: Any) {
     
-        let ingredString = "\(ingredientField.text!),\(currentField.text!),\(addingField.text!),\(expiryField.text!),\(totalField.text!)"
+//        let ingredString = "\(ingredientField.text!),\(currentField.text!),\(addingField.text!),\(expiryField.text!),\(totalField.text!)"
         
-        ingredInput.append(ingredString)
+        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+        
+        PantryIngredientaddingViewController.ingredInput.append(ingredString)
         
     }
     
@@ -48,7 +55,13 @@ class PantryIngredientaddingViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          let vcTransfer = segue.destination as! PantryUpdateIngredViewController
-         vcTransfer.currentIngredients = self.ingredInput
+         vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
+        
+//        vcTransfer.currentIngredients.append(PantryIngredientaddingViewController.ingredInput[0])
+//        PantryIngredientaddingViewController.ingredInput.removeFirst()
+        
+//        vcTransfer.insertNewIngredient()
+        // append then delete
     }
     
 }
