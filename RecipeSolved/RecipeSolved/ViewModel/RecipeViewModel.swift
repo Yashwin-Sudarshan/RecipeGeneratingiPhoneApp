@@ -16,6 +16,9 @@ struct RecipeViewModel{
         return recipes.count
     }
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    
     init(){
         loadData()
     }
@@ -37,3 +40,5 @@ struct RecipeViewModel{
         return (title, time, items, rating, steps, image)
     }
 }
+
+
