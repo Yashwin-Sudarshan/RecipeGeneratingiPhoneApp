@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PantryIngredientaddingViewController: UIViewController{
+class PantryIngredientaddingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var ingredientField: UITextField!
     @IBOutlet weak var currentField: UITextField!
@@ -16,24 +16,24 @@ class PantryIngredientaddingViewController: UIViewController{
     @IBOutlet weak var expiryField: UITextField!
     @IBOutlet weak var totalField: UITextField!
     
-    var ingredInput:[String] = []
+    static var ingredInput:[String] = []
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         ingredientField.delegate = self
-        currentField.delegate = self
+//        currentField.delegate = self
         addingField.delegate = self
         expiryField.delegate = self
-        totalField.delegate = self
+//        totalField.delegate = self
+        
     }
-    
     
     @IBAction func confirmEntryTap(_ sender: Any) {
     
-        let ingredString = "\(ingredientField.text!),\(currentField.text!),\(addingField.text!),\(expiryField.text!),\(totalField.text!)"
+        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
         
-        ingredInput.append(ingredString)
+        PantryIngredientaddingViewController.ingredInput.append(ingredString)
         
     }
     
@@ -48,8 +48,33 @@ class PantryIngredientaddingViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          let vcTransfer = segue.destination as! PantryUpdateIngredViewController
-         vcTransfer.currentIngredients = self.ingredInput
+         vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
+        
     }
+    
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else{
+                print("Camera not available")
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
     
 }
 

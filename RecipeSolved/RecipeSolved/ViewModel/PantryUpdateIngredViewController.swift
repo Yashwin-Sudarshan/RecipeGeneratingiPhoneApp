@@ -13,21 +13,20 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var pantryTableView: UITableView!
     
-//    var totalIngredients:[String] = []
-    
     var currentIngredients:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        pantryTableView.tableFooterView = UIView(frame: CGRect.zero)
-//        pantryTableView.delegate = self
-//        pantryTableView.delegate = self
-        insertNewIngredient()
+        pantryTableView.dataSource = self
+        pantryTableView.delegate = self
+        
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
     }
     
+    // Might be redundant
     func insertNewIngredient(){
-
-//        totalIngredients.append(currentIngredients[0])
 
         let indexPath = IndexPath(row: currentIngredients.count - 1, section: 0)
 
@@ -49,22 +48,19 @@ extension PantryUpdateIngredViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let ingredientTitle = totalIngredients[indexPath.row]
-        let ingredientTitle = currentIngredients[indexPath.row]
-//        pantryTableView.register(IngredientCell.self, forCellReuseIdentifier: "Ingredient Cell")
-//        let cell = pantryTableView.dequeueReusableCell(withIdentifier: "Ingredient Cell") as! IngredientCell
+        let inputComponents = currentIngredients[indexPath.row].components(separatedBy: ",")
+        
+        let ingredientTitle = inputComponents[0]
+        let qtyTitle = inputComponents[1]
+        let expTitle = inputComponents[2]
+        
         let cell = pantryTableView.dequeueReusableCell(withIdentifier: "IngredientCell") as! IngredientCell
-//        let ingredient = currentIngredients[indexPath.row]
         cell.ingredientTitle?.text = ingredientTitle
         
-        return cell
+        cell.qtyTitle?.text = qtyTitle
+        cell.expTitle?.text = expTitle
         
-//        let videoTitle = videos[indexPath.row]
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
-//        cell.videoTitle.text = videoTitle
-//
-//        return cell
+        return cell
     }
     
     
@@ -77,6 +73,8 @@ extension PantryUpdateIngredViewController: UITableViewDelegate, UITableViewData
         
         if editingStyle == .delete {
             currentIngredients.remove(at: indexPath.row)
+            
+            PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row) 
             
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
