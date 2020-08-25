@@ -9,24 +9,33 @@
 import Foundation
 import UIKit
 
-struct RecipeViewModel{
+
+class RecipeViewModel{
     private (set) var recipes:[Recipe] = []
+    
+    weak var searchView: UIView!
+    
+    var searchController: UISearchController!
+    var currentDataSourceSearch:[Recipe] = []
+    
     
     var count:Int{
         return recipes.count
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
+    //let searchController = UISearchController(searchResultsController: nil)
     
     
     init(){
         loadData()
     }
     
-    private mutating func loadData(){
+    private func loadData(){
         recipes.append(Recipe.Pasta)
         recipes.append(Recipe.Steak)
         recipes.append(Recipe.Chips)
+        currentDataSourceSearch = recipes
+        
     }
     
     func getRecipe(byIndex index: Int) -> (title:String, time:String, items:String, rating:String, steps:String, image:UIImage?){
@@ -40,5 +49,4 @@ struct RecipeViewModel{
         return (title, time, items, rating, steps, image)
     }
 }
-
 

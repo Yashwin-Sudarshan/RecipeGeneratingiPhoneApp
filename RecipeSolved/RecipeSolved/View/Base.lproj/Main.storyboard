@@ -183,13 +183,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="N01-E2-T8T">
-                                <rect key="frame" x="16" y="326" width="288" height="193"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N01-E2-T8T">
+                                <rect key="frame" x="16" y="352" width="288" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="textDragDelegate" destination="V6I-hg-idN" id="Bvu-vO-YrE"/>
+                                    <outlet property="textDropDelegate" destination="V6I-hg-idN" id="K2U-ao-87f"/>
+                                </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WME-qz-2R8">
                                 <rect key="frame" x="16" y="322.5" width="91" height="21"/>
@@ -251,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSw-vH-hBW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334" y="2180"/>
+            <point key="canvasLocation" x="-335.625" y="2179.2253521126759"/>
         </scene>
         <!--Explore-->
         <scene sceneID="s9n-qn-dBW">
@@ -261,14 +265,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="l9k-Ns-boD">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
+                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PantrySearchBarWithCross" id="cw6-qb-SMM">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="125" id="E9J-yv-fGi">
-                                <rect key="frame" x="0.0" y="72" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="63" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E9J-yv-fGi" id="2Pz-aL-Wv2">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
@@ -287,8 +290,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-mO-v0u">
-                                            <rect key="frame" x="168" y="93" width="136" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-mO-v0u">
+                                            <rect key="frame" x="168" y="93" width="136" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -305,9 +308,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="1005" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSs-fj-eMb">
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="1005" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSs-fj-eMb">
                                             <rect key="frame" x="260" y="52" width="44" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -328,7 +330,10 @@
                                         <constraint firstAttribute="trailing" secondItem="dDi-V4-bgZ" secondAttribute="trailing" constant="16" id="av8-jx-WJG"/>
                                         <constraint firstItem="cdL-mO-v0u" firstAttribute="top" secondItem="dDi-V4-bgZ" secondAttribute="bottom" constant="8" id="bCr-Y0-IXW"/>
                                         <constraint firstItem="z3q-VC-5ec" firstAttribute="leading" secondItem="2Pz-aL-Wv2" secondAttribute="leading" constant="16" id="cWk-d8-EsJ"/>
+                                        <constraint firstItem="cdL-mO-v0u" firstAttribute="top" secondItem="tSs-fj-eMb" secondAttribute="bottom" constant="20" id="d1j-ow-7hZ"/>
+                                        <constraint firstItem="tSs-fj-eMb" firstAttribute="trailing" secondItem="fbc-QG-X2d" secondAttribute="trailing" id="d6A-vQ-MYy"/>
                                         <constraint firstItem="fbc-QG-X2d" firstAttribute="leading" secondItem="z3q-VC-5ec" secondAttribute="trailing" constant="8" id="gg5-Lo-lHC"/>
+                                        <constraint firstItem="tSs-fj-eMb" firstAttribute="centerY" secondItem="z3q-VC-5ec" secondAttribute="centerY" id="hnz-Tw-nOj"/>
                                         <constraint firstItem="fbc-QG-X2d" firstAttribute="leading" secondItem="fIx-Ez-7NZ" secondAttribute="leading" id="oSe-xl-SRt"/>
                                         <constraint firstItem="cdL-mO-v0u" firstAttribute="leading" secondItem="z3q-VC-5ec" secondAttribute="trailing" constant="8" id="owu-y4-LL9"/>
                                         <constraint firstItem="z3q-VC-5ec" firstAttribute="top" secondItem="2Pz-aL-Wv2" secondAttribute="top" constant="11" id="ved-5k-F2p"/>
@@ -345,6 +350,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Explore" id="M8l-8W-btG"/>
+                    <connections>
+                        <outlet property="searchView" destination="s0o-cL-K1r" id="Ydp-Nd-f54"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JI0-fI-evD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -442,6 +450,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PantrySearchBarWithCross" width="574" height="70"/>
         <image name="home" width="24" height="24"/>
         <image name="menuTab" width="24" height="24"/>
         <image name="pasta" width="1300" height="867"/>

@@ -8,12 +8,29 @@
 
 import UIKit
 
-class RecipeTableViewController: UITableViewController {
+class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
 
     private let viewModel = RecipeViewModel()
     
+    @IBOutlet weak var searchView: UIView!
+    
+    var searchController: UISearchController!
+    var currentDataSourceSearch:[String] = []
+    var recipes1:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentDataSourceSearch = recipes1
+        
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchView.addSubview(searchController.searchBar)
+        searchController.searchBar.delegate = self
+        
     }
 
 
@@ -42,6 +59,29 @@ class RecipeTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    func filterCurrentDataSourceSearch(searchTerm: String){
+        
+        if searchTerm.count > 0{
+            
+            currentDataSourceSearch = recipes1
+            
+            let filteredResults = currentDataSourceSearch.filter {$0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchTerm.replacingOccurrences(of: " ", with: "").lowercased())
+                
+            }
+            currentDataSourceSearch = filteredResults
+            tableView.reloadData()
+        }
+        else{
+            restoreCurrentDataSourceSearch()
+        }
+    }
+    
+    func restoreCurrentDataSourceSearch(){
+        
+        currentDataSourceSearch = recipes1
+        tableView.reloadData()
+    }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,4 +96,33 @@ class RecipeTableViewController: UITableViewController {
 
     }
 
+}
+
+extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let searchValText = searchController.searchBar.text{
+            filterCurrentDataSourceSearch(searchTerm: searchValText)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchController.isActive = false
+        
+        if let searchValText = searchBar.text{
+            filterCurrentDataSourceSearch(searchTerm: searchValText)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchController.isActive = false
+        
+        if let searchValText = searchBar.text, !searchValText.isEmpty{
+            restoreCurrentDataSourceSearch()
+        }
+    }
 }
