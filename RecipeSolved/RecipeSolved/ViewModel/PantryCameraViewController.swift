@@ -8,9 +8,11 @@
 
 import UIKit
 
+
+// Might be a redundant class
 class PantryCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{ 
     
-    @IBOutlet var ScImageView: UIImageView!
+//    @IBOutlet var ScImageView: UIImageView!
     
     override func viewDidLoad(){
         super.viewDidLoad()

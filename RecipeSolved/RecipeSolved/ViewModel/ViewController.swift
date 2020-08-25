@@ -30,7 +30,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         switch hour {
         case 0..<12 : self.greetingLabel.text = "Morning"       // Show morning if time is AM
-        case 12..<24 : self.greetingLabel.text = "Evening"    // Show afternoon if time is PM
+        case 12..<18 : self.greetingLabel.text = "Afternoon"    // Show afternoon if time is between 12PM and 6PM
+        case 18..<24 : self.greetingLabel.text = "Evening"    // Show evening if time is after 6PM
         default: self.greetingLabel.text = "Day"                // Default to Day if time of day cannot be found
         }
     }
