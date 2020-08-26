@@ -34,7 +34,11 @@ so you don't have to</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© iPSE Group 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eI-a7-Yat">
-                                <rect key="frame" x="16" y="533" width="288" height="15"/>
+                                <rect key="frame" x="16" y="492" width="288" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="IIe-RZ-oB9"/>
+                                    <constraint firstAttribute="width" constant="288" id="hDt-n9-HX2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -42,16 +46,16 @@ so you don't have to</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2eI-a7-Yat" firstAttribute="top" secondItem="N9f-4Q-tWY" secondAttribute="bottom" constant="110" id="BTO-ry-x8L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2eI-a7-Yat" secondAttribute="trailing" constant="16" id="Cuz-xx-kOE"/>
                             <constraint firstItem="N9f-4Q-tWY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KOq-rO-O9l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2eI-a7-Yat" secondAttribute="bottom" constant="20" id="OHX-cv-RSa"/>
                             <constraint firstItem="Xth-Py-2s2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="187" id="UU6-6z-cRk"/>
                             <constraint firstItem="2eI-a7-Yat" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ww0-2Y-5Uq"/>
-                            <constraint firstItem="2eI-a7-Yat" firstAttribute="top" secondItem="N9f-4Q-tWY" secondAttribute="bottom" constant="151" id="Xox-zu-ahu"/>
                             <constraint firstItem="N9f-4Q-tWY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XqV-TR-ped"/>
                             <constraint firstItem="N9f-4Q-tWY" firstAttribute="top" secondItem="Xth-Py-2s2" secondAttribute="bottom" constant="10" id="brN-uE-Lrh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xth-Py-2s2" secondAttribute="trailing" id="c0G-S2-3ft"/>
                             <constraint firstItem="Xth-Py-2s2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nFv-5s-5ZS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2eI-a7-Yat" secondAttribute="bottom" constant="61" id="nbl-Y0-TlS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
