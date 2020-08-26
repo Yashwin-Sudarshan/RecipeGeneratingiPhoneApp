@@ -13,7 +13,6 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var pantryTableView: UITableView!
     
-    
     @IBOutlet weak var searchView: UIView!
     
     var searchController: UISearchController!

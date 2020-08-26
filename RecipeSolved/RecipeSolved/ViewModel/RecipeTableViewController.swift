@@ -101,6 +101,27 @@ class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
 extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            recipes1.remove(at: indexPath.row)
+            
+            PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row)
+            
+            currentDataSourceSearch = recipes1
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
+    
     func updateSearchResults(for searchController: UISearchController) {
         
         if let searchValText = searchController.searchBar.text{
