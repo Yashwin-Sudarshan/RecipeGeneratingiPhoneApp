@@ -8,11 +8,12 @@
 
 import UIKit
 
-class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
+class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     private let viewModel = RecipeViewModel()
     
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     var searchController: UISearchController!
     var currentDataSourceSearch:[String] = []
@@ -20,6 +21,9 @@ class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         currentDataSourceSearch = recipes1
         
@@ -34,12 +38,12 @@ class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.count
     }
 
   
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         let imageView = cell.viewWithTag(1000) as? UIImageView
         let recipeTitle = cell.viewWithTag(1001) as? UILabel
@@ -101,12 +105,12 @@ class RecipeTableViewController: UITableViewController, UITextFieldDelegate {
 extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             recipes1.remove(at: indexPath.row)
