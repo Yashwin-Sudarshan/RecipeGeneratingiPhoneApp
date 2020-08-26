@@ -21,6 +21,7 @@
 		CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38127E24ED78A800A62F7F /* IngredientCell.swift */; };
 		CA4263B624ED552B004E352D /* PantryUpdateIngredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */; };
 		CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5CA76524E80217000F2362 /* Pantry.storyboard */; };
+		CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */; };
 		CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */; };
 		CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		CA38127E24ED78A800A62F7F /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUpdateIngredViewController.swift; sourceTree = "<group>"; };
 		CA5CA76524E80217000F2362 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
+		CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredEditViewController.swift; sourceTree = "<group>"; };
 		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
 		CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +174,7 @@
 				31A966BE24EF806E000BE782 /* RecipeViewModel.swift */,
 				31A966C024EFA62B000BE782 /* RecipeTableViewController.swift */,
 				31A966C224EFEC5B000BE782 /* RecipeViewController.swift */,
+				CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */,
 				31A966C324EFEC5B000BE782 /* RecipeViewController.swift in Sources */,
 				31A966BF24EF806E000BE782 /* RecipeViewModel.swift in Sources */,
+				CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */,
 				CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */,
 				0FD39FB424D2C8E9001CEA9A /* AppDelegate.swift in Sources */,
 				31A966C124EFA62B000BE782 /* RecipeTableViewController.swift in Sources */,
