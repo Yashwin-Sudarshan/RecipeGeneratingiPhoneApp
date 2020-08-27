@@ -17,7 +17,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     var searchController: UISearchController!
     var currentDataSourceSearch:[String] = []
-    var recipes1:[String] = []
+    var searchRecipes:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,16 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        currentDataSourceSearch = recipes1
+        for recipe in 0..<viewModel.count {
+            let currentRecipe = viewModel.getRecipe(byIndex: recipe)
+            searchRecipes.append(currentRecipe.title)
+            searchRecipes.append(currentRecipe.time)
+            searchRecipes.append(currentRecipe.items)
+            searchRecipes.append(currentRecipe.rating)
+            searchRecipes.append(currentRecipe.steps)
+        }
+        
+        currentDataSourceSearch = searchRecipes
         
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
@@ -68,7 +77,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         
         if searchTerm.count > 0{
             
-            currentDataSourceSearch = recipes1
+            currentDataSourceSearch = searchRecipes
             
             let filteredResults = currentDataSourceSearch.filter {$0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchTerm.replacingOccurrences(of: " ", with: "").lowercased())
                 
@@ -83,7 +92,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func restoreCurrentDataSourceSearch(){
         
-        currentDataSourceSearch = recipes1
+        currentDataSourceSearch = searchRecipes
         tableView.reloadData()
     }
 
@@ -113,11 +122,11 @@ extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            recipes1.remove(at: indexPath.row)
+            searchRecipes.remove(at: indexPath.row)
             
             PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row)
             
-            currentDataSourceSearch = recipes1
+            currentDataSourceSearch = searchRecipes
             
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
