@@ -48,5 +48,24 @@ class RecipeViewModel{
         
         return (title, time, items, rating, steps, image)
     }
+    
+    func getRecipeByRecipe(byRecipe recipe: Recipe) -> (title:String, time:String, items:String, rating:String, steps:String, image:UIImage?){
+        let title = recipe.rawValue
+        let time = recipe.recipeTime
+        let items = recipe.recipeItems
+        let rating = recipe.recipeRating
+        let steps = recipe.recipeSteps
+        let image = UIImage(named: recipe.imageName)
+        
+        return (title, time, items, rating, steps, image)
+    }
+    
+    func getRecipeType(byIndex index: Int) -> (Recipe){
+        return recipes[index]
+    }
+    
+//    func getRecipeViewModel() -> (RecipeViewModel){
+//        return self
+//    }
 }
 
