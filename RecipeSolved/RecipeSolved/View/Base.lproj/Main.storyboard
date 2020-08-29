@@ -465,11 +465,6 @@
             <point key="canvasLocation" x="847.5" y="536.61971830985919"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="z6S-PJ-wfB"/>
-    </inferredMetricsTieBreakers>
-
-
     <resources>
         <image name="home" width="24" height="24"/>
         <image name="menuTab" width="24" height="24"/>
@@ -477,7 +472,7 @@
         <image name="search" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z6S-PJ-wfB"/>
+        <segue reference="d5z-vt-jUZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

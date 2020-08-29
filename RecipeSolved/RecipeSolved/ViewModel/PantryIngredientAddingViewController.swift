@@ -16,6 +16,8 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     @IBOutlet weak var expiryField: UITextField!
     @IBOutlet weak var totalField: UITextField!
     
+//    @IBOutlet weak var textView: UITextView!
+    
     static var ingredInput:[String] = []
     
     override func viewDidLoad(){
@@ -27,6 +29,21 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         expiryField.delegate = self
 //        totalField.delegate = self
         
+//       textView.text = "Fill in the fields below to add your available ingredient to your pantry"
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     @IBAction func confirmEntryTap(_ sender: Any) {
@@ -40,10 +57,10 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         ingredientField.resignFirstResponder()
-        currentField.resignFirstResponder()
+//        currentField.resignFirstResponder()
         addingField.resignFirstResponder()
         expiryField.resignFirstResponder()
-        totalField.resignFirstResponder()
+//        totalField.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,5 +100,21 @@ extension PantryIngredientaddingViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        
+        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            
+            return
+        }
+        
+        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+            
+            view.frame.origin.y = -keyboardRectangle.height
+        }else{
+            
+            view.frame.origin.y = 0
+        }
     }
 }

@@ -42,6 +42,20 @@ class PantryIngredEditViewController: UIViewController{
                     editAddingTextField.text = inputComponents[1]
                     editExpiryTextField.text = inputComponents[2]
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
 
     @IBAction func confirmEditTap(_ sender: Any) {
@@ -52,6 +66,13 @@ class PantryIngredEditViewController: UIViewController{
         self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        editIngredientTextField.resignFirstResponder()
+        editAddingTextField.resignFirstResponder()
+        editExpiryTextField.resignFirstResponder()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vcTransfer = segue.destination as! PantryUpdateIngredViewController
         
@@ -59,4 +80,28 @@ class PantryIngredEditViewController: UIViewController{
         
     }
     
+}
+
+extension PantryIngredEditViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        
+        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            
+            return
+        }
+        
+        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+            
+            view.frame.origin.y = -keyboardRectangle.height
+        }else{
+            
+            view.frame.origin.y = 0
+        }
+    }
 }
