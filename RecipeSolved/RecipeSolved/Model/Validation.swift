@@ -12,7 +12,7 @@ class Validation{
     
     public func validateIngredient(ingredient:String) -> Bool{
         
-        let ingredRegex = "^\\w{1,15}$"
+        let ingredRegex = "[a-zA-z][a-zA-z]*"
         let trimmedEntryString = ingredient.trimmingCharacters(in: .whitespaces)
         let validateIngredient = NSPredicate(format: "SELF MATCHES %@", ingredRegex)
         let isValidateIngredient = validateIngredient.evaluate(with: trimmedEntryString)
@@ -21,7 +21,8 @@ class Validation{
     
     public func validateQty(qty:String) -> Bool{
         
-        let qtyRegex = "[0-9][0-9]*"
+//        let qtyRegex = "[0-9][0-9]*"
+        let qtyRegex = "(^[1-9][0-9]*[g])|([1-9][0-9]*|\0)"
         let trimmedEntryString = qty.trimmingCharacters(in: .whitespaces)
         let validateQty = NSPredicate(format: "SELF MATCHES %@", qtyRegex)
         let isValidateQty = validateQty.evaluate(with: trimmedEntryString)
