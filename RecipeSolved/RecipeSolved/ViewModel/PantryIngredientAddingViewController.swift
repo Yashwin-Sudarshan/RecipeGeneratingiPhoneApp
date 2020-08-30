@@ -22,7 +22,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     static var ingredInput:[String] = []
     
-    var validation = Validation()
+    var validator = PantryValidator()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -119,32 +119,34 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             return false
         }
         
-        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
-        if(isValidateIngredient == false){
-            
-//            print("Invalid ingredient input")
-            isValid = false
-        }
+        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
         
-        let isValidateQty = self.validation.validateQty(qty: qty)
-        if(isValidateQty == false){
-            
-//            print("Invalid qty input")
-            isValid = false
-        }
-        
-        let isValidateExp = self.validation.validateExp(exp: exp)
-        if(isValidateExp == false){
-            
-//            print("Invalid date input")
-            isValid = false
-        }
-        
-        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
-            
-//            print("Invalid ingredient, qty, and/or date input")
-            isValid = true
-        }
+//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+//        if(isValidateIngredient == false){
+//
+////            print("Invalid ingredient input")
+//            isValid = false
+//        }
+//
+//        let isValidateQty = self.validation.validateQty(qty: qty)
+//        if(isValidateQty == false){
+//
+////            print("Invalid qty input")
+//            isValid = false
+//        }
+//
+//        let isValidateExp = self.validation.validateExp(exp: exp)
+//        if(isValidateExp == false){
+//
+////            print("Invalid date input")
+//            isValid = false
+//        }
+//
+//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+//
+////            print("Invalid ingredient, qty, and/or date input")
+//            isValid = true
+//        }
         
         return isValid
     }
