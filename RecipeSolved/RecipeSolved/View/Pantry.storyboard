@@ -41,7 +41,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6/8" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-lQ-2Sj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="06/08" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-lQ-2Sj">
                                 <rect key="frame" x="177" y="464" width="123" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -75,7 +75,7 @@
                                 <connections>
                                     <action selector="addIngredRow:" destination="SwS-wt-CIc" eventType="touchUpInside" id="flq-lq-KnG"/>
                                     <action selector="confirmEntryTap:" destination="5He-ZP-oCt" eventType="touchUpInside" id="Atr-Do-GHB"/>
-                                    <segue destination="eQ3-em-MxT" kind="show" id="qFw-wl-AJd"/>
+                                    <segue destination="eQ3-em-MxT" kind="show" identifier="AddingIngredSegue" id="qFw-wl-AJd"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eggs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NA9-QZ-zNJ">

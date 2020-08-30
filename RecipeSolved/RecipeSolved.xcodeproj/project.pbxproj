@@ -25,6 +25,7 @@
 		CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38127E24ED78A800A62F7F /* IngredientCell.swift */; };
 		CA4263B624ED552B004E352D /* PantryUpdateIngredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */; };
 		CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5CA76524E80217000F2362 /* Pantry.storyboard */; };
+		CA64FF5324FB481200E6FE20 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64FF5224FB481200E6FE20 /* Validation.swift */; };
 		CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */; };
 		CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */; };
 		CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */; };
@@ -72,6 +73,7 @@
 		CA38127E24ED78A800A62F7F /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUpdateIngredViewController.swift; sourceTree = "<group>"; };
 		CA5CA76524E80217000F2362 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
+		CA64FF5224FB481200E6FE20 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredEditViewController.swift; sourceTree = "<group>"; };
 		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
 		CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCameraViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				CA38127E24ED78A800A62F7F /* IngredientCell.swift */,
 				31A966BC24EF7EEA000BE782 /* Recipe.swift */,
 				CA35437824FAACDB00AEC63E /* StudentDeveloper.swift */,
+				CA64FF5224FB481200E6FE20 /* Validation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				0FD39FB624D2C8E9001CEA9A /* ViewController.swift in Sources */,
 				CA35437B24FAB25E00AEC63E /* StudentDeveloperViewModel.swift in Sources */,
 				31A966BD24EF7EEA000BE782 /* Recipe.swift in Sources */,
+				CA64FF5324FB481200E6FE20 /* Validation.swift in Sources */,
 				CA38127F24ED78A800A62F7F /* IngredientCell.swift in Sources */,
 				31A966C324EFEC5B000BE782 /* RecipeViewController.swift in Sources */,
 				31A966BF24EF806E000BE782 /* RecipeViewModel.swift in Sources */,

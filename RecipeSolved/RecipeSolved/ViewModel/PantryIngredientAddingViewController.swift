@@ -20,6 +20,8 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     static var ingredInput:[String] = []
     
+    var validation = Validation()
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -48,11 +50,90 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     @IBAction func confirmEntryTap(_ sender: Any) {
     
-        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
         
-        PantryIngredientaddingViewController.ingredInput.append(ingredString)
+//        guard let ingredient = ingredientField.text, let qty = addingField.text, let exp = expiryField.text else{
+//            return
+//        }
+//
+//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+//        if(isValidateIngredient == false){
+//
+//            print("Invalid ingredient input")
+//            return
+//        }
+//
+//        let isValidateQty = self.validation.validateQty(qty: qty)
+//        if(isValidateQty == false){
+//
+//            print("Invalid qty input")
+//            return
+//        }
+//
+//        let isValidateExp = self.validation.validateExp(exp: exp)
+//        if(isValidateExp == false){
+//
+//            print("Invalid date input")
+//            return
+//        }
+        
+//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+        
+        if(validateInput() == true){
+            
+            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+            
+            PantryIngredientaddingViewController.ingredInput.append(ingredString)
+        }
+        
+//            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+//
+//            PantryIngredientaddingViewController.ingredInput.append(ingredString)
+//        }
+        
+//        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+//
+//        PantryIngredientaddingViewController.ingredInput.append(ingredString)
         
     }
+    
+    
+    private func validateInput() -> Bool{
+        
+        var isValid = false
+        
+        guard let ingredient = ingredientField.text, let qty = addingField.text, let exp = expiryField.text else{
+            return false
+        }
+        
+        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+        if(isValidateIngredient == false){
+            
+            print("Invalid ingredient input")
+            isValid = false
+        }
+        
+        let isValidateQty = self.validation.validateQty(qty: qty)
+        if(isValidateQty == false){
+            
+            print("Invalid qty input")
+            isValid = false
+        }
+        
+        let isValidateExp = self.validation.validateExp(exp: exp)
+        if(isValidateExp == false){
+            
+            print("Invalid date input")
+            isValid = false
+        }
+        
+        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+            
+            isValid = true
+        }
+        
+        return isValid
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -67,6 +148,17 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
          let vcTransfer = segue.destination as! PantryUpdateIngredViewController
          vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
         
+    }
+    
+    
+    func shouldPerformSegueWithIdentifier(identifier:String, sender:AnyObject?) -> Bool {
+
+        if identifier == "AddingIngredSegue" && validateInput() == true{
+
+            return true
+        }
+
+        return false
     }
     
     
