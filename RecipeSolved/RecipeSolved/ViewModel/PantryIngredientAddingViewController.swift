@@ -16,9 +16,13 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     @IBOutlet weak var expiryField: UITextField!
     @IBOutlet weak var totalField: UITextField!
     
+    @IBOutlet weak var confirmEntryButton: UIButton!
+    
 //    @IBOutlet weak var textView: UITextView!
     
     static var ingredInput:[String] = []
+    
+    var validator = PantryValidator()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -36,6 +40,17 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
+        [ingredientField, addingField, expiryField].forEach({$0?.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)})
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        confirmEntryButton.isEnabled = false
+//        confirmEntryButton.isOpaque = true
+        confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
+//        confirmEntryButton.titleLabel?.alpha = 0.1
+        confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
     }
     
     deinit {
@@ -48,10 +63,114 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     @IBAction func confirmEntryTap(_ sender: Any) {
     
-        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
         
-        PantryIngredientaddingViewController.ingredInput.append(ingredString)
+//        guard let ingredient = ingredientField.text, let qty = addingField.text, let exp = expiryField.text else{
+//            return
+//        }
+//
+//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+//        if(isValidateIngredient == false){
+//
+//            print("Invalid ingredient input")
+//            return
+//        }
+//
+//        let isValidateQty = self.validation.validateQty(qty: qty)
+//        if(isValidateQty == false){
+//
+//            print("Invalid qty input")
+//            return
+//        }
+//
+//        let isValidateExp = self.validation.validateExp(exp: exp)
+//        if(isValidateExp == false){
+//
+//            print("Invalid date input")
+//            return
+//        }
         
+//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+        
+        if(validateInput() == true){
+            
+            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+           
+            PantryIngredientaddingViewController.ingredInput.append(ingredString)
+            
+        }
+        
+//            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+//
+//            PantryIngredientaddingViewController.ingredInput.append(ingredString)
+//        }
+        
+//        let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+//
+//        PantryIngredientaddingViewController.ingredInput.append(ingredString)
+        
+    }
+    
+    
+    private func validateInput() -> Bool{
+        
+        var isValid = false
+        
+        guard let ingredient = ingredientField.text, let qty = addingField.text, let exp = expiryField.text else{
+            return false
+        }
+        
+        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+        
+//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+//        if(isValidateIngredient == false){
+//
+////            print("Invalid ingredient input")
+//            isValid = false
+//        }
+//
+//        let isValidateQty = self.validation.validateQty(qty: qty)
+//        if(isValidateQty == false){
+//
+////            print("Invalid qty input")
+//            isValid = false
+//        }
+//
+//        let isValidateExp = self.validation.validateExp(exp: exp)
+//        if(isValidateExp == false){
+//
+////            print("Invalid date input")
+//            isValid = false
+//        }
+//
+//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+//
+////            print("Invalid ingredient, qty, and/or date input")
+//            isValid = true
+//        }
+        
+        return isValid
+    }
+    
+    @objc func editingChanged(_ textField: UITextField){
+        
+        if(validateInput() == true){
+            
+            confirmEntryButton.isEnabled = true
+//            confirmEntryButton.isOpaque = false
+            confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
+//            confirmEntryButton.titleLabel?.alpha = 1
+            confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
+            
+        }else{
+            
+            confirmEntryButton.isEnabled = false
+//            confirmEntryButton.isOpaque = true
+//            confirmEntryButton.backgroundColor =
+            confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
+//            confirmEntryButton.titleLabel?.alpha = 0.1
+            confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
+
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,6 +186,17 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
          let vcTransfer = segue.destination as! PantryUpdateIngredViewController
          vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
         
+    }
+    
+    
+    func shouldPerformSegueWithIdentifier(identifier:String, sender:AnyObject?) -> Bool {
+
+        if identifier == "AddingIngredSegue" && validateInput() == true{
+
+            return true
+        }
+
+        return false
     }
     
     

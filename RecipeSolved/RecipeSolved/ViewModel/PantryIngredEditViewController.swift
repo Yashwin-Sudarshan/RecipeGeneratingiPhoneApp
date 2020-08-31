@@ -24,6 +24,10 @@ class PantryIngredEditViewController: UIViewController{
     @IBOutlet weak var editAddingTextField: UITextField!
     @IBOutlet weak var editExpiryTextField: UITextField!
     
+    @IBOutlet weak var confirmEditButton: UIButton!
+    
+    var validator = PantryValidator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +51,16 @@ class PantryIngredEditViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+     
+        [editIngredientTextField, editAddingTextField, editExpiryTextField].forEach({$0?.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)})
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        confirmEditButton.isEnabled = false
+        confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
+        confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
     }
     
     deinit {
@@ -60,10 +73,80 @@ class PantryIngredEditViewController: UIViewController{
 
     @IBAction func confirmEditTap(_ sender: Any) {
         
-        let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+        if(validateInput() == true){
+            
+            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+            
+            //        self.selectedIngredient[0] = ingredString
+            self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
+        }
         
-//        self.selectedIngredient[0] = ingredString
-        self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
+//        let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+//
+////        self.selectedIngredient[0] = ingredString
+//        self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
+    }
+    
+    private func validateInput() -> Bool{
+        
+        var isValid = false
+        
+        guard let ingredient = editIngredientTextField.text, let qty = editAddingTextField.text, let exp = editExpiryTextField.text else{
+            return false
+        }
+        
+        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+        
+//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
+//        if(isValidateIngredient == false){
+//
+//            //            print("Invalid ingredient input")
+//            isValid = false
+//        }
+//
+//        let isValidateQty = self.validation.validateQty(qty: qty)
+//        if(isValidateQty == false){
+//
+//            //            print("Invalid qty input")
+//            isValid = false
+//        }
+//
+//        let isValidateExp = self.validation.validateExp(exp: exp)
+//        if(isValidateExp == false){
+//
+//            //            print("Invalid date input")
+//            isValid = false
+//        }
+//
+//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
+//
+//            //            print("Invalid ingredient, qty, and/or date input")
+//            isValid = true
+//        }
+        
+        return isValid
+    }
+    
+    @objc func editingChanged(_ textField: UITextField){
+        
+        if(validateInput() == true){
+            
+            confirmEditButton.isEnabled = true
+            //            confirmEntryButton.isOpaque = false
+            confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
+            //            confirmEntryButton.titleLabel?.alpha = 1
+            confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
+            
+        }else{
+            
+            confirmEditButton.isEnabled = false
+            //            confirmEntryButton.isOpaque = true
+            //            confirmEntryButton.backgroundColor =
+            confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
+            //            confirmEntryButton.titleLabel?.alpha = 0.1
+            confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
+            
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -78,6 +161,16 @@ class PantryIngredEditViewController: UIViewController{
         
         vcTransfer.currentIngredients =  self.currentTotalIngredients
         
+    }
+    
+    func shouldPerformSegueWithIdentifier(identifier:String, sender:AnyObject?) -> Bool {
+        
+        if identifier == "EditIngredSegue" && validateInput() == true{
+            
+            return true
+        }
+        
+        return false
     }
     
 }
