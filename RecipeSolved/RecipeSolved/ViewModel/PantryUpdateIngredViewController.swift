@@ -13,13 +13,14 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var pantryTableView: UITableView!
     
-    
     @IBOutlet weak var searchView: UIView!
     
     var searchController: UISearchController!
     
     var currentIngredients:[String] = []
     var currentDataSourceSearch:[String] = []
+    
+    var currentIngredientsIndexSelection:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,42 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         currentDataSourceSearch = currentIngredients
         pantryTableView.reloadData()
     }
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+//        let vcTransfer = segue.destination as! PantryUpdateIngredViewController
+//        vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
+        
+//        guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
+//
+//        let destination = segue.destination as? RecipeViewController
+//
+//        let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
+//
+//        destination?.selectedRecipe = selectedRecipe
+        
+        guard let selectedCell = pantryTableView.indexPathForSelectedRow else{return}
+        
+        self.currentIngredientsIndexSelection = selectedCell.row
+        
+        let destination = segue.destination as? PantryIngredEditViewController
+        
+//        let selectedIngredient = self.currentIngredients[selectedCell.row]
+        
+//        destination?.selectedIngredient = [selectedIngredient]
+        
+        destination?.currentTotalIngredients = self.currentIngredients
+        
+        destination?.currentIngredientsIndexSelection = self.currentIngredientsIndexSelection
+        
+    }
+    
+    
+    
+    
 }
 
 extension PantryUpdateIngredViewController: UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {

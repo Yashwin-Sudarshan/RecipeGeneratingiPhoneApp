@@ -134,34 +134,81 @@
             </objects>
             <point key="canvasLocation" x="3337.5" y="542.95774647887322"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ekA-wC-DQO">
+        <!--Pantry Ingred Edit View Controller-->
+        <scene sceneID="9zg-y1-Zqa">
             <objects>
-                <viewController id="uYT-yG-mwf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hDI-Ef-ZOn">
+                <viewController id="HG6-ve-aTO" customClass="PantryIngredEditViewController" customModule="RecipeSolved" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XYm-kM-e7j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PantrySearchingWoutSearchBar" translatesAutoresizingMaskIntoConstraints="NO" id="z5n-FN-OGh">
-                                <rect key="frame" x="-68" y="123" width="456" height="626"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingredient:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3N-pJ-7zd">
+                                <rect key="frame" x="16" y="68" width="138" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PantrySearchBarWithCross" translatesAutoresizingMaskIntoConstraints="NO" id="pCa-XD-zds">
-                                <rect key="frame" x="-7" y="80" width="335" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adding:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXf-0f-XCs">
+                                <rect key="frame" x="41" y="244" width="101" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-2z-Bcg">
-                                <rect key="frame" x="274" y="82" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expiry:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbw-A9-rav">
+                                <rect key="frame" x="58" y="337" width="88" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eggs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6vC-8x-m0B">
+                                <rect key="frame" x="173" y="74" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-Zm-mKF">
+                                <rect key="frame" x="173" y="250" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6/8" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0De-Eq-Uiu">
+                                <rect key="frame" x="173" y="343" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-BR-DXW">
+                                <rect key="frame" x="209" y="484" width="95" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Confirm Edit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addIngredRow:" destination="SwS-wt-CIc" eventType="touchUpInside" id="rrJ-bP-HH3"/>
+                                    <action selector="confirmEditTap:" destination="HG6-ve-aTO" eventType="touchUpInside" id="XfD-Tw-Hzv"/>
+                                    <action selector="confirmEntryTap:" destination="5He-ZP-oCt" eventType="touchUpInside" id="YOK-0F-SOI"/>
+                                    <segue destination="eQ3-em-MxT" kind="show" id="ZoP-ZO-atK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="br2-w9-w31"/>
+                        <viewLayoutGuide key="safeArea" id="XqD-Yv-WqP"/>
                     </view>
+                    <connections>
+                        <outlet property="editAddingTextField" destination="5w6-Zm-mKF" id="d1y-Rv-3ZP"/>
+                        <outlet property="editExpiryTextField" destination="0De-Eq-Uiu" id="wHp-aJ-tIL"/>
+                        <outlet property="editIngredientTextField" destination="6vC-8x-m0B" id="VcU-ik-x2S"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WKe-dr-Wp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoU-SV-8SF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4238" y="543"/>
+            <point key="canvasLocation" x="2460" y="1325"/>
         </scene>
         <!--Pantry-->
         <scene sceneID="b9s-EQ-Weh">
@@ -241,6 +288,7 @@
                                             <outlet property="expTitle" destination="NYn-bP-CJp" id="fJ9-0l-LAV"/>
                                             <outlet property="ingredientTitle" destination="DPl-jX-jG6" id="u5Y-tc-ob5"/>
                                             <outlet property="qtyTitle" destination="LgQ-1J-xxW" id="Wg2-CU-n2C"/>
+                                            <segue destination="HG6-ve-aTO" kind="show" identifier="ShowDetail" id="l88-Fi-Rme"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -303,8 +351,7 @@
             <point key="canvasLocation" x="2460" y="542.95774647887322"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="PantrySearchBarWithCross" width="574" height="70"/>
-        <image name="PantrySearchingWoutSearchBar" width="616" height="1206"/>
-    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZoP-ZO-atK"/>
+    </inferredMetricsTieBreakers>
 </document>
