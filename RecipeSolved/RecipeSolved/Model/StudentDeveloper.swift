@@ -17,8 +17,7 @@ enum StudentDeveloper:String{
         
         switch self{
             
-//            case .RubyRio: return "rubyrio"
-            case .RubyRio: return "yashwinsudarshan"
+            case .RubyRio: return "rubyrio"
 
             case .AlexanderLoMoro: return "yashwinsudarshan"
 //            case .AlexanderLoMoro: return "alexanderlomoro"
@@ -34,7 +33,7 @@ enum StudentDeveloper:String{
         
         switch self{
             
-        case .RubyRio: return "Ruby Rio is a university student."
+        case .RubyRio: return "Ruby Rio is a second-year Bachelor of Software Engineering student at RMIT University. Ruby has a keen interest in Project Management in relation of Information Technology Projects, and to see how this area can develop. Ruby's other interests include Business Systems, Law, Piano and Fitness"
             
         case .AlexanderLoMoro: return "Alexander LoMoro is a university student."
             
