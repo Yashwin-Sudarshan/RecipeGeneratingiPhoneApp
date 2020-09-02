@@ -537,24 +537,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JLP-zD-Eb1">
-                                <rect key="frame" x="16" y="290" width="288" height="229"/>
+                                <rect key="frame" x="16" y="309" width="288" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="229" id="0fc-n7-ygi"/>
+                                    <constraint firstAttribute="height" constant="210" id="OsW-z8-fh4"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yashwinsudarshan" translatesAutoresizingMaskIntoConstraints="NO" id="F0n-io-xaq">
-                                <rect key="frame" x="16" y="72" width="288" height="175"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="Bgm-p0-wfM"/>
-                                    <constraint firstAttribute="width" secondItem="F0n-io-xaq" secondAttribute="height" multiplier="96:65" id="XKy-4I-uNM"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-hM-j7D">
-                                <rect key="frame" x="16" y="255" width="288" height="34"/>
+                                <rect key="frame" x="16" y="267" width="288" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="UjX-1J-LQO"/>
                                 </constraints>
@@ -562,6 +555,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yashwinsudarshan" translatesAutoresizingMaskIntoConstraints="NO" id="F0n-io-xaq">
+                                <rect key="frame" x="16" y="72" width="288" height="187"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="187" id="1P4-qo-2R7"/>
+                                    <constraint firstAttribute="width" constant="288" id="Bgm-p0-wfM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -569,8 +569,8 @@
                             <constraint firstItem="JLP-zD-Eb1" firstAttribute="leading" secondItem="9xX-fx-zqU" secondAttribute="leading" constant="16" id="FPn-uJ-6jL"/>
                             <constraint firstItem="8Jd-hM-j7D" firstAttribute="leading" secondItem="9xX-fx-zqU" secondAttribute="leading" constant="16" id="LmG-MV-nup"/>
                             <constraint firstItem="8Jd-hM-j7D" firstAttribute="top" secondItem="F0n-io-xaq" secondAttribute="bottom" constant="8" id="P7Y-9o-UQI"/>
-                            <constraint firstItem="JLP-zD-Eb1" firstAttribute="top" secondItem="8Jd-hM-j7D" secondAttribute="bottom" constant="1" id="VUM-l2-E3z"/>
                             <constraint firstItem="F0n-io-xaq" firstAttribute="leading" secondItem="9xX-fx-zqU" secondAttribute="leading" constant="16" id="cSM-2a-ujE"/>
+                            <constraint firstItem="JLP-zD-Eb1" firstAttribute="top" secondItem="8Jd-hM-j7D" secondAttribute="bottom" constant="8" id="gU3-ZA-POl"/>
                             <constraint firstItem="F0n-io-xaq" firstAttribute="top" secondItem="9xX-fx-zqU" secondAttribute="top" constant="8" id="gVa-60-w1v"/>
                             <constraint firstItem="9xX-fx-zqU" firstAttribute="trailing" secondItem="JLP-zD-Eb1" secondAttribute="trailing" constant="16" id="gte-Sh-oJI"/>
                             <constraint firstItem="9xX-fx-zqU" firstAttribute="bottom" secondItem="JLP-zD-Eb1" secondAttribute="bottom" id="hGX-Ha-Nqb"/>
@@ -645,7 +645,7 @@
         <image name="yashwinsudarshan" width="774" height="1406"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z6S-PJ-wfB"/>
+        <segue reference="d5z-vt-jUZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
