@@ -12,4 +12,11 @@ class IngredientCell:UITableViewCell{
     
     
     @IBOutlet weak var ingredientTitle: UILabel?
+    
+    
+    @IBOutlet weak var qtyTitle: UILabel!
+    
+    
+    @IBOutlet weak var expTitle: UILabel!
+    
 }

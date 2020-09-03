@@ -8,21 +8,57 @@
 
 import UIKit
 
-class RecipeTableViewController: UITableViewController {
+class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     private let viewModel = RecipeViewModel()
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var searchController: UISearchController!
+    var filteredRecipes:[Recipe] = []
+    var allRecipes:[Recipe] = []
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        for recipe in 0..<viewModel.count {
+            allRecipes.append(viewModel.getRecipeType(byIndex: recipe))
+        }
+        
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search Recipes"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        
     }
 
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredRecipes.count
+        }
+        
+        return allRecipes.count
     }
 
   
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         let imageView = cell.viewWithTag(1000) as? UIImageView
         let recipeTitle = cell.viewWithTag(1001) as? UILabel
@@ -32,28 +68,81 @@ class RecipeTableViewController: UITableViewController {
         let recipeSteps = cell.viewWithTag(1005) as? UILabel
         
         if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating, let recipeSteps = recipeSteps{
-            let currentRecipe = viewModel.getRecipe(byIndex: indexPath.row)
-            imageView.image = currentRecipe.image
-            recipeTitle.text = currentRecipe.title
-            recipeTime.text = currentRecipe.time
-            recipeItems.text = currentRecipe.items
-            recipeRating.text = currentRecipe.rating
-            recipeSteps.text = currentRecipe.steps
+            if isFiltering {
+                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
+                imageView.image = currentRecipe.image
+                recipeTitle.text = currentRecipe.title
+                recipeTime.text = currentRecipe.time
+                recipeItems.text = currentRecipe.items
+                recipeRating.text = currentRecipe.rating
+                recipeSteps.text = currentRecipe.steps
+            } else {
+                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
+                imageView.image = currentRecipe.image
+                recipeTitle.text = currentRecipe.title
+                recipeTime.text = currentRecipe.time
+                recipeItems.text = currentRecipe.items
+                recipeRating.text = currentRecipe.rating
+                recipeSteps.text = currentRecipe.steps
+            }
         }
         return cell
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        var recipeStrings:[String] = []
+        for recipe in 0..<allRecipes.count {
+            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
+            recipeStrings.append(currentRecipe.title)
+            recipeStrings.append(currentRecipe.time)
+            recipeStrings.append(currentRecipe.items)
+            recipeStrings.append(currentRecipe.rating)
+            recipeStrings.append(currentRecipe.steps)
+        }
+        
+        let filteredResults = recipeStrings.filter {$0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+        }
+        
+        var filteredRecipesSearch:[Recipe] = []
+        for recipe in 0..<allRecipes.count {
+            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
+            if filteredResults.contains(currentRecipe.title) {
+                filteredRecipesSearch.append(allRecipes[recipe])
+            }
+        }
+        
+        filteredRecipes = filteredRecipesSearch
+        
+        tableView.reloadData()
     }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
+        guard
+            let indexPath = tableView.indexPathForSelectedRow,
+            let recipeViewController = segue.destination as? RecipeViewController
+            else {
+                return
+        }
         
-        let destination = segue.destination as? RecipeViewController
-        
-        let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
-        
-        destination?.selectedRecipe = selectedRecipe
+        if isFiltering {
+            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
+            recipeViewController.selectedRecipe = selectedRecipe
+        } else {
+            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
+            recipeViewController.selectedRecipe = selectedRecipe
+        }
 
     }
 
+}
+
+extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
 }

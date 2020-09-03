@@ -8,18 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Label outlets for temperature
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         getWeather()
         getGreeting()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     func getGreeting()  {
@@ -27,7 +30,8 @@ class ViewController: UIViewController {
 
         switch hour {
         case 0..<12 : self.greetingLabel.text = "Morning"       // Show morning if time is AM
-        case 12..<24 : self.greetingLabel.text = "Evening"    // Show afternoon if time is PM
+        case 12..<18 : self.greetingLabel.text = "Afternoon"    // Show afternoon if time is between 12PM and 6PM
+        case 18..<24 : self.greetingLabel.text = "Evening"    // Show evening if time is after 6PM
         default: self.greetingLabel.text = "Day"                // Default to Day if time of day cannot be found
         }
     }
@@ -84,5 +88,50 @@ class ViewController: UIViewController {
         dataTask.resume()
     }
 
+    
+//  Table
+    
+    private let viewModel = RecipeViewModel()
+
+
+      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          return viewModel.count
+      }
+
+    
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+          let imageView = cell.viewWithTag(1000) as? UIImageView
+          let recipeTitle = cell.viewWithTag(1001) as? UILabel
+          let recipeTime = cell.viewWithTag(1002) as? UILabel
+          let recipeItems = cell.viewWithTag(1003) as? UILabel
+          let recipeRating = cell.viewWithTag(1004) as? UILabel
+          let recipeSteps = cell.viewWithTag(1005) as? UILabel
+          
+          if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating, let recipeSteps = recipeSteps{
+              let currentRecipe = viewModel.getRecipe(byIndex: indexPath.row)
+              imageView.image = currentRecipe.image
+              recipeTitle.text = currentRecipe.title
+              recipeTime.text = currentRecipe.time
+              recipeItems.text = currentRecipe.items
+              recipeRating.text = currentRecipe.rating
+              recipeSteps.text = currentRecipe.steps
+          }
+          return cell
+      }
+
+
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          
+          guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
+          
+          let destination = segue.destination as? RecipeViewController
+          
+          let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
+          
+          destination?.selectedRecipe = selectedRecipe
+
+      }
+    
 }
 
