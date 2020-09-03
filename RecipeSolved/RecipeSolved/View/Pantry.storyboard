@@ -30,7 +30,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12 or 400g" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-zU-goG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5 or 40g or 12L" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-zU-goG">
                                 <rect key="frame" x="177" y="420" width="127" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gn5-IL-5G0"/>
@@ -38,7 +38,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="06/08" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-lQ-2Sj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="dd/MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ssy-lQ-2Sj">
                                 <rect key="frame" x="177" y="464" width="127" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KRa-hE-wc6"/>
@@ -83,7 +83,7 @@
                                     <segue destination="eQ3-em-MxT" kind="show" identifier="AddingIngredSegue" id="qFw-wl-AJd"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eggs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NA9-QZ-zNJ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eggs or Milk" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NA9-QZ-zNJ">
                                 <rect key="frame" x="177" y="376" width="127" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KAE-39-bRh"/>
@@ -215,7 +215,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6/8" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0De-Eq-Uiu">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="06/08" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0De-Eq-Uiu">
                                 <rect key="frame" x="181" y="464" width="123" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -409,7 +409,7 @@
                                     <segue destination="5He-ZP-oCt" kind="show" id="aZV-Jl-j4R"/>
                                 </connections>
                             </button>
-                            <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-RC-XPK">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-RC-XPK">
                                 <rect key="frame" x="0.0" y="112" width="320" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqn-30-Er6">
@@ -490,11 +490,12 @@
                             <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="GOQ-oK-gwi" secondAttribute="bottom" constant="1" id="EZP-y1-eR4"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="p6d-Qu-YOr" secondAttribute="bottom" constant="20" id="K1S-ca-fOu"/>
                             <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="106" id="L4k-Q3-6Gf"/>
-                            <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="48" id="NDV-5Q-DEU"/>
+                            <constraint firstItem="1kc-RC-XPK" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" id="TM4-Fi-tfd"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="504" id="TQc-m6-pVP"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="p6d-Qu-YOr" secondAttribute="trailing" constant="2" id="W3j-DR-HUl"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="GOQ-oK-gwi" secondAttribute="trailing" constant="8" id="erZ-Pk-ym3"/>
                             <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="1kc-RC-XPK" secondAttribute="bottom" constant="8" id="hDO-hF-OOL"/>
+                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="1kc-RC-XPK" secondAttribute="trailing" id="pZn-4I-g7s"/>
                             <constraint firstItem="p6d-Qu-YOr" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" constant="2" id="rn5-gQ-Ejq"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="TYq-zF-zrQ" secondAttribute="trailing" id="yeJ-jH-GBX"/>
                         </constraints>
