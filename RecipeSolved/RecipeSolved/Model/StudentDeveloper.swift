@@ -19,8 +19,7 @@ enum StudentDeveloper:String{
             
             case .RubyRio: return "rubyrio"
 
-            case .AlexanderLoMoro: return "yashwinsudarshan"
-//            case .AlexanderLoMoro: return "alexanderlomoro"
+            case .AlexanderLoMoro: return "alexanderlomoro"
             
             case .AlexandarKotevski: return "alexandarkotevski"
             
@@ -34,7 +33,7 @@ enum StudentDeveloper:String{
             
         case .RubyRio: return "Ruby Rio is a second-year Bachelor of Software Engineering student at RMIT University. Ruby has a keen interest in Project Management in relation of Information Technology Projects, and to see how this area can develop. Ruby's other interests include Business Systems, Law, Piano and Fitness"
             
-        case .AlexanderLoMoro: return "Alexander LoMoro is a university student."
+        case .AlexanderLoMoro: return "Alexander LoMoro is a second-year Bachelor of Technology (Computing Studies) student at RMI University. Alexander has a keen interest in UX Design, escpecially in mobile environments. Other interests of Alexander include cars, technology & sports."
             
         case .AlexandarKotevski: return "Alexandar Kotevski is a final-year Bachelor of Information Technology student at RMIT University. Alexandar is interested in mobile app and web development. Alexandar's other interests include Apple, weather and aviation."
             
