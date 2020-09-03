@@ -426,7 +426,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-5W-VEd">
-                                <rect key="frame" x="16" y="119" width="288" height="400"/>
+                                <rect key="frame" x="16" y="64" width="288" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="130" id="E9J-yv-fGi">
@@ -504,28 +504,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8X-Ap-I6k">
-                                <rect key="frame" x="0.0" y="64" width="320" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="7H8-Yw-5XE"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="IRT-5W-VEd" secondAttribute="trailing" constant="16" id="F6M-nq-axc"/>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="bottom" secondItem="IRT-5W-VEd" secondAttribute="bottom" id="U9O-5h-1G0"/>
-                            <constraint firstItem="IRT-5W-VEd" firstAttribute="top" secondItem="r8X-Ap-I6k" secondAttribute="bottom" id="W2w-Uj-f4j"/>
-                            <constraint firstItem="r8X-Ap-I6k" firstAttribute="top" secondItem="yYj-pv-ToX" secondAttribute="top" id="XvJ-Ql-2tp"/>
-                            <constraint firstItem="r8X-Ap-I6k" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" id="eA2-Lr-69S"/>
-                            <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="r8X-Ap-I6k" secondAttribute="trailing" id="hDO-le-N1f"/>
                             <constraint firstItem="IRT-5W-VEd" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="wYO-b4-CAo"/>
+                            <constraint firstItem="IRT-5W-VEd" firstAttribute="top" secondItem="yYj-pv-ToX" secondAttribute="top" id="yxq-xn-W8v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYj-pv-ToX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="k7x-N7-n4A"/>
                     <connections>
-                        <outlet property="searchView" destination="r8X-Ap-I6k" id="Ua4-50-UyH"/>
                         <outlet property="tableView" destination="IRT-5W-VEd" id="VPv-Di-SFO"/>
                     </connections>
                 </viewController>
@@ -782,7 +772,7 @@
         <image name="yashwinsudarshan" width="774" height="1406"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NvI-l2-ehR"/>
+        <segue reference="9h4-Fc-cWp"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
