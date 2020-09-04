@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Letting-Steak-Rest.jpg",
       "idiom" : "universal",
+      "filename" : "jose-ignacio-pompe-s-Z-h0fEiBM-unsplash.jpg",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
