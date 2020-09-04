@@ -41,15 +41,15 @@ enum Recipe:String
     
     var recipeItems:String{
         switch self{
-        case .Pasta: return "4 items"
-        case .Steak: return "3 items"
-        case .Chips: return "2 items"
-        case .FruitSalad: return "4-10 items"
+        case .Pasta: return "2 items"
+        case .Steak: return "5 items"
+        case .Chips: return "3 items"
+        case .FruitSalad: return "2-4 items"
         case .PumpkinSoup: return "5 items"
-        case .SteamedRice: return "2 items"
-        case .HardBoiledEggs: return "2 items"
-        case .SoftBoiledEggs: return "2 items"
-        case .PoachedEggs: return "3 items"
+        case .SteamedRice: return "1 items"
+        case .HardBoiledEggs: return "1 item"
+        case .SoftBoiledEggs: return "1 item"
+        case .PoachedEggs: return "2 items"
         }
     }
     
