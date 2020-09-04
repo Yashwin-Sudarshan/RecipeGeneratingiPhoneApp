@@ -37,6 +37,8 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
         searchView.addSubview(searchController.searchBar)
         searchController.searchBar.delegate = self
     }
