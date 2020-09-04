@@ -313,12 +313,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYq-zF-zrQ">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6d-Qu-YOr">
-                                <rect key="frame" x="2" y="170" width="316" height="378"/>
+                                <rect key="frame" x="2" y="126" width="316" height="422"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" id="jne-1b-Z3r" customClass="IngredientCell" customModule="RecipeSolved" customModuleProvider="target">
@@ -403,14 +399,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOQ-oK-gwi">
-                                <rect key="frame" x="197" y="72" width="115" height="39"/>
+                                <rect key="frame" x="203" y="28" width="115" height="39"/>
                                 <state key="normal" title="+ Add Ingredient"/>
                                 <connections>
                                     <segue destination="5He-ZP-oCt" kind="show" id="aZV-Jl-j4R"/>
                                 </connections>
                             </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-RC-XPK">
-                                <rect key="frame" x="0.0" y="112" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="68" width="320" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqn-30-Er6">
                                         <rect key="frame" x="12" y="30" width="0.0" height="44"/>
@@ -482,29 +478,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" constant="150" id="4WP-6t-9eQ"/>
-                            <constraint firstItem="GOQ-oK-gwi" firstAttribute="top" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="8" id="5DC-ez-Skx"/>
-                            <constraint firstItem="TYq-zF-zrQ" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" id="8RD-WO-QBm"/>
-                            <constraint firstItem="TYq-zF-zrQ" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" id="CdR-Iy-DTO"/>
-                            <constraint firstItem="GOQ-oK-gwi" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" constant="52" id="DeB-bt-0Gq"/>
-                            <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="GOQ-oK-gwi" secondAttribute="bottom" constant="1" id="EZP-y1-eR4"/>
+                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="GOQ-oK-gwi" secondAttribute="trailing" constant="2" id="8Zd-l8-Uc1"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="p6d-Qu-YOr" secondAttribute="bottom" constant="20" id="K1S-ca-fOu"/>
-                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="106" id="L4k-Q3-6Gf"/>
                             <constraint firstItem="1kc-RC-XPK" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" id="TM4-Fi-tfd"/>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="TYq-zF-zrQ" secondAttribute="bottom" constant="504" id="TQc-m6-pVP"/>
+                            <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="GOQ-oK-gwi" secondAttribute="bottom" constant="1" id="UBW-5q-7co"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="p6d-Qu-YOr" secondAttribute="trailing" constant="2" id="W3j-DR-HUl"/>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="GOQ-oK-gwi" secondAttribute="trailing" constant="8" id="erZ-Pk-ym3"/>
+                            <constraint firstItem="GOQ-oK-gwi" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" constant="8" id="guK-Ao-6Pj"/>
                             <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="1kc-RC-XPK" secondAttribute="bottom" constant="8" id="hDO-hF-OOL"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="1kc-RC-XPK" secondAttribute="trailing" id="pZn-4I-g7s"/>
                             <constraint firstItem="p6d-Qu-YOr" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" constant="2" id="rn5-gQ-Ejq"/>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="TYq-zF-zrQ" secondAttribute="trailing" id="yeJ-jH-GBX"/>
+                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" constant="106" id="vb2-mf-bbG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3w5-ql-f18"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pantry" id="NYh-Ga-eT6"/>
                     <connections>
                         <outlet property="pantryTableView" destination="p6d-Qu-YOr" id="BA8-AW-phr"/>
-                        <outlet property="searchView" destination="TYq-zF-zrQ" id="qpl-gq-Nhb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Iy-vM-7W1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -516,6 +505,6 @@
         <image name="pantryFoodImage" width="954" height="1436"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZoP-ZO-atK"/>
+        <segue reference="qFw-wl-AJd"/>
     </inferredMetricsTieBreakers>
 </document>

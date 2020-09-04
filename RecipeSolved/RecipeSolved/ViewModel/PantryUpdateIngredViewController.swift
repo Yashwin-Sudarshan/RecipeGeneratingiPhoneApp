@@ -12,9 +12,7 @@ import SafariServices
 class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var pantryTableView: UITableView!
-    
-    @IBOutlet weak var searchView: UIView!
-    
+        
     var searchController: UISearchController!
     
     var currentIngredients:[String] = []
@@ -38,8 +36,18 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         
+        
+        // New addition
+        searchController.searchBar.placeholder = "Search Ingredients"
+        
+        // New addition
+        navigationItem.searchController = searchController
+        
+        // New addition
+        definesPresentationContext = true
+        
         searchController.obscuresBackgroundDuringPresentation = false
-        searchView.addSubview(searchController.searchBar)
+//        searchView.addSubview(searchController.searchBar)
         searchController.searchBar.delegate = self
     }
     
