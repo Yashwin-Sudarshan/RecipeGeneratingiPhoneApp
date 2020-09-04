@@ -23,6 +23,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     
@@ -186,6 +187,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         addingField.resignFirstResponder()
         expiryField.resignFirstResponder()
 //        totalField.resignFirstResponder()
+//        self.view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -240,17 +242,36 @@ extension PantryIngredientaddingViewController: UITextFieldDelegate{
     
     @objc func keyboardWillChange(notification: Notification){
         
-        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
-            
-            return
-        }
+//        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+//
+//            return
+//        }
+//
+//        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+//
+//            view.frame.origin.y = -keyboardRectangle.height
+//        }else{
+//
+//            view.frame.origin.y = 0
+//        }
         
-        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+        
+        
+        let userInput = notification.userInfo!
+        
+        let keyboardContainerEndFrame = (userInput[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        let keyboardContainerViewEndFrame = view.convert(keyboardContainerEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide{
             
-            view.frame.origin.y = -keyboardRectangle.height
+            scrollView.contentInset = UIEdgeInsets.zero
         }else{
             
-            view.frame.origin.y = 0
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardContainerViewEndFrame.height, right: 0)
         }
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        
     }
 }

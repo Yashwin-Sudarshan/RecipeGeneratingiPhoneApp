@@ -26,6 +26,9 @@ class PantryIngredEditViewController: UIViewController{
     
     @IBOutlet weak var confirmEditButton: UIButton!
     
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var validator = PantryValidator()
     
     override func viewDidLoad() {
@@ -39,6 +42,10 @@ class PantryIngredEditViewController: UIViewController{
 //        }
       
 //        let inputComponents = selectedIngredient[0].components(separatedBy: ",")
+        
+        editIngredientTextField.delegate = self
+        editAddingTextField.delegate = self
+        editExpiryTextField.delegate = self
         
         let inputComponents = currentTotalIngredients[currentIngredientsIndexSelection].components(separatedBy: ",")
         
@@ -58,7 +65,7 @@ class PantryIngredEditViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         
-        confirmEditButton.isEnabled = false
+        confirmEditButton.isEnabled = true
         confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
         confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
     }
@@ -154,6 +161,8 @@ class PantryIngredEditViewController: UIViewController{
         editIngredientTextField.resignFirstResponder()
         editAddingTextField.resignFirstResponder()
         editExpiryTextField.resignFirstResponder()
+        
+//        self.view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -184,17 +193,38 @@ extension PantryIngredEditViewController: UITextFieldDelegate{
     
     @objc func keyboardWillChange(notification: Notification){
         
-        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
-            
-            return
-        }
+//        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+//
+//            return
+//        }
+//
+//        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+//
+//            view.frame.origin.y = -keyboardRectangle.height
+//        }else{
+//
+//            view.frame.origin.y = 0
+//        }
         
-        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+        
+        
+        let userInput = notification.userInfo!
+        
+        let keyboardContainerEndFrame = (userInput[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        let keyboardContainerViewEndFrame = view.convert(keyboardContainerEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide{
             
-            view.frame.origin.y = -keyboardRectangle.height
+            scrollView.contentInset = UIEdgeInsets.zero
         }else{
             
-            view.frame.origin.y = 0
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardContainerViewEndFrame.height, right: 0)
         }
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        
+        
+        
     }
 }

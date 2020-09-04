@@ -22,32 +22,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jre-ag-Ab3">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="491"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="446"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-Ec-8ce">
-                                                <rect key="frame" x="24" y="298" width="138" height="36"/>
+                                                <rect key="frame" x="24" y="253" width="138" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-iT-RTW">
-                                                <rect key="frame" x="74" y="386" width="88" height="36"/>
+                                                <rect key="frame" x="74" y="341" width="88" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5 or 40g or 12L" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-Ks-tlQ">
-                                                <rect key="frame" x="177" y="345" width="123" height="30"/>
+                                                <rect key="frame" x="177" y="300" width="123" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="dd/MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ooz-lD-X16">
-                                                <rect key="frame" x="177" y="389" width="123" height="30"/>
+                                                <rect key="frame" x="177" y="344" width="123" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dw-9W-m6n">
-                                                <rect key="frame" x="16" y="455" width="95" height="28"/>
+                                                <rect key="frame" x="16" y="410" width="95" height="28"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="Rdv-RP-jQq"/>
@@ -67,7 +67,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9p-Wb-a9k">
-                                                <rect key="frame" x="209" y="455" width="95" height="28"/>
+                                                <rect key="frame" x="209" y="410" width="95" height="28"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="ikx-0w-5ho"/>
@@ -83,24 +83,24 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eggs or Milk" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Im6-dk-dzo">
-                                                <rect key="frame" x="177" y="301" width="123" height="30"/>
+                                                <rect key="frame" x="177" y="256" width="123" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pantryFoodImage" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-6X-QKS">
-                                                <rect key="frame" x="16" y="137" width="288" height="145"/>
+                                                <rect key="frame" x="16" y="92" width="288" height="145"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GHn-6X-QKS" secondAttribute="height" multiplier="288:145" id="CWd-px-AUf"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smc-5u-Q0G">
-                                                <rect key="frame" x="43" y="342" width="119" height="36"/>
+                                                <rect key="frame" x="43" y="297" width="119" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adding Ingredient to my pantry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axF-K5-Pr7">
-                                                <rect key="frame" x="16" y="55" width="263" height="23"/>
+                                                <rect key="frame" x="16" y="10" width="263" height="23"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -108,13 +108,13 @@
                                                 <color key="highlightedColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in the fields below to add your available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTx-Lh-RsX">
-                                                <rect key="frame" x="16" y="90" width="276" height="17"/>
+                                                <rect key="frame" x="16" y="45" width="276" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredient to your pantry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOB-xc-XaH">
-                                                <rect key="frame" x="16" y="112" width="160" height="17"/>
+                                                <rect key="frame" x="16" y="67" width="160" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                                             <constraint firstAttribute="bottom" secondItem="p9p-Wb-a9k" secondAttribute="bottom" constant="8" id="5nk-XW-zw4"/>
                                             <constraint firstItem="p9p-Wb-a9k" firstAttribute="top" secondItem="Ooz-lD-X16" secondAttribute="bottom" constant="36" id="79U-l7-q51"/>
                                             <constraint firstItem="Im6-dk-dzo" firstAttribute="top" secondItem="GHn-6X-QKS" secondAttribute="bottom" constant="19" id="90R-QB-dsL"/>
-                                            <constraint firstItem="axF-K5-Pr7" firstAttribute="top" secondItem="Jre-ag-Ab3" secondAttribute="top" constant="55" id="9iY-bm-oGU"/>
+                                            <constraint firstItem="axF-K5-Pr7" firstAttribute="top" secondItem="Jre-ag-Ab3" secondAttribute="top" constant="10" id="9iY-bm-oGU"/>
                                             <constraint firstAttribute="bottom" secondItem="9dw-9W-m6n" secondAttribute="bottom" constant="8" id="Ama-4j-ArG"/>
                                             <constraint firstAttribute="trailing" secondItem="GHn-6X-QKS" secondAttribute="trailing" constant="16" id="BEq-4t-JRy"/>
                                             <constraint firstAttribute="trailing" secondItem="axF-K5-Pr7" secondAttribute="trailing" constant="41" id="FLk-qe-44z"/>
@@ -183,6 +183,7 @@
                         <outlet property="confirmEntryButton" destination="p9p-Wb-a9k" id="qSB-rO-Qzq"/>
                         <outlet property="expiryField" destination="Ooz-lD-X16" id="uYz-Zj-uK4"/>
                         <outlet property="ingredientField" destination="Im6-dk-dzo" id="XOO-ar-eqB"/>
+                        <outlet property="scrollView" destination="nzF-0x-wf7" id="w4t-YF-iuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTU-Ae-e3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,6 +534,7 @@
                         <outlet property="editAddingTextField" destination="5w6-Zm-mKF" id="uoU-zg-BdG"/>
                         <outlet property="editExpiryTextField" destination="0De-Eq-Uiu" id="N9t-cI-1eE"/>
                         <outlet property="editIngredientTextField" destination="6vC-8x-m0B" id="VZt-Oq-JNK"/>
+                        <outlet property="scrollView" destination="T4p-lq-8hh" id="PnK-FG-Eap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcU-JV-Cwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,6 +546,6 @@
         <image name="pantryFoodImage" width="954" height="1436"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WMc-ES-AoR"/>
+        <segue reference="POl-ZI-Kvd"/>
     </inferredMetricsTieBreakers>
 </document>
