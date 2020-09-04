@@ -20,6 +20,12 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
 //    @IBOutlet weak var textView: UITextView!
     
+    
+    
+    
+    
+    
+    
     static var ingredInput:[String] = []
     
     var validator = PantryValidator()
