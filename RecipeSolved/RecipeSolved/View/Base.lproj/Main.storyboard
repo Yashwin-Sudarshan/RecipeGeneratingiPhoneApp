@@ -617,11 +617,11 @@
             </objects>
             <point key="canvasLocation" x="847.5" y="536.61971830985919"/>
         </scene>
-        <!--Student Profiles-->
+        <!--Profiles-->
         <scene sceneID="GhY-DC-dgj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xiQ-0L-EX8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Student Profiles" image="users" id="UXK-Yj-iKV"/>
+                    <tabBarItem key="tabBarItem" title="Profiles" image="users" id="UXK-Yj-iKV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W5n-Ky-C2r">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
