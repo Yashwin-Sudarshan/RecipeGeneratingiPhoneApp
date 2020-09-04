@@ -27,6 +27,7 @@ class StudentDetailViewController: UIViewController {
             studentImage.image = selectedStudent.image
             studentName.text = selectedStudent.name
             studentDetail.text = selectedStudent.description
+            studentDetail.isSelectable = false
         }
     }
 
