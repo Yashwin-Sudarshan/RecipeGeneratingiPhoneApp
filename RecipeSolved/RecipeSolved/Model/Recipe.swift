@@ -69,7 +69,7 @@ enum Recipe:String
     
     var recipeIngredients:String{
         switch self{
-        case .Pasta: return "Ingredients:\nn- Pasta of your choice\n- Salt"
+        case .Pasta: return "Ingredients:\n- Pasta of your choice\n- Salt"
         case .Steak: return "Ingredients:\n- Steak of your choice\n- Olive Oil\n- Garlic\n- Butter\n- Thyme"
         case .Chips: return "Ingredients:\n- Potatoes\n- Salt\n- Olive Oil"
         case .FruitSalad: return "Ingredients:\n- Fruits of your choice. Examples include: bananas, apples, oranges, etc.\n- Sugar (Optional)"

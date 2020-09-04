@@ -12,6 +12,7 @@ class RecipeViewController: UIViewController {
     
     var selectedRecipe:(title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?)?
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var recipeTime: UILabel!
