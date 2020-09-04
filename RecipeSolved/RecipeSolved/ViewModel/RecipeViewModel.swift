@@ -34,30 +34,38 @@ class RecipeViewModel{
         recipes.append(Recipe.Pasta)
         recipes.append(Recipe.Steak)
         recipes.append(Recipe.Chips)
+        recipes.append(Recipe.SteamedRice)
+        recipes.append(Recipe.FruitSalad)
+        recipes.append(Recipe.PumpkinSoup)
+        recipes.append(Recipe.HardBoiledEggs)
+        recipes.append(Recipe.SoftBoiledEggs)
+        recipes.append(Recipe.PoachedEggs)
         currentDataSourceSearch = recipes
         
     }
     
-    func getRecipe(byIndex index: Int) -> (title:String, time:String, items:String, rating:String, steps:String, image:UIImage?){
+    func getRecipe(byIndex index: Int) -> (title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?){
         let title = recipes[index].rawValue
         let time = recipes[index].recipeTime
         let items = recipes[index].recipeItems
         let rating = recipes[index].recipeRating
+        let ingredients = recipes[index].recipeIngredients
         let steps = recipes[index].recipeSteps
         let image = UIImage(named: recipes[index].imageName)
         
-        return (title, time, items, rating, steps, image)
+        return (title, time, items, rating, ingredients, steps, image)
     }
     
-    func getRecipeByRecipe(byRecipe recipe: Recipe) -> (title:String, time:String, items:String, rating:String, steps:String, image:UIImage?){
+    func getRecipeByRecipe(byRecipe recipe: Recipe) -> (title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?){
         let title = recipe.rawValue
         let time = recipe.recipeTime
         let items = recipe.recipeItems
         let rating = recipe.recipeRating
+        let ingredients = recipe.recipeIngredients
         let steps = recipe.recipeSteps
         let image = UIImage(named: recipe.imageName)
         
-        return (title, time, items, rating, steps, image)
+        return (title, time, items, rating, ingredients, steps, image)
     }
     
     func getRecipeType(byIndex index: Int) -> (Recipe){
