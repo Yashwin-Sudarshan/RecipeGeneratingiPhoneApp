@@ -33,6 +33,7 @@ class RecipeViewController: UIViewController {
             recipeIngredients.text = selectedRecipe.ingredients
             recipeSteps.text = selectedRecipe.steps
         }
+        
     }
     
 
