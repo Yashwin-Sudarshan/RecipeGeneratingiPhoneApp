@@ -6,12 +6,16 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This struct holds all the students in the development team, and also allows for
+// retrieval of a specific developer from the developers array, for detail view rendering.
+
 import Foundation
 
 import UIKit
 
 struct StudentDeveloperViewModel{
     
+    // Contains all the students in the development team.
     private (set) var developers:[StudentDeveloper] = []
     
     var count:Int{
@@ -23,6 +27,7 @@ struct StudentDeveloperViewModel{
         loadData()
     }
     
+    // Adds all the students in the development team into the developers array.
     private mutating func loadData(){
         
         developers.append(StudentDeveloper.RubyRio)
@@ -31,6 +36,7 @@ struct StudentDeveloperViewModel{
         developers.append(StudentDeveloper.YashwinSudarshan)
     }
     
+    // Returns a specified developer.
     func getDeveloper(byIndex index:Int) -> (name:String,
         description:String, image:UIImage?){
             

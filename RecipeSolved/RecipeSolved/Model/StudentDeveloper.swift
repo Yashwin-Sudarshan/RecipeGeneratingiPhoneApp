@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This enum represents the entire development team and thier details.
+
 import Foundation
 
 enum StudentDeveloper:String{

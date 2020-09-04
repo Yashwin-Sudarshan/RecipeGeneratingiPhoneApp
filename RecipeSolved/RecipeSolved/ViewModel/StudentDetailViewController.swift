@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This view controller renders the student image, name, and bio in the student detail views.
+
 import UIKit
 
 class StudentDetailViewController: UIViewController {

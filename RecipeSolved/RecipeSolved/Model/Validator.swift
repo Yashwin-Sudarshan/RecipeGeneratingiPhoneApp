@@ -6,6 +6,10 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This protocol provides a template for validating user inputs in regards to pantry items,
+// as the user needs to input an ingrdient name, quantity, and expiration date when adding
+// an ingredient to their pantry.
+
 import Foundation
 
 protocol Validator {

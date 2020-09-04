@@ -6,17 +6,17 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This view controller handles editing ingredient entries by the user. The ingredient name,
+// quantity, and expiration date can be changed, and the view controller will update the array
+// containing ingredients in the PantryUpdateIngredViewController for updated display of ingredient
+// information. This view controller also handles input format validation, to ensure only entries
+// with the correct ingredient name, quantity, and expiration date formats are accepted.
+
 import Foundation
 import UIKit
 
 class PantryIngredEditViewController: UIViewController{
     
-    
-//    var selectedIngredient:(ingredient:String, adding:String, expiry:String)?
-    
-//    let inputComponents = currentDataSourceSearch[indexPath.row].components(separatedBy: ",")
-    
-    var selectedIngredient:[String] = []
     var currentTotalIngredients:[String] = []
     var currentIngredientsIndexSelection:Int = 0
     
@@ -34,42 +34,36 @@ class PantryIngredEditViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let selectedIngredient = selectedIngredient{
-//
-//            editIngredientTextField.text = selectedIngredient.ingredient
-//            editAddingTextField.text = selectedIngredient.adding
-//            editExpiryTextField.text = selectedIngredient.expiry
-//        }
-      
-//        let inputComponents = selectedIngredient[0].components(separatedBy: ",")
-        
         editIngredientTextField.delegate = self
         editAddingTextField.delegate = self
         editExpiryTextField.delegate = self
         
         let inputComponents = currentTotalIngredients[currentIngredientsIndexSelection].components(separatedBy: ",")
         
+        // Parses ingredient data from
         editIngredientTextField.text = inputComponents[0]
                     editAddingTextField.text = inputComponents[1]
                     editExpiryTextField.text = inputComponents[2]
         
+        // Listens for events from keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
      
+        // Checks validity of user inputs in each text field in real time
         [editIngredientTextField, editAddingTextField, editExpiryTextField].forEach({$0?.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)})
         
     }
     
+    // Sets the 'Confirm Edit' button to enabled
     override func viewWillAppear(_ animated: Bool) {
         
         confirmEditButton.isEnabled = true
-        confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
-        confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
     }
     
+    // Un-registering keyboard event listeners
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -78,22 +72,18 @@ class PantryIngredEditViewController: UIViewController{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
 
+    // Updates the index entry of the array of all the user's ingredients, to the specified user edit.
     @IBAction func confirmEditTap(_ sender: Any) {
         
         if(validateInput() == true){
             
             let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
             
-            //        self.selectedIngredient[0] = ingredString
             self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
         }
-        
-//        let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
-//
-////        self.selectedIngredient[0] = ingredString
-//        self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
     }
     
+    // Validates ingredient, quantity, and date input formats.
     private func validateInput() -> Bool{
         
         var isValid = false
@@ -104,84 +94,44 @@ class PantryIngredEditViewController: UIViewController{
         
         isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
         
-//        let isValidateIngredient = self.validation.validateIngredient(ingredient: ingredient)
-//        if(isValidateIngredient == false){
-//
-//            //            print("Invalid ingredient input")
-//            isValid = false
-//        }
-//
-//        let isValidateQty = self.validation.validateQty(qty: qty)
-//        if(isValidateQty == false){
-//
-//            //            print("Invalid qty input")
-//            isValid = false
-//        }
-//
-//        let isValidateExp = self.validation.validateExp(exp: exp)
-//        if(isValidateExp == false){
-//
-//            //            print("Invalid date input")
-//            isValid = false
-//        }
-//
-//        if(isValidateIngredient == true && isValidateQty == true && isValidateExp == true){
-//
-//            //            print("Invalid ingredient, qty, and/or date input")
-//            isValid = true
-//        }
-        
         return isValid
     }
     
+    // Checks if all text field input is valid in real time, and updates the opacity of the
+    // 'Confirm Edit' button accordingly, and its enabled status.
     @objc func editingChanged(_ textField: UITextField){
         
         if(validateInput() == true){
             
             confirmEditButton.isEnabled = true
-            //            confirmEntryButton.isOpaque = false
             confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
-            //            confirmEntryButton.titleLabel?.alpha = 1
             confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
             
         }else{
             
             confirmEditButton.isEnabled = false
-            //            confirmEntryButton.isOpaque = true
-            //            confirmEntryButton.backgroundColor =
             confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
-            //            confirmEntryButton.titleLabel?.alpha = 0.1
             confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
-            
         }
     }
     
+    // Allows user to hide keyboard by tapping 'Return'.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         editIngredientTextField.resignFirstResponder()
         editAddingTextField.resignFirstResponder()
         editExpiryTextField.resignFirstResponder()
-        
-//        self.view.endEditing(true)
     }
     
+    // Transfers contents of array containing all ingredients (including the updated ingredient entry)
+    // entered by user, into another array in the PantryUpdateIngredViewController, for table view
+    // rendering.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vcTransfer = segue.destination as! PantryUpdateIngredViewController
         
         vcTransfer.currentIngredients =  self.currentTotalIngredients
         
     }
-    
-    func shouldPerformSegueWithIdentifier(identifier:String, sender:AnyObject?) -> Bool {
-        
-        if identifier == "EditIngredSegue" && validateInput() == true{
-            
-            return true
-        }
-        
-        return false
-    }
-    
 }
 
 extension PantryIngredEditViewController: UITextFieldDelegate{
@@ -191,23 +141,11 @@ extension PantryIngredEditViewController: UITextFieldDelegate{
         return true
     }
     
+    // Makes the keyboard rise a certain level depending on the text field tapped.
+    // Automatically scrolls the view when tapping into another text field, so that
+    // the keyboard does not obscure the fields for input.
     @objc func keyboardWillChange(notification: Notification){
-        
-//        guard let keyboardRectangle = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
-//
-//            return
-//        }
-//
-//        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
-//
-//            view.frame.origin.y = -keyboardRectangle.height
-//        }else{
-//
-//            view.frame.origin.y = 0
-//        }
-        
-        
-        
+    
         let userInput = notification.userInfo!
         
         let keyboardContainerEndFrame = (userInput[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -223,8 +161,5 @@ extension PantryIngredEditViewController: UITextFieldDelegate{
         }
         
         scrollView.scrollIndicatorInsets = scrollView.contentInset
-        
-        
-        
     }
 }
