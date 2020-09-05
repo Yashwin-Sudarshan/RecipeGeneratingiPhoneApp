@@ -13,23 +13,16 @@ import UIKit
 class RecipeViewModel{
     private (set) var recipes:[Recipe] = []
     
-    weak var searchView: UIView!
-    
-    var searchController: UISearchController!
-    var currentDataSourceSearch:[Recipe] = []
-    
-    
+    // Returns the number of recipes in the recipes array
     var count:Int{
         return recipes.count
     }
-    
-    //let searchController = UISearchController(searchResultsController: nil)
-    
     
     init(){
         loadData()
     }
     
+    // Add recipes to the recipes array
     private func loadData(){
         recipes.append(Recipe.Pasta)
         recipes.append(Recipe.Steak)
@@ -40,10 +33,9 @@ class RecipeViewModel{
         recipes.append(Recipe.HardBoiledEggs)
         recipes.append(Recipe.SoftBoiledEggs)
         recipes.append(Recipe.PoachedEggs)
-        currentDataSourceSearch = recipes
-        
     }
     
+    // Return all of the recipe's parameteres based on an index
     func getRecipe(byIndex index: Int) -> (title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?){
         let title = recipes[index].rawValue
         let time = recipes[index].recipeTime
@@ -56,6 +48,7 @@ class RecipeViewModel{
         return (title, time, items, rating, ingredients, steps, image)
     }
     
+    // Return all of the recipe's parameters based on the recipe
     func getRecipeByRecipe(byRecipe recipe: Recipe) -> (title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?){
         let title = recipe.rawValue
         let time = recipe.recipeTime
@@ -68,12 +61,10 @@ class RecipeViewModel{
         return (title, time, items, rating, ingredients, steps, image)
     }
     
+    // Returns a recipe by the index of the recipe array
     func getRecipeType(byIndex index: Int) -> (Recipe){
         return recipes[index]
     }
     
-//    func getRecipeViewModel() -> (RecipeViewModel){
-//        return self
-//    }
 }
 
