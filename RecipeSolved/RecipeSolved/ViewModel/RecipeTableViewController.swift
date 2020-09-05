@@ -42,6 +42,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         searchController.searchBar.placeholder = "Search Recipes"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self

@@ -51,6 +51,7 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         searchController.searchBar.placeholder = "Search Ingredients"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
