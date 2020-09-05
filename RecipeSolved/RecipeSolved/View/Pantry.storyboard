@@ -199,14 +199,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6d-Qu-YOr">
-                                <rect key="frame" x="2" y="135" width="316" height="364"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" id="jne-1b-Z3r" customClass="IngredientCell" customModule="RecipeSolved" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="316" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jne-1b-Z3r" id="35m-tM-rHF">
-                                            <rect key="frame" x="0.0" y="0.0" width="316" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPl-jX-jG6">
@@ -283,15 +283,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOQ-oK-gwi">
-                                <rect key="frame" x="203" y="64" width="115" height="19"/>
-                                <state key="normal" title="+ Add Ingredient"/>
-                                <connections>
-                                    <segue destination="ahS-9x-93o" kind="show" id="Bar-qM-YTU"/>
-                                </connections>
-                            </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-RC-XPK">
-                                <rect key="frame" x="0.0" y="84" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqn-30-Er6">
                                         <rect key="frame" x="12" y="30" width="0.0" height="44"/>
@@ -363,16 +356,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="p6d-Qu-YOr" secondAttribute="bottom" constant="20" id="K1S-ca-fOu"/>
-                            <constraint firstItem="GOQ-oK-gwi" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" id="LI9-ib-Nx5"/>
+                            <constraint firstItem="3w5-ql-f18" firstAttribute="bottom" secondItem="p6d-Qu-YOr" secondAttribute="bottom" id="K1S-ca-fOu"/>
                             <constraint firstItem="1kc-RC-XPK" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" id="TM4-Fi-tfd"/>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="p6d-Qu-YOr" secondAttribute="trailing" constant="2" id="W3j-DR-HUl"/>
-                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="GOQ-oK-gwi" secondAttribute="trailing" constant="2" id="aVx-AP-jNX"/>
-                            <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="GOQ-oK-gwi" secondAttribute="bottom" constant="1" id="iJJ-5r-o1S"/>
-                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="1kc-RC-XPK" secondAttribute="bottom" constant="1" id="iOW-pk-qdh"/>
+                            <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="p6d-Qu-YOr" secondAttribute="trailing" id="W3j-DR-HUl"/>
+                            <constraint firstItem="1kc-RC-XPK" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" id="bet-yf-LVv"/>
+                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="1kc-RC-XPK" secondAttribute="bottom" id="iOW-pk-qdh"/>
                             <constraint firstItem="3w5-ql-f18" firstAttribute="trailing" secondItem="1kc-RC-XPK" secondAttribute="trailing" id="pZn-4I-g7s"/>
-                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" constant="2" id="rn5-gQ-Ejq"/>
-                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="top" secondItem="3w5-ql-f18" secondAttribute="top" constant="71" id="vb2-mf-bbG"/>
+                            <constraint firstItem="p6d-Qu-YOr" firstAttribute="leading" secondItem="3w5-ql-f18" secondAttribute="leading" id="rn5-gQ-Ejq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3w5-ql-f18"/>
                     </view>
@@ -380,7 +370,11 @@
                         <barButtonItem title="Item" id="5fu-51-qoM"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Pantry" id="NYh-Ga-eT6">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="tDW-Gm-Dwd"/>
+                        <barButtonItem key="rightBarButtonItem" title="+ Add" id="tDW-Gm-Dwd">
+                            <connections>
+                                <segue destination="ahS-9x-93o" kind="show" id="BOD-J4-6ig"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
