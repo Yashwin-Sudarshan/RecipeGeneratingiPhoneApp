@@ -16,10 +16,8 @@ import UIKit
 class PantryIngredientaddingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var ingredientField: UITextField!
-    @IBOutlet weak var currentField: UITextField!
     @IBOutlet weak var addingField: UITextField!
     @IBOutlet weak var expiryField: UITextField!
-    @IBOutlet weak var totalField: UITextField!
     
     @IBOutlet weak var confirmEntryButton: UIButton!
     
@@ -129,33 +127,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
          vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
         
     }
-    
-    // Allows user to use the camera (for scanning barcode functionality - not implemented yet
-    // as it requires use of the API for data retrieval).
-    // Currently, this method allows the user to use the camera only.
-    @IBAction func takePhoto(_ sender: Any) {
-        
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
-                imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
-            }else{
-                print("Camera not available")
-            }
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    
 }
 
 extension PantryIngredientaddingViewController: UITextFieldDelegate{
