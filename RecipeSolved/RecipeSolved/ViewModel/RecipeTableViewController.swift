@@ -30,6 +30,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        // Add all of the recipes to the allRecipes array
         for recipe in 0..<viewModel.count {
             allRecipes.append(viewModel.getRecipeType(byIndex: recipe))
         }
@@ -37,18 +38,20 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
         
+        // Add Search bar
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search Recipes"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         
     }
 
-
+    // Find the number of rows based on whether we are currently searching for something or not
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredRecipes.count
@@ -57,7 +60,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         return allRecipes.count
     }
 
-  
+    // Draw the table depending on whether we are currently searching for something or not
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         let imageView = cell.viewWithTag(1000) as? UIImageView
@@ -65,9 +68,8 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         let recipeTime = cell.viewWithTag(1002) as? UILabel
         let recipeItems = cell.viewWithTag(1003) as? UILabel
         let recipeRating = cell.viewWithTag(1004) as? UILabel
-        let recipeSteps = cell.viewWithTag(1005) as? UILabel
         
-        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating, let recipeSteps = recipeSteps{
+        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
             if isFiltering {
                 let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
                 imageView.image = currentRecipe.image
@@ -75,7 +77,6 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
                 recipeTime.text = currentRecipe.time
                 recipeItems.text = currentRecipe.items
                 recipeRating.text = currentRecipe.rating
-                recipeSteps.text = currentRecipe.steps
             } else {
                 let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
                 imageView.image = currentRecipe.image
@@ -83,12 +84,12 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
                 recipeTime.text = currentRecipe.time
                 recipeItems.text = currentRecipe.items
                 recipeRating.text = currentRecipe.rating
-                recipeSteps.text = currentRecipe.steps
             }
         }
         return cell
     }
     
+    // Filter the table depending on what is being searched for
     func filterContentForSearchText(_ searchText: String) {
         var recipeStrings:[String] = []
         for recipe in 0..<allRecipes.count {
@@ -97,6 +98,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
             recipeStrings.append(currentRecipe.time)
             recipeStrings.append(currentRecipe.items)
             recipeStrings.append(currentRecipe.rating)
+            recipeStrings.append(currentRecipe.ingredients)
             recipeStrings.append(currentRecipe.steps)
         }
         
@@ -116,7 +118,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
     }
 
-
+    // When you click on a table cell, go to the RecipeViewController.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard
@@ -138,6 +140,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
 
 }
 
+// Update search result based on what the user is searching for
 extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {

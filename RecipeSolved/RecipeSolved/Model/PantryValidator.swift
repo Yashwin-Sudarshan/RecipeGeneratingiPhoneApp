@@ -6,6 +6,12 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This class handles user input validation for the pantry adding and editing scenes. Validation is
+// currently performed using regular expressions. An ingredient name must only contain letters, a
+// quantity can be either be a discrete number for number of items, or a weight in grams, or a
+// capacity in litres.
+
+
 import Foundation
 
 class PantryValidator: Validator{
@@ -21,7 +27,6 @@ class PantryValidator: Validator{
     
     func validateQty(qty:String) -> Bool{
         
-//        let qtyRegex = "[0-9][0-9]*"
         let qtyRegex = "(^[1-9][0-9]*[g])|([1-9][0-9]*[L])|([0-9][.][1-9]*[L])|([0-9][.][0][0]*[1-9][1-9]*[0-9]*[1-9][L])|([0-9][.][0][0]*[1-9][1-9]*[L])|([1-9][0-9]*[L])|([1-9][0-9]*|\0)"
         let trimmedEntryString = qty.trimmingCharacters(in: .whitespaces)
         let validateQty = NSPredicate(format: "SELF MATCHES %@", qtyRegex)
@@ -38,6 +43,7 @@ class PantryValidator: Validator{
         return isValidateExp
     }
     
+    // Validates all inputs (ingredient field, quantity field, expiry field)
     func validatePantryInputs(ingredient: String, qty: String, exp: String) -> Bool {
     
         return validateIngredient(ingredient: ingredient) && validateQty(qty: qty) && validateExp(exp: exp)

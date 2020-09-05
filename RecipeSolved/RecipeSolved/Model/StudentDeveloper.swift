@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This enum represents the entire development team and thier details.
+
 import Foundation
 
 enum StudentDeveloper:String{
@@ -31,9 +33,9 @@ enum StudentDeveloper:String{
         
         switch self{
             
-        case .RubyRio: return "Ruby Rio is a second-year Bachelor of Software Engineering student at RMIT University. Ruby has a keen interest in Project Management in relation of Information Technology Projects, and to see how this area can develop. Ruby's other interests include Business Systems, Law, Piano and Fitness"
+        case .RubyRio: return "Ruby Rio is a second-year Bachelor of Software Engineering student at RMIT University. Ruby has a keen interest in Project Management in relation of Information Technology Projects, and to see how this area can develop. Ruby's other interests include Business Systems, Law, Piano and Fitness."
             
-        case .AlexanderLoMoro: return "Alexander LoMoro is a second-year Bachelor of Technology (Computing Studies) student at RMI University. Alexander has a keen interest in UX Design, escpecially in mobile environments. Other interests of Alexander include cars, technology & sports."
+        case .AlexanderLoMoro: return "Alexander LoMoro is a second-year Bachelor of Technology (Computing Studies) student at RMIT University. Alexander has a keen interest in UX Design, escpecially in mobile environments. Other interests of Alexander include cars, technology & sports."
             
         case .AlexandarKotevski: return "Alexandar Kotevski is a final-year Bachelor of Information Technology student at RMIT University. Alexandar is interested in mobile app and web development. Alexandar's other interests include Apple, weather and aviation."
             
