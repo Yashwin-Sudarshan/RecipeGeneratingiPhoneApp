@@ -29,7 +29,6 @@
 		CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */; };
 		CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */; };
 		CAD25C1124FC0FDE00FF5250 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD25C1024FC0FDE00FF5250 /* Validator.swift */; };
-		CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +77,6 @@
 		CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredEditViewController.swift; sourceTree = "<group>"; };
 		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
 		CAD25C1024FC0FDE00FF5250 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +180,6 @@
 		CA2DFFC924EE0F15009791F3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CADAE20324EBDEFE007EF787 /* PantryCameraViewController.swift */,
 				CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */,
 				CA4263B524ED552B004E352D /* PantryUpdateIngredViewController.swift */,
 				0FD39FB524D2C8E9001CEA9A /* ViewController.swift */,
@@ -331,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA35437D24FAB5C000AEC63E /* StudentDeveloperTableViewController.swift in Sources */,
-				CADAE20424EBDEFE007EF787 /* PantryCameraViewController.swift in Sources */,
 				CA35438124FABB0E00AEC63E /* StudentDetailViewController.swift in Sources */,
 				0FD39FB624D2C8E9001CEA9A /* ViewController.swift in Sources */,
 				CA35437B24FAB25E00AEC63E /* StudentDeveloperViewModel.swift in Sources */,
