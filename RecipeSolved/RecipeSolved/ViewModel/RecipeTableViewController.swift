@@ -65,9 +65,8 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         let recipeTime = cell.viewWithTag(1002) as? UILabel
         let recipeItems = cell.viewWithTag(1003) as? UILabel
         let recipeRating = cell.viewWithTag(1004) as? UILabel
-        let recipeSteps = cell.viewWithTag(1005) as? UILabel
         
-        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating, let recipeSteps = recipeSteps{
+        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
             if isFiltering {
                 let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
                 imageView.image = currentRecipe.image
@@ -75,7 +74,6 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
                 recipeTime.text = currentRecipe.time
                 recipeItems.text = currentRecipe.items
                 recipeRating.text = currentRecipe.rating
-                recipeSteps.text = currentRecipe.steps
             } else {
                 let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
                 imageView.image = currentRecipe.image
@@ -83,7 +81,6 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
                 recipeTime.text = currentRecipe.time
                 recipeItems.text = currentRecipe.items
                 recipeRating.text = currentRecipe.rating
-                recipeSteps.text = currentRecipe.steps
             }
         }
         return cell
@@ -97,6 +94,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
             recipeStrings.append(currentRecipe.time)
             recipeStrings.append(currentRecipe.items)
             recipeStrings.append(currentRecipe.rating)
+            recipeStrings.append(currentRecipe.ingredients)
             recipeStrings.append(currentRecipe.steps)
         }
         

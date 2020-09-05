@@ -10,13 +10,15 @@ import UIKit
 
 class RecipeViewController: UIViewController {
     
-    var selectedRecipe:(title:String, time:String, items:String, rating:String, steps:String, image:UIImage?)?
+    var selectedRecipe:(title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?)?
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var recipeTime: UILabel!
     @IBOutlet weak var recipeItems: UILabel!
     @IBOutlet weak var recipeRating: UILabel!
+    @IBOutlet weak var recipeIngredients: UITextView!
     @IBOutlet weak var recipeSteps: UITextView!
     
     override func viewDidLoad() {
@@ -28,8 +30,10 @@ class RecipeViewController: UIViewController {
             recipeTime.text = selectedRecipe.time
             recipeItems.text = selectedRecipe.items
             recipeRating.text = selectedRecipe.rating
+            recipeIngredients.text = selectedRecipe.ingredients
             recipeSteps.text = selectedRecipe.steps
         }
+        
     }
     
 
