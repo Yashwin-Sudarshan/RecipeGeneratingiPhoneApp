@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Recipe{
+struct Recipe {
     var title: String
     var url: String
     var ingredients: String
