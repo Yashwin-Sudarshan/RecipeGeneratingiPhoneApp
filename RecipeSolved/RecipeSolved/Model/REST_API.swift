@@ -9,7 +9,7 @@
 import Foundation
 
 class REST_API {
-    private var recipes:[Recipe] = []
+    private var _recipes:[Recipe] = []
     
     private let session = URLSession.shared
     
@@ -18,8 +18,12 @@ class REST_API {
     private let appID:String = "&app_id=94e40056"
     private let key:String = "&app_key=abcb68e252eb783c822d980b7b68a30f"
     
+    var recipes:[Recipe]{
+        return _recipes
+    }
+    
     func getRecipe(ingredients:String, title: String) {
-        recipes = []
+        _recipes = []
         let url = baseURL + query + title + appID + key
         
         guard let url_format = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
@@ -52,28 +56,24 @@ class REST_API {
                     for recipe in allRecipes {
                         let jsonRecipe = recipe["recipe"] as! [String: AnyObject]
                         let title = jsonRecipe["label"] as! String
-//                        print(title)
                         let image = jsonRecipe["image"] as! String
-//                        print(image)
                         let url = jsonRecipe["url"] as! String
-//                        print(url)
                         let yield = jsonRecipe["yield"] as! Int
                         let servings = "Serves " + String(yield)
-//                        print(servings)
                         let ingredientLines = jsonRecipe["ingredientLines"] as! Array<String>
                         let items = String(ingredientLines.count) + " items"
-//                        print(items)
                         let commaSeperatedIngredients = ingredientLines.joined(separator: ",")
                         let ingredients = commaSeperatedIngredients.replacingOccurrences(of: ",", with: "\n")
-//                        print(ingredients)
                         
                         let recipe = Recipe(title: title, image: image, url: url, servings: servings, items: items, ingredients: ingredients)
-                        self.recipes.append(recipe)
-//                        print()
+                        self._recipes.append(recipe)
                     }
                 }
             }
         })
         task.resume()
     }
+    
+    private init(){}
+    static let shared = REST_API()
 }

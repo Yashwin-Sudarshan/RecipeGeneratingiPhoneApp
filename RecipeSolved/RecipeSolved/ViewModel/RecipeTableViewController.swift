@@ -25,8 +25,6 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     override func viewDidLoad() {
-        var request = REST_API()
-        request.getRecipe(ingredients: "", title: "Chicken")
         super.viewDidLoad()
         
         self.tableView.delegate = self
