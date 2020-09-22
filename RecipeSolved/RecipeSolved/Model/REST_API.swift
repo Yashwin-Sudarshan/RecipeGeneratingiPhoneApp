@@ -46,29 +46,30 @@ class REST_API {
                 } catch { print() }
                 let result = parsedResult as! [String:Any]
                 
-                // print to console, remove when testing is completed
-                //print(result)
-                
                 let allRecipes = result["hits"] as! [[String:Any]]
-                // For testing
-                //print(allRecipes)
                 
                 if allRecipes.count > 0 {
-                    for result in allRecipes {
-                        // if recipe then loop through params
-                        for recipe in result {
-                            //TODO
-                        }
-                    }
                     for recipe in allRecipes {
-                        let title = recipe["label"] as! String
-                        let url = recipe["url"] as! String
-                        let image = recipe["image"] as! String
-                        let ingredients = recipe["ingredients"] as! String
+                        let jsonRecipe = recipe["recipe"] as! [String: AnyObject]
+                        let title = jsonRecipe["label"] as! String
+//                        print(title)
+                        let image = jsonRecipe["image"] as! String
+//                        print(image)
+                        let url = jsonRecipe["url"] as! String
+//                        print(url)
+                        let yield = jsonRecipe["yield"] as! Int
+                        let servings = "Serves " + String(yield)
+//                        print(servings)
+                        let ingredientLines = jsonRecipe["ingredientLines"] as! Array<String>
+                        let items = String(ingredientLines.count) + " items"
+//                        print(items)
+                        let commaSeperatedIngredients = ingredientLines.joined(separator: ",")
+                        let ingredients = commaSeperatedIngredients.replacingOccurrences(of: ",", with: "\n")
+//                        print(ingredients)
                         
-                        let recipe = Recipe(title: title, url: url, ingredients: ingredients, imageURL: image)
+                        let recipe = Recipe(title: title, image: image, url: url, servings: servings, items: items, ingredients: ingredients)
                         self.recipes.append(recipe)
-                        print()
+//                        print()
                     }
                 }
             }

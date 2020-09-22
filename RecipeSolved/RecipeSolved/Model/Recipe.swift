@@ -10,7 +10,9 @@ import Foundation
 
 struct Recipe {
     var title: String
+    var image: String
     var url: String
+    var servings: String
+    var items: String
     var ingredients: String
-    var imageURL: String
 }
