@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var item: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,13 +123,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           
           guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
-          
+
           let destination = segue.destination as? RecipeViewController
           
           let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
           
           destination?.selectedRecipe = selectedRecipe
-
       }
     
 }
