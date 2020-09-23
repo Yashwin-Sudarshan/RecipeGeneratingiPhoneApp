@@ -22,7 +22,7 @@ class REST_API {
         return _recipes
     }
     
-    func getRecipe(ingredients:String, title: String) {
+    func getRecipe(title: String) {
         _recipes = []
         let url = baseURL + query + title + appID + key
         

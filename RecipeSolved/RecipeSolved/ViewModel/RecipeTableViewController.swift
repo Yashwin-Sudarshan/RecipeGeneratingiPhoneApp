@@ -98,6 +98,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     // Filter the table depending on what is being searched for
     func filterContentForSearchText(_ searchText: String) {
+        viewModel.getRecipe(title: searchText)
 //        var recipeStrings:[String] = []
 //        for recipe in 0..<allRecipes.count {
 //            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])

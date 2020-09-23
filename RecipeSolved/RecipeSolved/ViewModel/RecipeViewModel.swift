@@ -51,8 +51,8 @@ struct RecipeViewModel {
         return recipes[index].time
     }
     
-    func getRecipe(with ingredients:String, title:String){
-        model.getRecipe(ingredients: ingredients, title: title)
+    func getRecipe(title:String) {
+        model.getRecipe(title: title)
     }
 }
 
