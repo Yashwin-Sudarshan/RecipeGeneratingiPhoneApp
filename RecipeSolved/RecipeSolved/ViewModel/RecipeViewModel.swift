@@ -47,6 +47,10 @@ struct RecipeViewModel {
         return recipes[index].ingredients
     }
     
+    func getTimeFor(index:Int) -> String {
+        return recipes[index].time
+    }
+    
     func getRecipe(with ingredients:String, title:String){
         model.getRecipe(ingredients: ingredients, title: title)
     }

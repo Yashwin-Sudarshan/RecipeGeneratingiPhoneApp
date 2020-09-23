@@ -31,9 +31,9 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         self.tableView.dataSource = self
         
         // Add all of the recipes to the allRecipes array
-        for recipe in 0..<viewModel.count {
-            allRecipes.append(viewModel.getRecipeType(byIndex: recipe))
-        }
+//        for recipe in 0..<viewModel.count {
+//            allRecipes.append(viewModel.getRecipeType(byIndex: recipe))
+//        }
         
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
@@ -53,88 +53,95 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
 
     // Find the number of rows based on whether we are currently searching for something or not
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredRecipes.count
-        }
-        
-        return allRecipes.count
+//        if isFiltering {
+//            return filteredRecipes.count
+//        }
+//
+//        return allRecipes.count
+        return viewModel.count
     }
 
     // Draw the table depending on whether we are currently searching for something or not
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        let imageView = cell.viewWithTag(1000) as? UIImageView
-        let recipeTitle = cell.viewWithTag(1001) as? UILabel
-        let recipeTime = cell.viewWithTag(1002) as? UILabel
-        let recipeItems = cell.viewWithTag(1003) as? UILabel
-        let recipeRating = cell.viewWithTag(1004) as? UILabel
+        let imageView = cell.viewWithTag(1000) as! UIImageView
+        let recipeTitle = cell.viewWithTag(1001) as! UILabel
+        let recipeTime = cell.viewWithTag(1002) as! UILabel
+        let recipeItems = cell.viewWithTag(1003) as! UILabel
+        let recipeServings = cell.viewWithTag(1004) as! UILabel
         
-        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
-            if isFiltering {
-                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
-                imageView.image = currentRecipe.image
-                recipeTitle.text = currentRecipe.title
-                recipeTime.text = currentRecipe.time
-                recipeItems.text = currentRecipe.items
-                recipeRating.text = currentRecipe.rating
-            } else {
-                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
-                imageView.image = currentRecipe.image
-                recipeTitle.text = currentRecipe.title
-                recipeTime.text = currentRecipe.time
-                recipeItems.text = currentRecipe.items
-                recipeRating.text = currentRecipe.rating
-            }
-        }
+        imageView.image = viewModel.getImageFor(index: indexPath.row)
+        recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
+        recipeTime.text = viewModel.getTimeFor(index: indexPath.row)
+        recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
+        recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
+        
+//        if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
+//            if isFiltering {
+//                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
+//                imageView.image = currentRecipe.image
+//                recipeTitle.text = currentRecipe.title
+//                recipeTime.text = currentRecipe.time
+//                recipeItems.text = currentRecipe.items
+//                recipeRating.text = currentRecipe.rating
+//            } else {
+//                let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
+//                imageView.image = currentRecipe.image
+//                recipeTitle.text = currentRecipe.title
+//                recipeTime.text = currentRecipe.time
+//                recipeItems.text = currentRecipe.items
+//                recipeRating.text = currentRecipe.rating
+//            }
+//        }
         return cell
     }
     
     // Filter the table depending on what is being searched for
     func filterContentForSearchText(_ searchText: String) {
-        var recipeStrings:[String] = []
-        for recipe in 0..<allRecipes.count {
-            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
-            recipeStrings.append(currentRecipe.title)
-            recipeStrings.append(currentRecipe.time)
-            recipeStrings.append(currentRecipe.items)
-            recipeStrings.append(currentRecipe.rating)
-            recipeStrings.append(currentRecipe.ingredients)
-            recipeStrings.append(currentRecipe.steps)
-        }
-        
-        let filteredResults = recipeStrings.filter {$0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
-        }
-        
-        var filteredRecipesSearch:[Recipe] = []
-        for recipe in 0..<allRecipes.count {
-            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
-            if filteredResults.contains(currentRecipe.title) {
-                filteredRecipesSearch.append(allRecipes[recipe])
-            }
-        }
-        
-        filteredRecipes = filteredRecipesSearch
-        
-        tableView.reloadData()
+//        var recipeStrings:[String] = []
+//        for recipe in 0..<allRecipes.count {
+//            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
+//            recipeStrings.append(currentRecipe.title)
+//            recipeStrings.append(currentRecipe.time)
+//            recipeStrings.append(currentRecipe.items)
+//            recipeStrings.append(currentRecipe.rating)
+//            recipeStrings.append(currentRecipe.ingredients)
+//            recipeStrings.append(currentRecipe.steps)
+//        }
+//
+//        let filteredResults = recipeStrings.filter {$0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+//        }
+//
+//        var filteredRecipesSearch:[Recipe] = []
+//        for recipe in 0..<allRecipes.count {
+//            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
+//            if filteredResults.contains(currentRecipe.title) {
+//                filteredRecipesSearch.append(allRecipes[recipe])
+//            }
+//        }
+//
+//        filteredRecipes = filteredRecipesSearch
+//
+//        tableView.reloadData()
     }
 
     // When you click on a table cell, go to the RecipeViewController.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard
-            let indexPath = tableView.indexPathForSelectedRow,
-            let recipeViewController = segue.destination as? RecipeViewController
-            else {
-                return
-        }
-        
-        if isFiltering {
-            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
-            recipeViewController.selectedRecipe = selectedRecipe
-        } else {
-            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
-            recipeViewController.selectedRecipe = selectedRecipe
-        }
+//        guard
+//            let indexPath = tableView.indexPathForSelectedRow,
+//            let recipeViewController = segue.destination as? RecipeViewController
+//            else {
+//                return
+//        }
+//
+//        if isFiltering {
+//            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: filteredRecipes[indexPath.row])
+//            recipeViewController.selectedRecipe = selectedRecipe
+//        } else {
+//            let selectedRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[indexPath.row])
+//            recipeViewController.selectedRecipe = selectedRecipe
+//        }
 
     }
 
@@ -144,8 +151,8 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
 extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterContentForSearchText(searchBar.text!)
+//        let searchBar = searchController.searchBar
+//        filterContentForSearchText(searchBar.text!)
     }
     
 }

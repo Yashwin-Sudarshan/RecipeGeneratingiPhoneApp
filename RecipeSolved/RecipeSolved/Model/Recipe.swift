@@ -15,4 +15,5 @@ struct Recipe {
     var servings: String
     var items: String
     var ingredients: String
+    var time: String
 }
