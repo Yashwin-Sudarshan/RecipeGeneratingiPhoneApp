@@ -65,7 +65,7 @@ class REST_API {
                         let yield = jsonRecipe["yield"] as! Int
                         let servings = "Serves " + String(yield)
                         let ingredientLines = jsonRecipe["ingredientLines"] as! Array<String>
-                        let items = String(ingredientLines.count) + " items"
+                        let items = String(ingredientLines.count) + " ingredients"
                         let commaSeperatedIngredients = ingredientLines.joined(separator: ",")
                         let ingredients = commaSeperatedIngredients.replacingOccurrences(of: ",", with: "\n")
                         let totalTime = jsonRecipe["totalTime"] as! Int

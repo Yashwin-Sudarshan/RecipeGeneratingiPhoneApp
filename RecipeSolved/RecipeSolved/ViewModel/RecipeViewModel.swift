@@ -67,6 +67,17 @@ struct RecipeViewModel {
         return recipes[index].time
     }
     
+    func getAllFor(index:Int) -> (title:String, items:String, servings:String, ingredients:String, url:String, image:UIImage?) {
+        let title = getTitleFor(index: index)
+        let items = getItemsFor(index: index)
+        let servings = getServingsFor(index: index)
+        let ingredients = getIngredientsFor(index: index)
+        let url = getURLFor(index: index)
+        let image = getImageFor(index: index)
+        
+        return (title, items, servings, ingredients, url, image)
+    }
+    
     func getRecipe(title:String) {
         model.getRecipe(title: title)
     }

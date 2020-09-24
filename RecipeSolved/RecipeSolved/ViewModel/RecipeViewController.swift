@@ -10,16 +10,24 @@ import UIKit
 
 class RecipeViewController: UIViewController {
     
-    var selectedRecipe:(title:String, time:String, items:String, rating:String, ingredients:String, steps:String, image:UIImage?)?
+    var selectedRecipe:(title:String, items:String, servings:String, ingredients:String, url:String, image:UIImage?)?
+    
+    var recipeURL: String? = nil
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
-    @IBOutlet weak var recipeTime: UILabel!
     @IBOutlet weak var recipeItems: UILabel!
-    @IBOutlet weak var recipeRating: UILabel!
+    @IBOutlet weak var recipeServings: UILabel!
     @IBOutlet weak var recipeIngredients: UITextView!
-    @IBOutlet weak var recipeSteps: UITextView!
+    //@IBOutlet weak var recipeButton: UIButton!
+    @IBAction func clickRecipeButton(_ sender: Any) {
+        if let url = URL(string: selectedRecipe!.url) {
+            UIApplication.shared.open(url)
+        }
+//        UIApplication.shared.open(URL(string: selectedRecipe!.url)!)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +35,10 @@ class RecipeViewController: UIViewController {
         if let selectedRecipe = selectedRecipe {
             recipeImage.image = selectedRecipe.image
             recipeTitle.text = selectedRecipe.title
-            recipeTime.text = selectedRecipe.time
             recipeItems.text = selectedRecipe.items
-            recipeRating.text = selectedRecipe.rating
+            recipeServings.text = selectedRecipe.servings
             recipeIngredients.text = selectedRecipe.ingredients
-            recipeSteps.text = selectedRecipe.steps
+//            recipeButton.addTarget(self, action: Selector(("clickRecipeButton")), for: .touchUpInside)
         }
         
     }
@@ -48,3 +55,4 @@ class RecipeViewController: UIViewController {
     */
 
 }
+
