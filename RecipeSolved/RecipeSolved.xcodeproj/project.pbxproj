@@ -84,12 +84,12 @@
 		CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredEditViewController.swift; sourceTree = "<group>"; };
 		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
 		CABBEA19251CB84200BB0955 /* RecipeSolved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeSolved.xcdatamodel; sourceTree = "<group>"; };
-		CABBEA1B251CBD6800BB0955 /* Developer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Developer+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		CABBEA1C251CBD6800BB0955 /* Developer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Developer+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		CABBEA1D251CBD6800BB0955 /* Pantry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pantry+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		CABBEA1E251CBD6800BB0955 /* Pantry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pantry+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		CABBEA1F251CBD6800BB0955 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		CABBEA20251CBD6800BB0955 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA1B251CBD6800BB0955 /* Developer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Developer+CoreDataClass.swift"; path = "RecipeSolved/Model/Developer+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA1C251CBD6800BB0955 /* Developer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Developer+CoreDataProperties.swift"; path = "RecipeSolved/Model/Developer+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA1D251CBD6800BB0955 /* Pantry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Pantry+CoreDataClass.swift"; path = "RecipeSolved/Model/Pantry+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA1E251CBD6800BB0955 /* Pantry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Pantry+CoreDataProperties.swift"; path = "RecipeSolved/Model/Pantry+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA1F251CBD6800BB0955 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ingredient+CoreDataClass.swift"; path = "RecipeSolved/Model/Ingredient+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CABBEA20251CBD6800BB0955 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ingredient+CoreDataProperties.swift"; path = "RecipeSolved/Model/Ingredient+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CAD25C1024FC0FDE00FF5250 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
