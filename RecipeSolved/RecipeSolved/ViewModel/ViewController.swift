@@ -104,13 +104,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         let imageView = cell.viewWithTag(1000) as! UIImageView
         let recipeTitle = cell.viewWithTag(1001) as! UILabel
-        let recipeTime = cell.viewWithTag(1002) as! UILabel
         let recipeItems = cell.viewWithTag(1003) as! UILabel
         let recipeServings = cell.viewWithTag(1004) as! UILabel
         
         imageView.image = viewModel.getImageFor(index: indexPath.row)
         recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
-        recipeTime.text = viewModel.getTimeFor(index: indexPath.row)
         recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
         recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
           

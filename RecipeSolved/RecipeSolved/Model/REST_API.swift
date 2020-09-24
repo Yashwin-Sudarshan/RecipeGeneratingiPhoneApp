@@ -62,8 +62,8 @@ class REST_API {
                         let title = jsonRecipe["label"] as! String
                         let image = jsonRecipe["image"] as! String
                         let url = jsonRecipe["url"] as! String
-                        let yield = jsonRecipe["yield"] as! Int
-                        let servings = "Serves " + String(yield)
+                        let yield = jsonRecipe["yield"] as! Float
+                        let servings = "Serves " + String(yield.clean)
                         let ingredientLines = jsonRecipe["ingredientLines"] as! Array<String>
                         let items = String(ingredientLines.count) + " ingredients"
                         let commaSeperatedIngredients = ingredientLines.joined(separator: ",")
@@ -83,4 +83,10 @@ class REST_API {
     
     private init(){}
     static let shared = REST_API()
+}
+
+extension Float {
+    var clean: String {
+        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
 }
