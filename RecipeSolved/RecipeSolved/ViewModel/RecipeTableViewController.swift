@@ -16,18 +16,13 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var recipeSearch: UITextField!
-    
-    @IBAction func search(_ sender: Any) {
-        viewModel.getRecipe(title: recipeSearch.text!)
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("searchText \(searchText)")
+        // Do nothing
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
+        //print("searchText \(searchBar.text!)")
+        viewModel.getRecipe(title: searchBar.text!)
     }
     
     var searchController: UISearchController!

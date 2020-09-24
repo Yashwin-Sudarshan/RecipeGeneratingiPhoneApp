@@ -406,7 +406,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IRT-5W-VEd">
-                                <rect key="frame" x="16" y="196" width="288" height="323"/>
+                                <rect key="frame" x="16" y="120" width="288" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="130" id="E9J-yv-fGi">
@@ -478,33 +478,14 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-QI-W3e">
-                                <rect key="frame" x="16" y="158" width="288" height="30"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="search:" destination="lNj-Qs-36S" eventType="touchUpInside" id="L7h-yP-b44"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search for recipe" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ib-Tn-VHX">
-                                <rect key="frame" x="16" y="120" width="288" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="IRT-5W-VEd" secondAttribute="trailing" constant="16" id="F6M-nq-axc"/>
-                            <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="2Ib-Tn-VHX" secondAttribute="trailing" constant="16" id="TMs-lX-NNX"/>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="bottom" secondItem="IRT-5W-VEd" secondAttribute="bottom" id="U9O-5h-1G0"/>
-                            <constraint firstItem="2Ib-Tn-VHX" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="XAK-To-5pO"/>
-                            <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="ob8-QI-W3e" secondAttribute="trailing" constant="16" id="XDa-HV-BPx"/>
-                            <constraint firstItem="ob8-QI-W3e" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="ZhX-AX-ybq"/>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="VCh-wc-L5J" secondAttribute="trailing" id="a2f-Nm-S70"/>
-                            <constraint firstItem="ob8-QI-W3e" firstAttribute="top" secondItem="2Ib-Tn-VHX" secondAttribute="bottom" constant="8" id="bUX-vN-Cni"/>
-                            <constraint firstItem="2Ib-Tn-VHX" firstAttribute="top" secondItem="VCh-wc-L5J" secondAttribute="bottom" id="dLt-Pd-qeY"/>
+                            <constraint firstItem="IRT-5W-VEd" firstAttribute="top" secondItem="VCh-wc-L5J" secondAttribute="bottom" id="j7K-J9-0Tk"/>
                             <constraint firstItem="VCh-wc-L5J" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" id="qMn-xV-oKq"/>
-                            <constraint firstItem="IRT-5W-VEd" firstAttribute="top" secondItem="ob8-QI-W3e" secondAttribute="bottom" constant="8" id="rVa-lh-ZXi"/>
                             <constraint firstItem="VCh-wc-L5J" firstAttribute="top" secondItem="yYj-pv-ToX" secondAttribute="top" id="v0U-nn-95J"/>
                             <constraint firstItem="IRT-5W-VEd" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="wYO-b4-CAo"/>
                         </constraints>
@@ -512,7 +493,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="k7x-N7-n4A"/>
                     <connections>
-                        <outlet property="recipeSearch" destination="2Ib-Tn-VHX" id="CmE-fz-aeY"/>
                         <outlet property="searchBar" destination="VCh-wc-L5J" id="sSO-k8-jwz"/>
                         <outlet property="tableView" destination="IRT-5W-VEd" id="VPv-Di-SFO"/>
                     </connections>
