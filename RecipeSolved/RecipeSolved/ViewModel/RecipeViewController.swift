@@ -20,12 +20,10 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeItems: UILabel!
     @IBOutlet weak var recipeServings: UILabel!
     @IBOutlet weak var recipeIngredients: UITextView!
-    //@IBOutlet weak var recipeButton: UIButton!
     @IBAction func clickRecipeButton(_ sender: Any) {
         if let url = URL(string: selectedRecipe!.url) {
             UIApplication.shared.open(url)
         }
-//        UIApplication.shared.open(URL(string: selectedRecipe!.url)!)
     }
     
     
@@ -38,7 +36,6 @@ class RecipeViewController: UIViewController {
             recipeItems.text = selectedRecipe.items
             recipeServings.text = selectedRecipe.servings
             recipeIngredients.text = selectedRecipe.ingredients
-//            recipeButton.addTarget(self, action: Selector(("clickRecipeButton")), for: .touchUpInside)
         }
         
     }

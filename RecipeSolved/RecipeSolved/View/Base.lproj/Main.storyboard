@@ -198,7 +198,7 @@
                                                 <rect key="frame" x="16" y="309.5" width="288" height="30"/>
                                                 <state key="normal" title="Open Recipe"/>
                                                 <connections>
-                                                    <action selector="clickButton:" destination="TRU-C4-yU6" eventType="touchUpInside" id="GLE-fu-0NW"/>
+                                                    <action selector="clickRecipeButton:" destination="TRU-C4-yU6" eventType="touchUpInside" id="xJV-C6-W6F"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lGS-cg-aiT">
