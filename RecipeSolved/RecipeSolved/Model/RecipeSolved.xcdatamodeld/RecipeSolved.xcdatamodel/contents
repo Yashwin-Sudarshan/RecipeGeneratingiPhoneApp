@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Developer" representedClassName="Developer" syncable="YES">
+        <attribute name="developerBio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+        <attribute name="expirationDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pantry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pantry" inverseName="ingredients" inverseEntity="Pantry" syncable="YES"/>
+    </entity>
+    <entity name="Pantry" representedClassName="Pantry" syncable="YES">
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="pantry" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Ingredient" positionX="-392.15625" positionY="-40.86328125" width="128" height="103"/>
+        <element name="Developer" positionX="-45" positionY="0" width="128" height="90"/>
+        <element name="Pantry" positionX="-131.82421875" positionY="188.140625" width="128" height="58"/>
+    </elements>
+</model>
