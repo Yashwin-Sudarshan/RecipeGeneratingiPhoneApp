@@ -8,11 +8,27 @@
 
 import UIKit
 
-class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     private let viewModel = RecipeViewModel()
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var recipeSearch: UITextField!
+    
+    @IBAction func search(_ sender: Any) {
+        viewModel.getRecipe(title: recipeSearch.text!)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchText \(searchText)")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchText \(searchBar.text)")
+    }
     
     var searchController: UISearchController!
     var filteredRecipes:[Recipe] = []
@@ -27,6 +43,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -98,7 +115,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     // Filter the table depending on what is being searched for
     func filterContentForSearchText(_ searchText: String) {
-        viewModel.getRecipe(title: searchText)
+//        viewModel.getRecipe(title: searchText)
 //        var recipeStrings:[String] = []
 //        for recipe in 0..<allRecipes.count {
 //            let currentRecipe = viewModel.getRecipeByRecipe(byRecipe: allRecipes[recipe])
@@ -149,7 +166,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
 }
 
 // Update search result based on what the user is searching for
-extension RecipeTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension RecipeTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
 //        let searchBar = searchController.searchBar
