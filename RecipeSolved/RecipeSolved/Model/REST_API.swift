@@ -68,10 +68,8 @@ class REST_API {
                         let items = String(ingredientLines.count) + " ingredients"
                         let commaSeperatedIngredients = ingredientLines.joined(separator: ",")
                         let ingredients = commaSeperatedIngredients.replacingOccurrences(of: ",", with: "\n")
-                        let totalTime = jsonRecipe["totalTime"] as! Int
-                        let time = String(totalTime) + " mins"
                         
-                        let recipe = Recipe(title: title, image: image, url: url, servings: servings, items: items, ingredients: ingredients, time: time)
+                        let recipe = Recipe(title: title, image: image, url: url, servings: servings, items: items, ingredients: ingredients)
                         self._recipes.append(recipe)
                     }
                 }
