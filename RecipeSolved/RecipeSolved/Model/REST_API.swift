@@ -8,9 +8,13 @@
 
 import Foundation
 
+protocol Refresh {
+    func updateUI()
+}
+
 class REST_API {
     private var _recipes:[Recipe] = []
-    
+    var delegate:Refresh?
     private let session = URLSession.shared
     
     private let baseURL:String = "https://api.edamam.com/search?"
@@ -70,6 +74,9 @@ class REST_API {
                         let recipe = Recipe(title: title, image: image, url: url, servings: servings, items: items, ingredients: ingredients, time: time)
                         self._recipes.append(recipe)
                     }
+                }
+                DispatchQueue.main.async {
+                    self.delegate?.updateUI()
                 }
             }
         })

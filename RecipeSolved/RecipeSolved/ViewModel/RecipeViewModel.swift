@@ -13,6 +13,15 @@ struct RecipeViewModel {
     
     private var model = REST_API.shared
     
+    var delegate:Refresh?{
+        get {
+            return model.delegate
+        }
+        set (value) {
+            model.delegate = value
+        }
+    }
+    
     var count:Int{
         return recipes.count
     }
@@ -27,7 +36,14 @@ struct RecipeViewModel {
     
     func getImageFor(index:Int) -> UIImage? {
         let url = recipes[index].image
-        let image = UIImage(named: url)
+        guard let imageURL = URL(string: url) else {
+            return nil
+        }
+        let data = try? Data(contentsOf: imageURL)
+        let image: UIImage? = nil
+        if let imageData = data {
+            return UIImage(data: imageData)
+        }
         return image
     }
     

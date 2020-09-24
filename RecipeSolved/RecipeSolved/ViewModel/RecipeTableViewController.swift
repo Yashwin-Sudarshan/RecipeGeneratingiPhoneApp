@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
-    private let viewModel = RecipeViewModel()
+class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, Refresh {
+    
+    var viewModel = RecipeViewModel()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,9 +25,13 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         viewModel.getRecipe(title: searchBar.text!)
     }
     
+    func updateUI() {
+        tableView.reloadData()
+    }
+    
     var searchController: UISearchController!
-    var filteredRecipes:[Recipe] = []
-    var allRecipes:[Recipe] = []
+    //var filteredRecipes:[Recipe] = []
+    //var allRecipes:[Recipe] = []
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -41,6 +45,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        viewModel.delegate = self
         
         // Add all of the recipes to the allRecipes array
 //        for recipe in 0..<viewModel.count {
