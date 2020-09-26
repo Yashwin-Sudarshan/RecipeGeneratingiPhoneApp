@@ -100,36 +100,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       }
 
     
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-          let imageView = cell.viewWithTag(1000) as? UIImageView
-          let recipeTitle = cell.viewWithTag(1001) as? UILabel
-          let recipeTime = cell.viewWithTag(1002) as? UILabel
-          let recipeItems = cell.viewWithTag(1003) as? UILabel
-          let recipeRating = cell.viewWithTag(1004) as? UILabel
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        let imageView = cell.viewWithTag(1000) as! UIImageView
+        let recipeTitle = cell.viewWithTag(1001) as! UILabel
+        let recipeItems = cell.viewWithTag(1003) as! UILabel
+        let recipeServings = cell.viewWithTag(1004) as! UILabel
+        
+        imageView.image = viewModel.getImageFor(index: indexPath.row)
+        recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
+        recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
+        recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
           
-          if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
-              let currentRecipe = viewModel.getRecipe(byIndex: indexPath.row)
-              imageView.image = currentRecipe.image
-              recipeTitle.text = currentRecipe.title
-              recipeTime.text = currentRecipe.time
-              recipeItems.text = currentRecipe.items
-              recipeRating.text = currentRecipe.rating
-          }
+//          if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
+//              let currentRecipe = viewModel.getRecipe(byIndex: indexPath.row)
+//              imageView.image = currentRecipe.image
+//              recipeTitle.text = currentRecipe.title
+//              recipeTime.text = currentRecipe.time
+//              recipeItems.text = currentRecipe.items
+//              recipeRating.text = currentRecipe.rating
+//          }
           return cell
       }
 
+//      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//          guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
+//
+//          let destination = segue.destination as? RecipeViewController
+//
+//          let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
+//
+//          destination?.selectedRecipe = selectedRecipe
+//
+//      }
 
-      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-          
-          guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
-
-          let destination = segue.destination as? RecipeViewController
-          
-          let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
-          
-          destination?.selectedRecipe = selectedRecipe
-      }
-    
 }
-
