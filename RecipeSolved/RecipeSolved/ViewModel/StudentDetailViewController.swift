@@ -12,7 +12,7 @@ import UIKit
 
 class StudentDetailViewController: UIViewController {
 
-    
+    // private var viewModel = DisplayBookViewMode()
     @IBOutlet weak var studentImage: UIImageView!
     
     @IBOutlet weak var studentName: UILabel!
