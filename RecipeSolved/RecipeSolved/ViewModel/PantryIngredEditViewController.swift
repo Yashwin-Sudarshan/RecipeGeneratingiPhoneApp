@@ -31,6 +31,8 @@ class PantryIngredEditViewController: UIViewController{
     
     var validator = PantryValidator()
     
+    private var updateIngredientViewModel = PantryUpdateIngredientViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,7 +79,13 @@ class PantryIngredEditViewController: UIViewController{
         
         if(validateInput() == true){
             
-            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+            guard let editIngredientField = editIngredientTextField.text, let editAddingField = editAddingTextField.text, let editExpiryField = editExpiryTextField.text else {return} // extra validation --> probs redundant --> 'guard' probs not needed
+            
+            updateIngredientViewModel.updateIngredient(editIngredientField, editAddingField, editExpiryField, self.currentIngredientsIndexSelection)
+            
+//            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+            
+            let ingredString = "\(editIngredientField),\(editAddingField),\(editExpiryField)"
             
             self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
         }

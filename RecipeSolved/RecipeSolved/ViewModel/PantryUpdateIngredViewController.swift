@@ -8,6 +8,20 @@
 
 // This view controller retrieves ingredient entry additions from the PantryIngredientaddingViewController and renders table rows appropriately formatted to display the user's ingredients. The view controller also updates the entries themselves from the user editing ingredient entries in the PantryIngredEditViewController. This view controller also handles search functionality to filter ingredients based on search input.
 
+//private var developerImages:[UIImage]{
+    //
+    //        let developers = developerManager.developers
+    //        var temp:[UIImage] = []
+    //
+    //        for(_, developer) in developers.enumerated(){
+    //
+    //            let image = UIImage(data: developer.image! as Data)
+    //            temp.append(image!)
+    //        }
+    //
+    //        return temp
+    //    }
+
 import UIKit
 import SafariServices
 
@@ -18,7 +32,32 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     var searchController: UISearchController!
     
+    private var ingredientManager = DataManager.shared
+    
+    private var deleteIngredientViewModel = PantryDeleteIngredientViewModel()
+    
     // Contains all the user's ingredients.
+//    var currentIngredients:[String] = []
+    
+    // Contains all the user's ingredients read in from core database.
+    var currentIngredientsFromDatabase:[String]{
+        
+        let ingredients = ingredientManager.ingredients
+        var temp:[String] = []
+        
+        for(_, ingredient) in ingredients.enumerated(){
+            
+            let ingredientName = ingredient.name
+            let ingredientQty = ingredient.quantity
+            let ingredientExp = ingredient.expirationDate
+//            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
+            let ingredString = "\(ingredientName!),\(ingredientQty!),\(ingredientExp!)"
+            temp.append(ingredString)
+        }
+        return temp
+    }
+    
+    // Contains all the user's ingredients, used to aid in updating ingredient data
     var currentIngredients:[String] = []
     
     // Contains ingredients contained in the search results.
@@ -36,6 +75,7 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         pantryTableView.dataSource = self
         pantryTableView.delegate = self
         
+        currentIngredients = currentIngredientsFromDatabase
         currentDataSourceSearch = currentIngredients
         
         self.navigationItem.leftBarButtonItem = nil
@@ -126,13 +166,16 @@ extension PantryUpdateIngredViewController: UITableViewDelegate, UITableViewData
     }
     
     // Deletes a table row.
-    // The respective entries in the specified index of the arrays containing the user's ingredients is also deleted.
+    // The respective ingredient entry in the specified index of the ingredient core database is also deleted
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
+            
+            deleteIngredientViewModel.deleteIngredient(indexPath.row)
+            
             currentIngredients.remove(at: indexPath.row)
             
-            PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row) 
+//            PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row) 
             
             currentDataSourceSearch = currentIngredients
             

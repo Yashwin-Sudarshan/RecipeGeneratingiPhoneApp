@@ -25,10 +25,28 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     // Holds all of user's ingredient entries
     static var ingredInput:[String] = []
+    private var ingredientManager = DataManager.shared
+    // Contains all the user's ingredients read in from core database.
+    var currentIngredientsFromDatabase:[String]{
+        
+        let ingredients = ingredientManager.ingredients
+        var temp:[String] = []
+        
+        for(_, ingredient) in ingredients.enumerated(){
+            
+            let ingredientName = ingredient.name
+            let ingredientQty = ingredient.quantity
+            let ingredientExp = ingredient.expirationDate
+            //            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
+            let ingredString = "\(ingredientName!),\(ingredientQty!),\(ingredientExp!)"
+            temp.append(ingredString)
+        }
+        return temp
+    }
     
     var validator = PantryValidator()
     
-//    private var addingIngredientViewModel = PantryIngredientAddingViewModel()
+    private var addingIngredientViewModel = PantryIngredientAddingViewModel()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -49,7 +67,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         
         //---------------Load ingredients from database--------------------//
         // bookList.text = viewModel.bookTitles
-        
+        PantryIngredientaddingViewController.ingredInput = currentIngredientsFromDatabase
     }
     
     // Sets the 'Confirm Entry' button to disabled and increases its transparency.
@@ -71,16 +89,23 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     // Adds user ingredient, quantity, and date inputs into array for transportation into
     // PantryUpdateIngredViewController
+    // Adds user ingredient, quantity, and date inputs into core database for transportation into
+    // PantryUpdateIngredViewController
     @IBAction func confirmEntryTap(_ sender: Any) {
         
         if(validateInput() == true){
             
-            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
+            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return} // extra validation --> probs redundant --> 'guard' probs not needed
+            
+            addingIngredientViewModel.addIngredient(ingredientField, addingField, expiryField)
+            
+//            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
            
+            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
+            
             PantryIngredientaddingViewController.ingredInput.append(ingredString)
             
-            //------------------Database equivalent----------------------//
-//            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return}
+//            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return} // not needed since validation??
 //
 //            addingIngredientViewModel.addIngredient(ingredientField, addingField, expiryField)
             // bookList.text = viewModel.bookTitle
