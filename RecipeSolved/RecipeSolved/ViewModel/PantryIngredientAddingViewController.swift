@@ -28,6 +28,8 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     
     var validator = PantryValidator()
     
+//    private var addingIngredientViewModel = PantryIngredientAddingViewModel()
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -44,6 +46,9 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         
         // Checks validity of user inputs in each text field in real time
         [ingredientField, addingField, expiryField].forEach({$0?.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)})
+        
+        //---------------Load ingredients from database--------------------//
+        // bookList.text = viewModel.bookTitles
         
     }
     
@@ -74,6 +79,11 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
            
             PantryIngredientaddingViewController.ingredInput.append(ingredString)
             
+            //------------------Database equivalent----------------------//
+//            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return}
+//
+//            addingIngredientViewModel.addIngredient(ingredientField, addingField, expiryField)
+            // bookList.text = viewModel.bookTitle
         }
     }
     
@@ -126,6 +136,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
          let vcTransfer = segue.destination as! PantryUpdateIngredViewController
          vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
         
+        // Might be redundant given the use of core data
     }
 }
 
