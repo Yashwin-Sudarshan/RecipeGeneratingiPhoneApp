@@ -19,6 +19,8 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     @IBOutlet weak var addingField: UITextField!
     @IBOutlet weak var expiryField: UITextField!
     
+    private var datePickerComponent: UIDatePicker?
+    
     @IBOutlet weak var confirmEntryButton: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -54,6 +56,18 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         ingredientField.delegate = self
         addingField.delegate = self
         expiryField.delegate = self
+        
+        // Adds date picker component into expiry field and allows the user to exit the
+        // date picker by tapping the scene
+        datePickerComponent = UIDatePicker()
+        datePickerComponent?.datePickerMode = .date
+        datePickerComponent?.addTarget(self, action: #selector(self.dateAltered(datePickerComponent:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTouched(gestureRecognizer:)))
+
+        view.addGestureRecognizer(tapGesture)
+        
+        expiryField.inputView = datePickerComponent
         
         // Listens for events from keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -121,7 +135,16 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             return false
         }
         
-        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+//        guard let ingredient = ingredientField.text, let qty = addingField.text else{
+//            return false
+//        }
+        
+        if(exp.isEmpty){
+            return false
+        }
+        
+//        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty)
         
         return isValid
     }
@@ -144,6 +167,21 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
 
         }
+    }
+    
+    // Formats date selection and returns the date as a text entry into the expiry text field
+    @objc func dateAltered(datePickerComponent: UIDatePicker){
+        
+        let dateInputFormatter = DateFormatter()
+        dateInputFormatter.dateFormat = "dd/MM/yy"
+        expiryField.text = dateInputFormatter.string(from: datePickerComponent.date)
+        editingChanged(expiryField)
+//        view.endEditing(true)
+    }
+    
+    // Allows user to hide date picker by tapping the scene
+    @objc func viewTouched(gestureRecognizer: UITapGestureRecognizer){
+        view.endEditing(true)
     }
     
     // Allows user to hide keyboard by tapping 'Return'.

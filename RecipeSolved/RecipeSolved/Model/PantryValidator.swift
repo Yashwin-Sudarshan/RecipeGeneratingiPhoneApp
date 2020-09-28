@@ -18,7 +18,8 @@ class PantryValidator: Validator{
     
     func validateIngredient(ingredient:String) -> Bool{
         
-        let ingredRegex = "[a-zA-z][a-zA-z]*"
+//        let ingredRegex = "[a-zA-z][a-zA-z]*"
+        let ingredRegex = "^[a-zA-z_]+( [a-zA-Z_]+)*$"
         let trimmedEntryString = ingredient.trimmingCharacters(in: .whitespaces)
         let validateIngredient = NSPredicate(format: "SELF MATCHES %@", ingredRegex)
         let isValidateIngredient = validateIngredient.evaluate(with: trimmedEntryString)
@@ -34,18 +35,19 @@ class PantryValidator: Validator{
         return isValidateQty
     }
     
-    func validateExp(exp:String) -> Bool{
-        
-        let expRegex = "^((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))\\/((0[1-9])|(1[0-2]))"
-        let trimmedEntryString = exp.trimmingCharacters(in: .whitespaces)
-        let validateExp = NSPredicate(format: "SELF MATCHES %@", expRegex)
-        let isValidateExp = validateExp.evaluate(with: trimmedEntryString)
-        return isValidateExp
-    }
+//    func validateExp(exp:String) -> Bool{
+//
+//        let expRegex = "^((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))\\/((0[1-9])|(1[0-2]))"
+//        let trimmedEntryString = exp.trimmingCharacters(in: .whitespaces)
+//        let validateExp = NSPredicate(format: "SELF MATCHES %@", expRegex)
+//        let isValidateExp = validateExp.evaluate(with: trimmedEntryString)
+//        return isValidateExp
+//    }
     
     // Validates all inputs (ingredient field, quantity field, expiry field)
-    func validatePantryInputs(ingredient: String, qty: String, exp: String) -> Bool {
+    func validatePantryInputs(ingredient: String, qty: String) -> Bool {
     
-        return validateIngredient(ingredient: ingredient) && validateQty(qty: qty) && validateExp(exp: exp)
+//        return validateIngredient(ingredient: ingredient) && validateQty(qty: qty) && validateExp(exp: exp)
+        return validateIngredient(ingredient: ingredient) && validateQty(qty: qty)
     }
 }

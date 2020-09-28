@@ -127,7 +127,8 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         
         let destination = segue.destination as? PantryIngredEditViewController
         
-        destination?.currentTotalIngredients = self.currentIngredients
+//        destination?.currentTotalIngredients = self.currentIngredients
+        destination?.currentTotalIngredients = self.currentDataSourceSearch
         
         destination?.currentIngredientsIndexSelection = self.currentIngredientsIndexSelection
         
