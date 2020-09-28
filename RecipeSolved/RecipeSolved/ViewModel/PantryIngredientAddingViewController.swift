@@ -87,9 +87,22 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
     // Sets the 'Confirm Entry' button to disabled and increases its transparency.
     override func viewWillAppear(_ animated: Bool) {
         
-        confirmEntryButton.isEnabled = false
-        confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
-        confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
+        if(validateInput() == true){
+            
+            confirmEntryButton.isEnabled = true
+            confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 1)
+            confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1), for: .normal)
+            
+        }else{
+            
+            confirmEntryButton.isEnabled = false
+            confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
+            confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
+        }
+        
+//        confirmEntryButton.isEnabled = false
+//        confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
+//        confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
     }
     
     // Un-registering keyboard event listeners
