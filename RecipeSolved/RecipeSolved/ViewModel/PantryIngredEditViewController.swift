@@ -53,7 +53,7 @@ class PantryIngredEditViewController: UIViewController{
         // date picker by tapping the scene
         datePickerComponent = UIDatePicker()
         datePickerComponent?.datePickerMode = .date
-        
+        datePickerComponent?.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         datePickerComponent?.addTarget(self, action: #selector(self.dateAltered(datePickerComponent:)), for: .valueChanged)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTouched(gestureRecognizer:)))
