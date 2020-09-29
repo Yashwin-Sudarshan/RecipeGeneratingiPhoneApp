@@ -33,6 +33,8 @@
 		CA5CA76624E80217000F2362 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5CA76524E80217000F2362 /* Pantry.storyboard */; };
 		CA64FF5324FB481200E6FE20 /* PantryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64FF5224FB481200E6FE20 /* PantryValidator.swift */; };
 		CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */; };
+		CAA222A12520DA3F00692762 /* PantryUpdateIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA222A02520DA3F00692762 /* PantryUpdateIngredientViewModel.swift */; };
+		CAA222A32520E2F400692762 /* PantryDeleteIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA222A22520E2F400692762 /* PantryDeleteIngredientViewModel.swift */; };
 		CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */; };
 		CABBEA1A251CB84200BB0955 /* RecipeSolved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CABBEA18251CB84200BB0955 /* RecipeSolved.xcdatamodeld */; };
 		CABBEA21251CBD6800BB0955 /* Developer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBEA1B251CBD6800BB0955 /* Developer+CoreDataClass.swift */; };
@@ -94,6 +96,8 @@
 		CA5CA76524E80217000F2362 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 		CA64FF5224FB481200E6FE20 /* PantryValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryValidator.swift; sourceTree = "<group>"; };
 		CA6F190D24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredEditViewController.swift; sourceTree = "<group>"; };
+		CAA222A02520DA3F00692762 /* PantryUpdateIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUpdateIngredientViewModel.swift; sourceTree = "<group>"; };
+		CAA222A22520E2F400692762 /* PantryDeleteIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryDeleteIngredientViewModel.swift; sourceTree = "<group>"; };
 		CAAE46AF24EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredientAddingViewController.swift; sourceTree = "<group>"; };
 		CABBEA19251CB84200BB0955 /* RecipeSolved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeSolved.xcdatamodel; sourceTree = "<group>"; };
 		CABBEA1B251CBD6800BB0955 /* Developer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Developer+CoreDataClass.swift"; path = "RecipeSolved/Model/Developer+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -195,12 +199,9 @@
 				CA35437824FAACDB00AEC63E /* StudentDeveloper.swift */,
 				CA64FF5224FB481200E6FE20 /* PantryValidator.swift */,
 				CAD25C1024FC0FDE00FF5250 /* Validator.swift */,
-
 				CABBEA18251CB84200BB0955 /* RecipeSolved.xcdatamodeld */,
 				CA3C871D251ED95300911E27 /* DataManager.swift */,
-
 				77DEAE7F25184C0F005C30CF /* REST_API.swift */,
-
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +233,8 @@
 				CA3C8721251F1E9100911E27 /* StudentDeveloperAddDeveloperViewModel.swift */,
 				CA3C8723251F315B00911E27 /* DisplayStudentDeveloperViewModel.swift */,
 				19F2AA512518C55600FCCA4D /* LocationSelector.swift */,
+				CAA222A02520DA3F00692762 /* PantryUpdateIngredientViewModel.swift */,
+				CAA222A22520E2F400692762 /* PantryDeleteIngredientViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				CABBEA26251CBD6800BB0955 /* Ingredient+CoreDataProperties.swift in Sources */,
 				CA3C871E251ED95300911E27 /* DataManager.swift in Sources */,
 				CA35437D24FAB5C000AEC63E /* StudentDeveloperTableViewController.swift in Sources */,
+				CAA222A12520DA3F00692762 /* PantryUpdateIngredientViewModel.swift in Sources */,
 				77DEAE8025184C0F005C30CF /* REST_API.swift in Sources */,
 				CA35438124FABB0E00AEC63E /* StudentDetailViewController.swift in Sources */,
 				0FD39FB624D2C8E9001CEA9A /* ViewController.swift in Sources */,
@@ -387,6 +391,7 @@
 				CA6F190E24F6BD5C00CA8FCA /* PantryIngredEditViewController.swift in Sources */,
 				CAAE46B024EC1FC7004FDEAE /* PantryIngredientAddingViewController.swift in Sources */,
 				CAD25C1124FC0FDE00FF5250 /* Validator.swift in Sources */,
+				CAA222A32520E2F400692762 /* PantryDeleteIngredientViewModel.swift in Sources */,
 				CABBEA21251CBD6800BB0955 /* Developer+CoreDataClass.swift in Sources */,
 				0FD39FB424D2C8E9001CEA9A /* AppDelegate.swift in Sources */,
 				CABBEA22251CBD6800BB0955 /* Developer+CoreDataProperties.swift in Sources */,

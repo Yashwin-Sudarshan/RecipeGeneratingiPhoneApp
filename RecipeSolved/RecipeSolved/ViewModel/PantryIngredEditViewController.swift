@@ -24,12 +24,16 @@ class PantryIngredEditViewController: UIViewController{
     @IBOutlet weak var editAddingTextField: UITextField!
     @IBOutlet weak var editExpiryTextField: UITextField!
     
+    private var datePickerComponent: UIDatePicker?
+    
     @IBOutlet weak var confirmEditButton: UIButton!
     
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     var validator = PantryValidator()
+    
+    private var updateIngredientViewModel = PantryUpdateIngredientViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,19 @@ class PantryIngredEditViewController: UIViewController{
         editIngredientTextField.text = inputComponents[0]
                     editAddingTextField.text = inputComponents[1]
                     editExpiryTextField.text = inputComponents[2]
+        
+        // Adds date picker component into expiry field and allows the user to exit the
+        // date picker by tapping the scene
+        datePickerComponent = UIDatePicker()
+        datePickerComponent?.datePickerMode = .date
+        
+        datePickerComponent?.addTarget(self, action: #selector(self.dateAltered(datePickerComponent:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTouched(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        editExpiryTextField.inputView = datePickerComponent
         
         // Listens for events from keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -77,7 +94,13 @@ class PantryIngredEditViewController: UIViewController{
         
         if(validateInput() == true){
             
-            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+            guard let editIngredientField = editIngredientTextField.text, let editAddingField = editAddingTextField.text, let editExpiryField = editExpiryTextField.text else {return} // extra validation --> probs redundant --> 'guard' probs not needed
+            
+            updateIngredientViewModel.updateIngredient(editIngredientField, editAddingField, editExpiryField, self.currentIngredientsIndexSelection)
+            
+//            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
+            
+            let ingredString = "\(editIngredientField),\(editAddingField),\(editExpiryField)"
             
             self.currentTotalIngredients[self.currentIngredientsIndexSelection] = ingredString
         }
@@ -92,7 +115,11 @@ class PantryIngredEditViewController: UIViewController{
             return false
         }
         
-        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+        if(exp.isEmpty){
+            return false
+        }
+//        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty)
         
         return isValid
     }
@@ -113,6 +140,20 @@ class PantryIngredEditViewController: UIViewController{
             confirmEditButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
             confirmEditButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
         }
+    }
+    
+    // Formats date selection and returns the date as a text entry into the expiry text field
+    @objc func dateAltered(datePickerComponent: UIDatePicker){
+        
+        let dateInputFormatter = DateFormatter()
+        dateInputFormatter.dateFormat = "dd/MM/yy"
+        editExpiryTextField.text = dateInputFormatter.string(from: datePickerComponent.date)
+        editingChanged(editExpiryTextField)
+    }
+    
+    // Allows user to hide date picker by tapping the scene
+    @objc func viewTouched(gestureRecognizer: UITapGestureRecognizer){
+        view.endEditing(true)
     }
     
     // Allows user to hide keyboard by tapping 'Return'.

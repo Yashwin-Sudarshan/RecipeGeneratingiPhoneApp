@@ -29,6 +29,7 @@ class DataManager{
         loadDevelopers()
 //        deleteDevelopers()
         loadIngredients()
+//        deleteIngredients()
     }
     
     // Creates new Ingredient
@@ -88,6 +89,33 @@ class DataManager{
         }
     }
     
+    // Updates an ingredient at the selected row in the database and saves the update
+    func updateIngredient(_ name: String, quantity: String, expirationDate: String, index: Int){
+        
+        ingredients[index].name = name
+        ingredients[index].quantity = quantity
+        ingredients[index].expirationDate = expirationDate
+        
+        do{
+            try managedContext.save()
+        }catch let error as NSError{
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    // Deletes an ingredient at the selected row in the database and saves the deletion update
+    func deleteIngredient(index: Int){
+        
+//        ingredients.remove(at: index)
+        managedContext.delete(ingredients[index])
+        ingredients.remove(at: index)
+        do{
+            try managedContext.save()
+        }catch let error as NSError{
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
     // Read saved developers from database
     private func loadDevelopers(){
         
@@ -128,6 +156,23 @@ class DataManager{
             ingredients = result as! [Ingredient]
         }catch let error as NSError{
             print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    // Just for testing purposes --> to be removed later
+    private func deleteIngredients(){
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        // get reference to the persistent container
+        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        
+        // perform the delete
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+        } catch let error as NSError {
+            print(error)
         }
     }
 }
