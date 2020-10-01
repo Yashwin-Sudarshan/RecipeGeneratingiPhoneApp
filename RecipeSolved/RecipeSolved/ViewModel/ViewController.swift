@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RefreshHome {
+    
     // Label outlets for temperature
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
@@ -17,13 +18,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var item: UIBarButtonItem!
     
+    private var ingredientManager = DataManager.shared
+    private var viewModel = HomeRecipeViewModel()
+    
+    // Get ingredients from data store, and pre-load them so they are ready when the user selects the explore tab.
+    var ingredientName: String{
+        
+        var result: String = ""
+        let ingredients = ingredientManager.ingredients
+        for(_, ingredient) in ingredients.enumerated(){
+            
+            if let name = ingredient.name{
+                result += name + ","
+            }
+        }
+        return result
+    }
+    
+    func updateHome() {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         getWeather()
         getGreeting()
+        viewModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        viewModel.getRecipe(title: ingredientName)
     }
     
     func getGreeting()  {
@@ -91,13 +115,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
 //  Table
-    
-    private let viewModel = RecipeViewModel()
-
-
-      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return viewModel.count
-      }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.count
+    }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,28 +131,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
         recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
         recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
-          
-//          if let imageView = imageView, let recipeTitle = recipeTitle, let recipeTime = recipeTime, let recipeItems = recipeItems, let recipeRating = recipeRating{
-//              let currentRecipe = viewModel.getRecipe(byIndex: indexPath.row)
-//              imageView.image = currentRecipe.image
-//              recipeTitle.text = currentRecipe.title
-//              recipeTime.text = currentRecipe.time
-//              recipeItems.text = currentRecipe.items
-//              recipeRating.text = currentRecipe.rating
-//          }
-          return cell
+        
+        return cell
       }
 
-//      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//          guard let selectedRow = self.tableView.indexPathForSelectedRow else{return}
-//
-//          let destination = segue.destination as? RecipeViewController
-//
-//          let selectedRecipe = viewModel.getRecipe(byIndex: selectedRow.row)
-//
-//          destination?.selectedRecipe = selectedRecipe
-//
-//      }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let selectedRow = self.tableView.indexPathForSelectedRow else {return}
+        let destination = segue.destination as? RecipeViewController
+        let selectedRecipe = viewModel.getAllFor(index: selectedRow.row)
+        destination?.selectedRecipe = selectedRecipe
+    }
 
 }
