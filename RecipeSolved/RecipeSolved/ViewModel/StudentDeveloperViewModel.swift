@@ -46,6 +46,8 @@ struct StudentDeveloperViewModel{
     
     init() {
         loadData()
+        developers = DataManager.shared.developers
+        // Above line fixes bug when loading developers for the first time
     }
     
     // Adds all the students in the development team into the developers array.
