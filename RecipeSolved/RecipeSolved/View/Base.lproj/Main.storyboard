@@ -27,14 +27,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ºC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09t-M5-4c0">
-                                <rect key="frame" x="270" y="96" width="34" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.21180626293080129" green="0.58408389189312349" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSm-lS-HFr">
-                                <rect key="frame" x="16" y="92" width="117" height="28"/>
+                                <rect key="frame" x="16" y="92" width="57.5" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="LMf-ds-gF2"/>
                                 </constraints>
@@ -105,14 +99,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ºC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-bX-zal">
-                                <rect key="frame" x="270" y="72" width="34" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.33094839295465672" blue="0.26593094802037986" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ºC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa1-Ed-zwl">
-                                <rect key="frame" x="150" y="72" width="97" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ºC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa1-Ed-zwl">
+                                <rect key="frame" x="81.5" y="72" width="222.5" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,26 +108,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="09t-M5-4c0" firstAttribute="leading" secondItem="Oa1-Ed-zwl" secondAttribute="trailing" constant="23" id="1M1-TH-7ua"/>
-                            <constraint firstItem="09t-M5-4c0" firstAttribute="top" secondItem="kvu-bX-zal" secondAttribute="bottom" id="26d-AC-VsC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="O3a-x7-0HU" secondAttribute="bottom" id="2uH-T8-Yr4"/>
                             <constraint firstItem="iSm-lS-HFr" firstAttribute="top" secondItem="9SS-mA-C2u" secondAttribute="bottom" constant="-5" id="47Z-1W-Xta"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iSm-lS-HFr" secondAttribute="trailing" constant="187" id="6ua-QH-tpg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O3a-x7-0HU" secondAttribute="trailing" constant="16" id="8OW-zC-ykw"/>
+                            <constraint firstItem="Oa1-Ed-zwl" firstAttribute="leading" secondItem="iSm-lS-HFr" secondAttribute="trailing" constant="8" id="KDh-ob-TSy"/>
                             <constraint firstItem="iSm-lS-HFr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PuE-qq-SDJ"/>
                             <constraint firstItem="O3a-x7-0HU" firstAttribute="top" secondItem="iSm-lS-HFr" secondAttribute="bottom" constant="8" id="VZN-4S-5cM"/>
                             <constraint firstItem="9SS-mA-C2u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VaR-S9-vYu"/>
                             <constraint firstItem="Oa1-Ed-zwl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="VbM-Z2-59j"/>
-                            <constraint firstItem="kvu-bX-zal" firstAttribute="leading" secondItem="Oa1-Ed-zwl" secondAttribute="trailing" constant="23" id="WLI-u7-S1S"/>
                             <constraint firstItem="O3a-x7-0HU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bcq-0z-Pah"/>
-                            <constraint firstItem="Oa1-Ed-zwl" firstAttribute="leading" secondItem="iSm-lS-HFr" secondAttribute="trailing" constant="17" id="cVh-K1-S3h"/>
-                            <constraint firstItem="Oa1-Ed-zwl" firstAttribute="leading" secondItem="9SS-mA-C2u" secondAttribute="trailing" constant="76.5" id="gdl-pF-YWd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kvu-bX-zal" secondAttribute="trailing" constant="16" id="h3a-Ye-rCe"/>
                             <constraint firstItem="9SS-mA-C2u" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="je6-vv-rYp"/>
                             <constraint firstItem="O3a-x7-0HU" firstAttribute="top" secondItem="Oa1-Ed-zwl" secondAttribute="bottom" constant="8" id="jjf-PX-iKn"/>
-                            <constraint firstItem="O3a-x7-0HU" firstAttribute="top" secondItem="09t-M5-4c0" secondAttribute="bottom" constant="8" id="o93-cB-Vku"/>
-                            <constraint firstItem="kvu-bX-zal" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="pWK-vt-3qM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="09t-M5-4c0" secondAttribute="trailing" constant="16" id="tBI-zH-GbG"/>
+                            <constraint firstItem="Oa1-Ed-zwl" firstAttribute="leading" secondItem="9SS-mA-C2u" secondAttribute="trailing" constant="8" id="pwx-8V-IKe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oa1-Ed-zwl" secondAttribute="trailing" constant="16" id="r2s-jL-2Jg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -154,8 +135,6 @@
                         <outlet property="currentTempLabel" destination="Oa1-Ed-zwl" id="TEj-mW-YQD"/>
                         <outlet property="greetingLabel" destination="iSm-lS-HFr" id="azp-qz-yiZ"/>
                         <outlet property="item" destination="ZnI-ay-iGR" id="uEO-5R-c0M"/>
-                        <outlet property="maxTempLabel" destination="kvu-bX-zal" id="XNS-4Y-rAq"/>
-                        <outlet property="minTempLabel" destination="09t-M5-4c0" id="TIy-2u-0PQ"/>
                         <outlet property="tableView" destination="O3a-x7-0HU" id="kxb-JX-ayT"/>
                     </connections>
                 </viewController>
