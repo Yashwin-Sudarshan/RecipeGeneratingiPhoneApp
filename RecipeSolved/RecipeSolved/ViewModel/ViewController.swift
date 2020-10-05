@@ -12,8 +12,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Label outlets for temperature
     @IBOutlet weak var currentTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var item: UIBarButtonItem!
@@ -63,10 +61,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func getWeather() {
-        let city = "East%20Melbourne"
-        let countryCode = "au"
+        let lat = "-37.8"
+        let lon = "145.0"
         let session = URLSession.shared
-        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city),\(countryCode)?&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
+        let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
         
         // API KEY: 368e3231ebc2330d34a01ab4e56add0e
         // Also hosts the location of data being retrieved
@@ -85,18 +83,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 let temp = Int(temperature)
                                 DispatchQueue.main.async {
                                     self.currentTempLabel.text = "\(temp)ºC"     // Updates the currentTempLabel
-                                }
-                            }
-                            if let temperature = mainDictionary.value(forKey: "temp_max") as? Double {
-                                let temp = Int(temperature)
-                                DispatchQueue.main.async {
-                                    self.maxTempLabel.text = "\(temp)ºC"         // Updates the maxTempLabel
-                                }
-                            }
-                            if let temperature = mainDictionary.value(forKey: "temp_min") as? Double {
-                                let temp = Int(temperature)
-                                DispatchQueue.main.async {
-                                    self.minTempLabel.text = "\(temp)ºC"         // Updates the minTempLabel
                                 }
                             }
                         } else {
