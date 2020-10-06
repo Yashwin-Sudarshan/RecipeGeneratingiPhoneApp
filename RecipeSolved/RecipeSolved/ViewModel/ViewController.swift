@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RefreshHome {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, RefreshHome {
     
     // Label outlets for temperature
     @IBOutlet weak var currentTempLabel: UILabel!
@@ -18,6 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private var ingredientManager = DataManager.shared
     private var viewModel = HomeRecipeViewModel()
+    let locationManager = CLLocationManager()
     
     // Get ingredients from data store, and pre-load them so they are ready when the user selects the explore tab.
     var ingredientName: String{
@@ -40,12 +42,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         getWeather()
         getGreeting()
         viewModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         viewModel.getRecipe(title: ingredientName)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            print(location.coordinate)
+        }
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Did location updates is called but failed getting location \(error)")
     }
     
     func getGreeting()  {
@@ -59,10 +78,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
     func getWeather() {
-        let lat = "-37.8"
-        let lon = "145.0"
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestLocation();
+        }
+        let lat = "\(locationManager.location?.coordinate.latitude ?? -38)"
+        let lon = "\(locationManager.location?.coordinate.longitude ?? 145)"
         let session = URLSession.shared
         let weatherURL = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&APPID=368e3231ebc2330d34a01ab4e56add0e")!
         
