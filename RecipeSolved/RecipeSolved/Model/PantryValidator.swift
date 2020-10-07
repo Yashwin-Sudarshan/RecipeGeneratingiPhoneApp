@@ -28,7 +28,7 @@ class PantryValidator: Validator{
     
     func validateQty(qty:String) -> Bool{
         
-        let qtyRegex = "(^[1-9][0-9]*[g])|([1-9][0-9]*[L])|([0-9][.][1-9]*[L])|([0-9][.][0][0]*[1-9][1-9]*[0-9]*[1-9][L])|([0-9][.][0][0]*[1-9][1-9]*[L])|([1-9][0-9]*[L])|([1-9][0-9]*|\0)"
+        let qtyRegex = "(^[1-9][0-9]*[g])|([1-9][0-9]*[L])|([0-9][.][1-9]*[L])|([0-9][.][0][0]*[1-9][1-9]*[0-9]*[1-9][L])|([0-9][.][0][0]*[1-9][1-9]*[L])|([1-9][0-9]*[.][0][0]*[1-9][1-9]*[0-9]*[1-9][L])|([1-9][0-9]*[.][0][0]*[1-9][1-9]*[L])|([1-9][0-9]*[.][0]*[1-9][1-9]*[L])|([1-9][0-9]*[m][L])|([1-9][0-9]*|\0)"
         let trimmedEntryString = qty.trimmingCharacters(in: .whitespaces)
         let validateQty = NSPredicate(format: "SELF MATCHES %@", qtyRegex)
         let isValidateQty = validateQty.evaluate(with: trimmedEntryString)
