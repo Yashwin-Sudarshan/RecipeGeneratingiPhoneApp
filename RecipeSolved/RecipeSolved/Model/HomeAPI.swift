@@ -26,6 +26,22 @@ class HomeAPI {
         return _recipes
     }
     
+    func getRandomRecipe() {
+        _recipes = []
+        let ingredients = ["Milk","Bread","Eggs","Cheese","Salt","Flour","Sugar","Butter","Oil","Water"]
+        let number = Int.random(in: 0..<10)
+        let url = baseURL + query + ingredients[number] + appID + key
+        
+        guard let url_format = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
+            return
+        }
+        
+        if let url = URL(string: url_format) {
+            let request = URLRequest(url: url)
+            getData(request, element: "hits")
+        }
+    }
+    
     func getRecipe(title: String) {
         _recipes = []
         let url = baseURL + query + title + appID + key

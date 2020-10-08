@@ -77,4 +77,8 @@ struct HomeRecipeViewModel {
     func getRecipe(title:String) {
         model.getRecipe(title: title)
     }
+    
+    func getRandomRecipe() {
+        model.getRandomRecipe()
+    }
 }
