@@ -90,6 +90,25 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        // Get ingredients from data store.
+        var ingredientName: String{
+            
+            var result: String = ""
+            let ingredients = ingredientManager.ingredients
+            for(_, ingredient) in ingredients.enumerated(){
+                
+                if let name = ingredient.name{
+                    result += name + ","
+                }
+            }
+            return result
+        }
+        if ingredientName.isEmpty {
+            HomeRecipeViewModel().getRandomRecipe()
+        }
+        else {
+            HomeRecipeViewModel().getRecipe(title: ingredientName)
+        }
     }
     
     // Filters ingredient pantry table view row results based on user search bar input.

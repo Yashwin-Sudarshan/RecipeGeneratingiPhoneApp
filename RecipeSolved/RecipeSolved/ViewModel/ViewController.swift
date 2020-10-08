@@ -21,20 +21,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private var viewModel = HomeRecipeViewModel()
     let locationManager = CLLocationManager()
     
-    // Get ingredients from data store, and pre-load them so they are ready when the user selects the explore tab.
-    var ingredientName: String{
-        
-        var result: String = ""
-        let ingredients = ingredientManager.ingredients
-        for(_, ingredient) in ingredients.enumerated(){
-            
-            if let name = ingredient.name{
-                result += name + ","
-            }
-        }
-        return result
-    }
-    
     func updateHome() {
         tableView.reloadData()
     }
@@ -53,7 +39,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        viewModel.getRecipe(title: ingredientName)
+        // Get ingredients from data store.
+        var ingredientName: String{
+            
+            var result: String = ""
+            let ingredients = ingredientManager.ingredients
+            for(_, ingredient) in ingredients.enumerated(){
+                
+                if let name = ingredient.name{
+                    result += name + ","
+                }
+            }
+            return result
+        }
+        if ingredientName.isEmpty {
+            viewModel.getRandomRecipe()
+        }
+        else {
+            viewModel.getRecipe(title: ingredientName)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
