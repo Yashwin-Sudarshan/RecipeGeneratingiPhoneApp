@@ -42,11 +42,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Description</string>
+	<string>Recipe Solved uses your location to give you your local weather.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Description</string>
+	<string>Recipe Solved uses your location to give you your local weather.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Description</string>
+	<string>Recipe Solved uses your location to give you your local weather.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
