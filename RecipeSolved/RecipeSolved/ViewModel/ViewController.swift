@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -52,12 +53,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             return result
         }
+        
+        let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        tableView.backgroundView = loadingSpinner
+        loadingSpinner.startAnimating()
         if ingredientName.isEmpty {
             viewModel.getRandomRecipe()
         }
         else {
             viewModel.getRecipe(title: ingredientName)
         }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
