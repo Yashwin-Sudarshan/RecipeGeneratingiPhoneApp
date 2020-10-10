@@ -20,6 +20,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SS-mA-C2u">
                                 <rect key="frame" x="16" y="72" width="57.5" height="25"/>
+                                <accessibility key="accessibilityConfiguration" identifier="goodLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="iNS-vm-5P0"/>
                                 </constraints>
@@ -29,6 +30,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSm-lS-HFr">
                                 <rect key="frame" x="16" y="92" width="57.5" height="28"/>
+                                <accessibility key="accessibilityConfiguration" identifier="timeOfDayLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="LMf-ds-gF2"/>
                                 </constraints>
@@ -99,8 +101,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ºC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa1-Ed-zwl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-ºC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa1-Ed-zwl">
                                 <rect key="frame" x="81.5" y="72" width="222.5" height="48"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tempLabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -546,6 +549,7 @@
                                         <constraint firstAttribute="bottom" secondItem="cim-nH-2Gh" secondAttribute="bottom" constant="10.5" id="wWq-Eu-DUX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="ProfileCell"/>
                                 <connections>
                                     <segue destination="dqY-8y-kg7" kind="show" id="ncf-z1-lH1"/>
                                 </connections>
@@ -622,6 +626,6 @@
         <image name="yashwinsudarshan" width="774" height="1406"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Nv-cb-SE1"/>
+        <segue reference="cs8-uO-ZIr"/>
     </inferredMetricsTieBreakers>
 </document>
