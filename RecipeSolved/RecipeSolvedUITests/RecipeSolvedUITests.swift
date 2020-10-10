@@ -26,7 +26,7 @@ class RecipeSolvedUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testElementPresence() {
+    func testElementPresence() {        // Test to make sure that the main page has the correct elements present
         let app = XCUIApplication()
         
         let numButtons = app.buttons.count
@@ -39,7 +39,7 @@ class RecipeSolvedUITests: XCTestCase {
         
     }
     
-    func testGoodLabel() {
+    func testGoodLabel() {      // Tests the label "Good" is there and correctly displayed
         let app = XCUIApplication()
         let lastLabel = app.staticTexts["goodLabel"]
         XCTAssertEqual(lastLabel.label, "Good")
@@ -51,6 +51,7 @@ class RecipeSolvedUITests: XCTestCase {
         
         let hour = Calendar.current.component(.hour, from: Date())
         
+        // Ensure the result display is correct base on the time of day
         switch hour {
         case 0..<12 : XCTAssertEqual(lastLabel.label, "Morning")       // Show morning if time is AM
         case 12..<18 : XCTAssertEqual(lastLabel.label, "Afternoon")    // Show afternoon if time is between 12PM and 6PM
@@ -59,16 +60,17 @@ class RecipeSolvedUITests: XCTestCase {
         }
     }
     
-    func testTempLabel() {
+    func testTempLabel() { // Tests the label "tempLabel" is there and correctly displayed (any value will mean the API loaded successfully)
         let app = XCUIApplication()
         
         sleep(5)    //Allows API enough time to load
         
         let lastLabel = app.staticTexts["tempLabel"]
-        XCTAssertNotEqual(lastLabel.label, "-ºC")
+        XCTAssertNotEqual(lastLabel.label, "-ºC")       // If the API doesn't work the label will remain the same, hence the use of NotEqual
     }
     
-    func testHomeTabRecipies () {
+    func testUseCaseHomeTabRecipies () {
+        // Run initial tests before proceeding with use case
         testElementPresence()
         testGoodLabel()
         testTimeOfDayLabel()
@@ -92,6 +94,7 @@ class RecipeSolvedUITests: XCTestCase {
     }
     
     func testUseCaseSearch() {
+        // Run initial tests before proceeding with use case
         testElementPresence()
         testGoodLabel()
         testTimeOfDayLabel()
@@ -101,25 +104,26 @@ class RecipeSolvedUITests: XCTestCase {
         
         sleep(5)    //Allows UI enough time to load
         
-        XCUIApplication().buttons["Explore"].tap()
+        XCUIApplication().buttons["Explore"].tap()      // Tap Explore
         
         sleep(2)
         
-        XCUIApplication().searchFields["Search Recipes"].tap()
+        XCUIApplication().searchFields["Search Recipes"].tap() // Tap Search Field
         
         sleep(2)
         
-        XCTAssert(app.keyboards.count > 0, "The keyboard is not shown")
-        XCUIApplication().searchFields["Search Recipes"].typeText("Chicken")
+        XCTAssert(app.keyboards.count > 0, "The keyboard is not shown")     // Report if keyboard is not shown
+        XCUIApplication().searchFields["Search Recipes"].typeText("Chicken")        // Search for chicken (can be anything)
         
         sleep(2)
         
-        app.keyboards.buttons["Search"].tap()
+        app.keyboards.buttons["Search"].tap()       // Tap search on the software keyboard
         
-        sleep(10)
+        sleep(10)       // Allows enough time of the API to return results
     }
     
     func testUseCaseAddToPantry() {
+        // Run initial tests before proceeding with use case
         testElementPresence()
         testGoodLabel()
         testTimeOfDayLabel()
