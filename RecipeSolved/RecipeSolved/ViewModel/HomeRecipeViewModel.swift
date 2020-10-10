@@ -1,19 +1,19 @@
 //
-//  ExploreViewModel.swift
+//  HomeRecipeViewModel.swift
 //  RecipeSolved
 //
-//  Created by Alexandar Kotevski on 21/8/20.
+//  Created by Alexandar Kotevski on 1/10/20.
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-struct RecipeViewModel {
+struct HomeRecipeViewModel {
     
-    private var model = REST_API.shared
+    private var model = HomeAPI.shared
     
-    var delegate:Refresh?{
+    var delegate:RefreshHome?{
         get {
             return model.delegate
         }
@@ -76,5 +76,9 @@ struct RecipeViewModel {
     
     func getRecipe(title:String) {
         model.getRecipe(title: title)
+    }
+    
+    func getRandomRecipe() {
+        model.getRandomRecipe()
     }
 }
