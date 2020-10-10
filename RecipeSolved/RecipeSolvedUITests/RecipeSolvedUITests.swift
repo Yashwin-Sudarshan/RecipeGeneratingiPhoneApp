@@ -68,6 +68,29 @@ class RecipeSolvedUITests: XCTestCase {
         XCTAssertNotEqual(lastLabel.label, "-ºC")
     }
     
+    func testHomeTabRecipies () {
+        testElementPresence()
+        testGoodLabel()
+        testTimeOfDayLabel()
+        testTempLabel()
+        
+        let app = XCUIApplication()
+        
+        // Tap the first recipe
+        app.tables.element(boundBy: 0).cells.element(boundBy: 0).tap()
+        
+        let numButtons = app.buttons.count
+        let numLabels = app.label.count
+        let numImages = app.images.count
+        XCTAssertEqual(numButtons, 6)
+        XCTAssertEqual(numLabels, 12)
+        XCTAssertNotEqual(numImages, 0)
+        
+        sleep(3)
+        
+        XCUIApplication().buttons["Open Recipe"].tap()
+    }
+    
     func testUseCaseSearch() {
         testElementPresence()
         testGoodLabel()
@@ -165,6 +188,7 @@ class RecipeSolvedUITests: XCTestCase {
         XCUIApplication().buttons["Profiles"].tap()
         
         sleep(2)
+        
         // Tap the first profile
         app.tables.element(boundBy: 0).cells.element(boundBy: 0).tap()
         
@@ -177,5 +201,60 @@ class RecipeSolvedUITests: XCTestCase {
         XCTAssertEqual(numButtons, 5)
         XCTAssertEqual(numLabels, 12)
         XCTAssertNotEqual(numImages, 0)
+        
+        XCUIApplication().buttons["Development Team"].tap()
+        
+        sleep(2)
+        
+        // Tap the second profile
+        app.tables.element(boundBy: 0).cells.element(boundBy: 1).tap()
+        
+        sleep(2)
+        
+        // Check for presence of elements
+        let numButtons1 = app.buttons.count
+        let numLabels1 = app.label.count
+        let numImages1 = app.images.count
+        XCTAssertEqual(numButtons1, 5)
+        XCTAssertEqual(numLabels1, 12)
+        XCTAssertNotEqual(numImages1, 0)
+        
+        XCUIApplication().buttons["Development Team"].tap()
+        
+        sleep(2)
+        
+        // Tap the third profile
+        app.tables.element(boundBy: 0).cells.element(boundBy: 2).tap()
+        
+        sleep(2)
+        
+        // Check for presence of elements
+        let numButtons2 = app.buttons.count
+        let numLabels2 = app.label.count
+        let numImages2 = app.images.count
+        XCTAssertEqual(numButtons2, 5)
+        XCTAssertEqual(numLabels2, 12)
+        XCTAssertNotEqual(numImages2, 0)
+        
+        XCUIApplication().buttons["Development Team"].tap()
+        
+        sleep(2)
+        
+        // Tap the forth profile
+        app.tables.element(boundBy: 0).cells.element(boundBy: 3).tap()
+        
+        sleep(2)
+        
+        // Check for presence of elements
+        let numButtons3 = app.buttons.count
+        let numLabels3 = app.label.count
+        let numImages3 = app.images.count
+        XCTAssertEqual(numButtons3, 5)
+        XCTAssertEqual(numLabels3, 12)
+        XCTAssertNotEqual(numImages3, 0)
+        
+        XCUIApplication().buttons["Development Team"].tap()
+        
+        sleep(5)
     }
 }
