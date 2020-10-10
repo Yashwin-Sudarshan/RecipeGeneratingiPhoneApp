@@ -16,17 +16,30 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var activityView: UIView!
+    
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         viewModel.getRecipe(title: searchBar.text!)
+        activityView.isHidden = false
+        loadingSpinner.startAnimating()
     }
     
     func updateUI() {
+//        let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+//        tableView.backgroundView = loadingSpinner
+//        loadingSpinner.startAnimating()
+//        loadingSpinner.startAnimating()
         tableView.reloadData()
+        loadingSpinner.stopAnimating()
+        activityView.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -34,6 +47,13 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         searchBar.placeholder = "Search Recipes"
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
+        
+        loadingSpinner.hidesWhenStopped = true
+        loadingSpinner.stopAnimating()
+        
+//        let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+//        tableView.backgroundView = loadingSpinner
+//        loadingSpinner.startAnimating()
     }
 
     // Find the number of rows
@@ -53,7 +73,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
         recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
         recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
-        
+
         return cell
     }
 

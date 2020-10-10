@@ -399,21 +399,40 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wlr-em-scl">
+                                <rect key="frame" x="16" y="120" width="288" height="399"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-Ra-Ghy">
+                                        <rect key="frame" x="134" y="189.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hcw-Ra-Ghy" firstAttribute="centerX" secondItem="Wlr-em-scl" secondAttribute="centerX" id="BJg-vZ-BAe"/>
+                                    <constraint firstItem="hcw-Ra-Ghy" firstAttribute="centerY" secondItem="Wlr-em-scl" secondAttribute="centerY" id="Q8Z-W5-5HV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="IRT-5W-VEd" secondAttribute="trailing" constant="16" id="F6M-nq-axc"/>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="bottom" secondItem="IRT-5W-VEd" secondAttribute="bottom" id="U9O-5h-1G0"/>
                             <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="VCh-wc-L5J" secondAttribute="trailing" id="a2f-Nm-S70"/>
+                            <constraint firstItem="Wlr-em-scl" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="grS-Ua-RC2"/>
                             <constraint firstItem="IRT-5W-VEd" firstAttribute="top" secondItem="VCh-wc-L5J" secondAttribute="bottom" id="j7K-J9-0Tk"/>
                             <constraint firstItem="VCh-wc-L5J" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" id="qMn-xV-oKq"/>
+                            <constraint firstItem="Wlr-em-scl" firstAttribute="top" secondItem="yYj-pv-ToX" secondAttribute="top" constant="56" id="uzd-6g-jhi"/>
                             <constraint firstItem="VCh-wc-L5J" firstAttribute="top" secondItem="yYj-pv-ToX" secondAttribute="top" id="v0U-nn-95J"/>
                             <constraint firstItem="IRT-5W-VEd" firstAttribute="leading" secondItem="yYj-pv-ToX" secondAttribute="leading" constant="16" id="wYO-b4-CAo"/>
+                            <constraint firstItem="yYj-pv-ToX" firstAttribute="bottom" secondItem="Wlr-em-scl" secondAttribute="bottom" id="xfu-cA-fzh"/>
+                            <constraint firstItem="yYj-pv-ToX" firstAttribute="trailing" secondItem="Wlr-em-scl" secondAttribute="trailing" constant="16" id="zee-GE-On4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYj-pv-ToX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="k7x-N7-n4A"/>
                     <connections>
+                        <outlet property="activityView" destination="Wlr-em-scl" id="sdH-cW-5UD"/>
+                        <outlet property="loadingSpinner" destination="hcw-Ra-Ghy" id="Dow-0Q-Ftw"/>
                         <outlet property="searchBar" destination="VCh-wc-L5J" id="sSO-k8-jwz"/>
                         <outlet property="tableView" destination="IRT-5W-VEd" id="VPv-Di-SFO"/>
                     </connections>
@@ -622,6 +641,6 @@
         <image name="yashwinsudarshan" width="774" height="1406"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Nv-cb-SE1"/>
+        <segue reference="cs8-uO-ZIr"/>
     </inferredMetricsTieBreakers>
 </document>
