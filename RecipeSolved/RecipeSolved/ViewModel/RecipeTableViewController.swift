@@ -10,21 +10,25 @@ import UIKit
 
 class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, Refresh {
     
+    // View Model
     var viewModel = RecipeViewModel()
     
+    // Outlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // When the user clicks search, send their query to the API.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         viewModel.getRecipe(title: searchBar.text!)
     }
     
+    // Update the table with the data from the API.
     func updateUI() {
         tableView.reloadData()
     }
     
+    // Load the view and set delegates.
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
