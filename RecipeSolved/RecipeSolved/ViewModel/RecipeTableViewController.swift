@@ -10,16 +10,18 @@ import UIKit
 
 class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, Refresh {
     
+    // View Model
     var viewModel = RecipeViewModel()
     
+    // Outlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var activityView: UIView!
     
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     
+    // When the user clicks search, send their query to the API.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         viewModel.getRecipe(title: searchBar.text!)
@@ -27,16 +29,14 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         loadingSpinner.startAnimating()
     }
     
+    // Update the table with the data from the API.
     func updateUI() {
-//        let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-//        tableView.backgroundView = loadingSpinner
-//        loadingSpinner.startAnimating()
-//        loadingSpinner.startAnimating()
         tableView.reloadData()
         loadingSpinner.stopAnimating()
         activityView.isHidden = true
     }
     
+    // Load the view and set delegates.
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -50,10 +50,6 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         
         loadingSpinner.hidesWhenStopped = true
         loadingSpinner.stopAnimating()
-        
-//        let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-//        tableView.backgroundView = loadingSpinner
-//        loadingSpinner.startAnimating()
     }
 
     // Find the number of rows

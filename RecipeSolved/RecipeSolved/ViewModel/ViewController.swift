@@ -15,12 +15,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var currentTempLabel: UILabel!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var item: UIBarButtonItem!
     
+    // Models and managers
     private var ingredientManager = DataManager.shared
     private var viewModel = HomeRecipeViewModel()
     let locationManager = CLLocationManager()
     
+    // Update table view
     func updateHome() {
         tableView.reloadData()
     }
@@ -29,14 +30,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        // Check for location permissions
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        // Call helper functions to get data
         getWeather()
         getGreeting()
+        // Set delegates
         viewModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -53,10 +57,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             return result
         }
-        
+        // Create activity indicator
         let loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         tableView.backgroundView = loadingSpinner
         loadingSpinner.startAnimating()
+        // Use ingreidents from pantry to populate the table, if there are no ingredients in the pantry, randomly select recipes.
         if ingredientName.isEmpty {
             viewModel.getRandomRecipe()
         }
@@ -66,6 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // Get the user's current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print(location.coordinate)
@@ -73,10 +79,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         manager.stopUpdatingLocation()
     }
     
+    // Show error if the user's location could not be determined.
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Did location updates is called but failed getting location \(error)")
     }
     
+    // Create greeting label based on time of day.
     func getGreeting()  {
         let hour = Calendar.current.component(.hour, from: Date())
 
@@ -88,6 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // Get the user's local weather based on the user's location.
     func getWeather() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation();
@@ -131,12 +140,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     
-//  Table
+    // Calculate the number of rows for the table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.count
     }
 
-    
+    // Draw the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         let imageView = cell.viewWithTag(1000) as! UIImageView
@@ -152,6 +161,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
       }
 
+    // Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let selectedRow = self.tableView.indexPathForSelectedRow else {return}
         let destination = segue.destination as? RecipeViewController
