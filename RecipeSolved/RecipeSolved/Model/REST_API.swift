@@ -17,6 +17,7 @@ class REST_API {
     var delegate:Refresh?
     private let session = URLSession.shared
     
+    // URL parameters
     private let baseURL:String = "https://api.edamam.com/search?"
     private let query:String = "q="
     private let appID:String = "&app_id=94e40056"
@@ -26,6 +27,7 @@ class REST_API {
         return _recipes
     }
     
+    // Pass in a string to this function, which will then pass that string to the API.
     func getRecipe(title: String) {
         _recipes = []
         let url = baseURL + query + title + appID + key
@@ -40,6 +42,7 @@ class REST_API {
         }
     }
     
+    // Get Data from the API and populate the recipes array.
     private func getData(_ request: URLRequest, element: String) {
         let task = session.dataTask(with: request, completionHandler: {
             data, response, downloadError in
