@@ -7,6 +7,8 @@
 //
 //
 
+// This auto generated class represents a developer object
+
 import Foundation
 import CoreData
 
