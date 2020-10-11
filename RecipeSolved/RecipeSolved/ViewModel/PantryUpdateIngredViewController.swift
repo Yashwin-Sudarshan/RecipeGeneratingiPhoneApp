@@ -6,24 +6,9 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
-// This view controller retrieves ingredient entry additions from the PantryIngredientaddingViewController and renders table rows appropriately formatted to display the user's ingredients. The view controller also updates the entries themselves from the user editing ingredient entries in the PantryIngredEditViewController. This view controller also handles search functionality to filter ingredients based on search input.
-
-//private var developerImages:[UIImage]{
-    //
-    //        let developers = developerManager.developers
-    //        var temp:[UIImage] = []
-    //
-    //        for(_, developer) in developers.enumerated(){
-    //
-    //            let image = UIImage(data: developer.image! as Data)
-    //            temp.append(image!)
-    //        }
-    //
-    //        return temp
-    //    }
+// This view controller retrieves ingredient entry additions from the ingredient database and renders table rows appropriately formatted to display the user's ingredients. The view controller also updates the entries themselves from the user editing ingredient entries in the PantryIngredEditViewController. This view controller also handles search functionality to filter ingredients based on search input.
 
 import UIKit
-import SafariServices
 
 class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
@@ -36,9 +21,6 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
     
     private var deleteIngredientViewModel = PantryDeleteIngredientViewModel()
     
-    // Contains all the user's ingredients.
-//    var currentIngredients:[String] = []
-    
     // Contains all the user's ingredients read in from core database.
     var currentIngredientsFromDatabase:[String]{
         
@@ -50,7 +32,6 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
             let ingredientName = ingredient.name
             let ingredientQty = ingredient.quantity
             let ingredientExp = ingredient.expirationDate
-//            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
             let ingredString = "\(ingredientName!),\(ingredientQty!),\(ingredientExp!)"
             temp.append(ingredString)
         }
@@ -146,7 +127,6 @@ class PantryUpdateIngredViewController: UIViewController, UITextFieldDelegate{
         
         let destination = segue.destination as? PantryIngredEditViewController
         
-//        destination?.currentTotalIngredients = self.currentIngredients
         destination?.currentTotalIngredients = self.currentDataSourceSearch
         
         destination?.currentIngredientsIndexSelection = self.currentIngredientsIndexSelection
@@ -194,9 +174,7 @@ extension PantryUpdateIngredViewController: UITableViewDelegate, UITableViewData
             deleteIngredientViewModel.deleteIngredient(indexPath.row)
             
             currentIngredients.remove(at: indexPath.row)
-            
-//            PantryIngredientaddingViewController.ingredInput.remove(at: indexPath.row) 
-            
+                        
             currentDataSourceSearch = currentIngredients
             
             tableView.beginUpdates()

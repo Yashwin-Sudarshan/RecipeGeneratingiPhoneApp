@@ -7,6 +7,8 @@
 //
 //
 
+// This auto generated class contains fetchRequest setup for retrieval of an ingredient, and contains ingredient information
+
 import Foundation
 import CoreData
 
@@ -20,6 +22,5 @@ extension Ingredient {
     @NSManaged public var name: String?
     @NSManaged public var quantity: String?
     @NSManaged public var expirationDate: String?
-    @NSManaged public var pantry: Pantry?
 
 }

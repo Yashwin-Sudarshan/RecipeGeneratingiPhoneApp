@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This class handles direct addition of ingredients and developers into the ingredient and developer databases, updating of ingredients, and deletion of ingredients, and loading of ingredients and developers
+
 import Foundation
 import CoreData
 import UIKit
@@ -27,9 +29,7 @@ class DataManager{
         
         managedContext = appDelegate.persistentContainer.viewContext
         loadDevelopers()
-//        deleteDevelopers()
         loadIngredients()
-//        deleteIngredients()
     }
     
     // Creates new Ingredient
@@ -65,7 +65,6 @@ class DataManager{
     // Adds new developer to developer database
     func addDeveloper(_ name: String, _ image: UIImage, _ developerBio : String){
         
-//        let nsAuthor = createNSAuthor(author)
         let nsDeveloper = createNSDeveloper(name, image: image, developerBio: developerBio)
         developers.append(nsDeveloper)
         
@@ -106,7 +105,6 @@ class DataManager{
     // Deletes an ingredient at the selected row in the database and saves the deletion update
     func deleteIngredient(index: Int){
         
-//        ingredients.remove(at: index)
         managedContext.delete(ingredients[index])
         ingredients.remove(at: index)
         do{
@@ -129,23 +127,6 @@ class DataManager{
         }
     }
     
-    // Just for testing purposes --> to be removed later
-    private func deleteDevelopers(){
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Developer")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        // get reference to the persistent container
-        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        
-        // perform the delete
-        do {
-            try persistentContainer.viewContext.execute(deleteRequest)
-        } catch let error as NSError {
-            print(error)
-        }
-    }
-    
     // Read saved ingredients from database
     private func loadIngredients(){
         
@@ -156,23 +137,6 @@ class DataManager{
             ingredients = result as! [Ingredient]
         }catch let error as NSError{
             print("Could not save \(error), \(error.userInfo)")
-        }
-    }
-    
-    // Just for testing purposes --> to be removed later
-    private func deleteIngredients(){
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredient")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        // get reference to the persistent container
-        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        
-        // perform the delete
-        do {
-            try persistentContainer.viewContext.execute(deleteRequest)
-        } catch let error as NSError {
-            print(error)
         }
     }
 }

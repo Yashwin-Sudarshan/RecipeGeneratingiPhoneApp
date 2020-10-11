@@ -7,6 +7,8 @@
 //
 //
 
+// This auto generated class represents an ingredient object
+
 import Foundation
 import CoreData
 

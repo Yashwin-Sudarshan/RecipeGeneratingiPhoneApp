@@ -8,8 +8,7 @@
 
 // This view controller retrieves user input for adding ingredients and thier names, quantities
 // and expiration dates. Then, it sends the information to the PantryUpdateIngredViewController
-// for displaying the ingredients and their details in the user's pantry. This view controller also
-// handles data validation to ensure only entries in the correct format get transferred.
+// for displaying the ingredients and their details in the user's pantry. This view controller also handles data validation to ensure only entries in the correct format get transferred.
 
 import UIKit
 
@@ -39,7 +38,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             let ingredientName = ingredient.name
             let ingredientQty = ingredient.quantity
             let ingredientExp = ingredient.expirationDate
-            //            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
             let ingredString = "\(ingredientName!),\(ingredientQty!),\(ingredientExp!)"
             temp.append(ingredString)
         }
@@ -80,8 +78,7 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         // Checks validity of user inputs in each text field in real time
         [ingredientField, addingField, expiryField].forEach({$0?.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)})
         
-        //---------------Load ingredients from database--------------------//
-        // bookList.text = viewModel.bookTitles
+        // Load ingredients from ingredient database
         PantryIngredientaddingViewController.ingredInput = currentIngredientsFromDatabase
     }
     
@@ -100,10 +97,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
             confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
         }
-        
-//        confirmEntryButton.isEnabled = false
-//        confirmEntryButton.backgroundColor = UIColor(red: 0.603, green: 0.603, blue: 0.603, alpha: 0.1)
-//        confirmEntryButton.setTitleColor(UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.1), for: .normal)
     }
     
     // Un-registering keyboard event listeners
@@ -115,28 +108,20 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
-    // Adds user ingredient, quantity, and date inputs into array for transportation into
-    // PantryUpdateIngredViewController
     // Adds user ingredient, quantity, and date inputs into core database for transportation into
     // PantryUpdateIngredViewController
     @IBAction func confirmEntryTap(_ sender: Any) {
         
         if(validateInput() == true){
             
-            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return} // extra validation --> probs redundant --> 'guard' probs not needed
+            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return}
             
             addingIngredientViewModel.addIngredient(ingredientField, addingField, expiryField)
-            
-//            let ingredString = "\(ingredientField.text!),\(addingField.text!),\(expiryField.text!)"
            
             let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
             
             PantryIngredientaddingViewController.ingredInput.append(ingredString)
             
-//            guard let ingredientField = ingredientField.text, let addingField = addingField.text, let expiryField = expiryField.text else {return} // not needed since validation??
-//
-//            addingIngredientViewModel.addIngredient(ingredientField, addingField, expiryField)
-            // bookList.text = viewModel.bookTitle
         }
     }
     
@@ -148,16 +133,9 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         guard let ingredient = ingredientField.text, let qty = addingField.text, let exp = expiryField.text else{
             return false
         }
-        
-//        guard let ingredient = ingredientField.text, let qty = addingField.text else{
-//            return false
-//        }
-        
         if(exp.isEmpty){
             return false
         }
-        
-//        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
         isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty)
         
         return isValid
@@ -190,7 +168,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         dateInputFormatter.dateFormat = "dd/MM/yy"
         expiryField.text = dateInputFormatter.string(from: datePickerComponent.date)
         editingChanged(expiryField)
-//        view.endEditing(true)
     }
     
     // Allows user to hide date picker by tapping the scene
@@ -205,15 +182,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
         addingField.resignFirstResponder()
         expiryField.resignFirstResponder()
 
-    }
-    
-    // Transfers contents of array containing ingredients entered by user, into
-    // another array in the PantryUpdateIngredViewController, for table view rendering.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         let vcTransfer = segue.destination as! PantryUpdateIngredViewController
-         vcTransfer.currentIngredients = PantryIngredientaddingViewController.ingredInput
-        
-        // Might be redundant given the use of core data
     }
 }
 

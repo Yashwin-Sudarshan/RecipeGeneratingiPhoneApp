@@ -7,8 +7,8 @@
 //
 
 // This view controller handles editing ingredient entries by the user. The ingredient name,
-// quantity, and expiration date can be changed, and the view controller will update the array
-// containing ingredients in the PantryUpdateIngredViewController for updated display of ingredient
+// quantity, and expiration date can be changed, and the view controller will update the database
+// containing ingredients for updated display of ingredient
 // information. This view controller also handles input format validation, to ensure only entries
 // with the correct ingredient name, quantity, and expiration date formats are accepted.
 
@@ -94,11 +94,9 @@ class PantryIngredEditViewController: UIViewController{
         
         if(validateInput() == true){
             
-            guard let editIngredientField = editIngredientTextField.text, let editAddingField = editAddingTextField.text, let editExpiryField = editExpiryTextField.text else {return} // extra validation --> probs redundant --> 'guard' probs not needed
+            guard let editIngredientField = editIngredientTextField.text, let editAddingField = editAddingTextField.text, let editExpiryField = editExpiryTextField.text else {return}
             
             updateIngredientViewModel.updateIngredient(editIngredientField, editAddingField, editExpiryField, self.currentIngredientsIndexSelection)
-            
-//            let ingredString = "\(editIngredientTextField.text!),\(editAddingTextField.text!),\(editExpiryTextField.text!)"
             
             let ingredString = "\(editIngredientField),\(editAddingField),\(editExpiryField)"
             
@@ -118,7 +116,7 @@ class PantryIngredEditViewController: UIViewController{
         if(exp.isEmpty){
             return false
         }
-//        isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty, exp: exp)
+
         isValid = self.validator.validatePantryInputs(ingredient: ingredient, qty: qty)
         
         return isValid

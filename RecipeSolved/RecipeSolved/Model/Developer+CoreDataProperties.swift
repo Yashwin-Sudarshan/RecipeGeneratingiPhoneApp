@@ -7,6 +7,8 @@
 //
 //
 
+// This auto generated class contains fetchRequest setup for retrieval of a developer, and contains developer information
+
 import Foundation
 import CoreData
 

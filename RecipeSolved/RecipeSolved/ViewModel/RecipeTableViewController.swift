@@ -17,20 +17,29 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var activityView: UIView!
+    
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     // When the user clicks search, send their query to the API.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         viewModel.getRecipe(title: searchBar.text!)
+        activityView.isHidden = false
+        loadingSpinner.startAnimating()
     }
     
     // Update the table with the data from the API.
     func updateUI() {
         tableView.reloadData()
+        loadingSpinner.stopAnimating()
+        activityView.isHidden = true
     }
     
     // Load the view and set delegates.
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -38,6 +47,9 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         searchBar.placeholder = "Search Recipes"
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
+        
+        loadingSpinner.hidesWhenStopped = true
+        loadingSpinner.stopAnimating()
     }
 
     // Find the number of rows
@@ -57,7 +69,7 @@ class RecipeTableViewController: UIViewController, UITextFieldDelegate, UITableV
         recipeTitle.text = viewModel.getTitleFor(index: indexPath.row)
         recipeItems.text = viewModel.getItemsFor(index: indexPath.row)
         recipeServings.text = viewModel.getServingsFor(index: indexPath.row)
-        
+
         return cell
     }
 

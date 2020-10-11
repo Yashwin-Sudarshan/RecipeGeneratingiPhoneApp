@@ -6,8 +6,9 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This struct handles deletion of an ingredient in the core database.
+
 import Foundation
-import UIKit
 
 struct PantryDeleteIngredientViewModel{
     
