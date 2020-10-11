@@ -17,6 +17,7 @@ class HomeAPI {
     var delegate:RefreshHome?
     private let session = URLSession.shared
     
+    // URL parameters
     private let baseURL:String = "https://api.edamam.com/search?"
     private let query:String = "q="
     private let appID:String = "&app_id=94e40056"
@@ -26,6 +27,7 @@ class HomeAPI {
         return _recipes
     }
     
+    // Randomly select an ingreident from the ingredients array and pass that string to the API.
     func getRandomRecipe() {
         _recipes = []
         let ingredients = ["Milk","Bread","Eggs","Cheese","Salt","Flour","Sugar","Butter","Oil","Water"]
@@ -42,6 +44,7 @@ class HomeAPI {
         }
     }
     
+    // Pass in a string to this function, which will then pass that string to the API.
     func getRecipe(title: String) {
         _recipes = []
         let url = baseURL + query + title + appID + key
@@ -56,6 +59,7 @@ class HomeAPI {
         }
     }
     
+    // Get Data from the API and populate the recipes array.
     private func getData(_ request: URLRequest, element: String) {
         let task = session.dataTask(with: request, completionHandler: {
             data, response, downloadError in
