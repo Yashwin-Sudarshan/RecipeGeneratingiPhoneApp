@@ -7,7 +7,7 @@
 //
 
 // This struct holds all the students in the development team, and also allows for
-// retrieval of a specific developer from the developers array, for detail view rendering.
+// retrieval of a specific developer from the developers database, for detail view rendering.
 
 import Foundation
 
@@ -15,8 +15,9 @@ import UIKit
 
 struct StudentDeveloperViewModel{
     
-    // Contains all the students in the development team.
-    private (set) var developers:[StudentDeveloper] = []
+    private var studentDeveloper = StudentDeveloper()
+    
+    private (set) var developers = DataManager.shared.developers
     
     var count:Int{
         
@@ -25,24 +26,24 @@ struct StudentDeveloperViewModel{
     
     init() {
         loadData()
+        developers = DataManager.shared.developers
     }
     
     // Adds all the students in the development team into the developers array.
     private mutating func loadData(){
         
-        developers.append(StudentDeveloper.RubyRio)
-        developers.append(StudentDeveloper.AlexanderLoMoro)
-        developers.append(StudentDeveloper.AlexandarKotevski)
-        developers.append(StudentDeveloper.YashwinSudarshan)
+        if(count == 0){
+            studentDeveloper.addAllDevelopers()
+        }
     }
     
     // Returns a specified developer.
     func getDeveloper(byIndex index:Int) -> (name:String,
         description:String, image:UIImage?){
             
-            let name = developers[index].rawValue
-            let description = developers[index].description
-            let image = UIImage(named: developers[index].imageName)
+            let name = developers[index].name!
+            let description = developers[index].developerBio!
+            let image = UIImage(data: developers[index].image! as Data)
             
             return (name, description, image)
     }

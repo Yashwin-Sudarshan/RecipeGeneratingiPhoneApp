@@ -12,7 +12,6 @@ import UIKit
 
 class StudentDetailViewController: UIViewController {
 
-    
     @IBOutlet weak var studentImage: UIImageView!
     
     @IBOutlet weak var studentName: UILabel!
