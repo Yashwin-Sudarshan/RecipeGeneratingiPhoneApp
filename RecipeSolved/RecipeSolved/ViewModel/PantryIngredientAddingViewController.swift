@@ -38,7 +38,6 @@ class PantryIngredientaddingViewController: UIViewController, UIImagePickerContr
             let ingredientName = ingredient.name
             let ingredientQty = ingredient.quantity
             let ingredientExp = ingredient.expirationDate
-            //            let ingredString = "\(ingredientField),\(addingField),\(expiryField)"
             let ingredString = "\(ingredientName!),\(ingredientQty!),\(ingredientExp!)"
             temp.append(ingredString)
         }
