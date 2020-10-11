@@ -34,7 +34,7 @@ class RecipeSolvedUITests: XCTestCase {
         let numTables = app.tables.count
         
         XCTAssertEqual(numButtons, 4)
-        XCTAssertEqual(numLabels, 4)
+        XCTAssertEqual(numLabels, 3)
         XCTAssertEqual(numTables, 1)
         
     }
