@@ -72,7 +72,7 @@ class RecipeSolvedUnitTests: XCTestCase {
         }
     }
     
-    // Unit test 4: Check Evening is displayed when time is in betwen 5PM & 11:59PM
+    // Unit test 4: Check that Evening is displayed when time is in betwen 5PM & 11:59PM 
     func testGreetingStringEvening() {
         // Test with hour set from 18..<24
         var text = ""
