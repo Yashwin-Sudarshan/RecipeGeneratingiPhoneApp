@@ -6,26 +6,14 @@
 //  Copyright © 2020 Alexander LoMoro. All rights reserved.
 //
 
+// This struct performs addition of a developer to the devloper core database
+
 import Foundation
 import UIKit
 
 struct StudentDeveloperAddDeveloperViewModel {
     
     private var developerManager = DataManager.shared
-    
-    // Might be redundant --> transform for display to view?
-    var developerName: String{
-        
-        var result: String = ""
-        let developers = developerManager.developers
-        for(_, developer) in developers.enumerated(){
-            
-            if let name = developer.name{
-                result += name + "\n"
-            }
-        }
-        return result
-    }
     
     // Adds developers to the database
     mutating func addDeveloper(_ name: String, _ image: String, _ developerBio : String){

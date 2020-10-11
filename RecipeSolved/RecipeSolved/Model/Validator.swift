@@ -14,12 +14,10 @@ import Foundation
 
 protocol Validator {
     
-//    func validatePantryInputs(ingredient: String, qty: String, exp: String) -> Bool
     func validatePantryInputs(ingredient: String, qty: String) -> Bool
     
     func validateIngredient(ingredient: String) -> Bool
     
     func validateQty(qty: String) -> Bool
-    
-//    func validateExp(exp: String) -> Bool
+
 }
